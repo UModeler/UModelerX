@@ -1,0 +1,147 @@
+/* ─────────────────────────────────────────────────────────
+ * UMX Context Menu 공용 스타일
+ * 모디파이어·레이어·에디터 선택 등 모든 팝업 컨텍스트 메뉴에서 공유.
+ * 로드 경로: Resources.Load<StyleSheet>("UModeler/UModelerX/Editor/Views/Inspector/UMXContextMenu")
+ * ──────────────────────────────────────────────────────── */
+
+/* ── EditorWindow rootVisualElement 기본 패딩 리셋 ── */
+.umx-context-menu-root {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ── 팝업 컨테이너 ── */
+.umx-context-menu {
+    background-color: var(--umx-bg-content);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 3px;
+    padding: 0px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    min-height: 0;
+}
+
+/* 모디파이어 메뉴 전용 — 항목이 많아 최소 높이 확보, 보더 안쪽 여백 */
+.umx-context-menu--modifier {
+    padding-right: 4px;
+    min-width: 180px;
+    min-height: 120px;
+}
+
+/* 레이어 메뉴 전용 — 짧은 목록이므로 크기 고정 */
+.umx-context-menu--layer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* ── 스크롤 영역 ── */
+.umx-context-menu__scroll {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+/* 스크롤 content 세로 배치 */
+.umx-context-menu__scroll .unity-scroll-view__content-container {
+    flex-direction: column;
+}
+
+/* 스크롤 내부 컨테이너: viewport 가 전체 폭을 사용하도록 보장 */
+.umx-context-menu__scroll .unity-scroll-view__content-and-vertical-scroll-container {
+    flex-grow: 1;
+}
+
+/* viewport 전체 폭 확보 (스크롤바 비활성 시에도) */
+.umx-context-menu__scroll .unity-content-viewport {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+/* 스크롤 내 메뉴 아이템 전체 폭 사용 */
+.umx-context-menu__scroll .umx-context-menu__item {
+    width: 100%;
+}
+
+/* ── 메뉴 아이템 ── */
+.umx-context-menu__item {
+    flex-direction: row;
+    align-items: center;
+    min-height: 24px;
+    padding-left: 8px;
+    padding-right: 4px;
+    margin-bottom: 2px;
+    border-radius: 2px;
+    cursor: link;
+}
+
+/* 메뉴 아이템 호버 상태 */
+.umx-context-menu__item:hover {
+    background-color: var(--umx-bg-hover);
+}
+
+/* 메뉴 아이템 클릭(활성) 상태 */
+.umx-context-menu__item:active {
+    background-color: var(--umx-bg-surface);
+}
+
+/* 비활성 아이템 */
+.umx-context-menu__item--disabled {
+    opacity: 0.5;
+}
+
+/* ── 아이콘 ── */
+.umx-context-menu__item-icon {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 에디터 선택 메뉴 전용 아이콘 — 약간 큰 사이즈 */
+.umx-context-menu__item-icon--editor-selection {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    margin-left: 8px;
+    margin-right: 6px;
+}
+
+/* 체크마크 / 체크 스페이서 — 아이콘과 동일한 열 폭(16+8=24px) 확보 */
+.umx-context-menu__item-check {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    margin-right: 8px;
+    font-size: 12px;
+    -unity-text-align: middle-center;
+    flex-shrink: 0;
+}
+
+/* ── 라벨 ── */
+.umx-context-menu__item-label {
+    font-size: 12px;
+    color: var(--umx-text);
+    -unity-font-style: normal;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* ── 구분선 ── */
+.umx-context-menu__separator {
+    height: 1px;
+    background-color: var(--umx-border-strong);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}

@@ -1,0 +1,1304 @@
+/* ---------- AIToolWindow - PicoBerry style (UMX English) ---------- */
+/* AI 도구 윈도우 루트: 전체 크기, 테마 배경색 */
+.aitool-root {
+    padding: 0;
+    margin: 0;
+    background-color: var(--ai-bg);
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    /* -unity-font-definition: resource("Fonts/SpaceGrotesk"); */
+}
+
+/* AI 도구 스크롤 뷰: 남은 공간 채움 */
+.aitool-scroll {
+    flex-grow: 1;
+    padding: 0;
+}
+
+/* AI 도구 콘텐츠 영역: 세로 배치, 내부 패딩 */
+.aitool-content {
+    flex-direction: column;
+    padding: 10px 12px;
+}
+
+/* ---------- Header: PicoBerry (left) + Credits (right) ---------- */
+/* 헤더: 로고(좌) + 크레딧(우) 양끝 배치 */
+.aitool-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 36px;
+    margin-bottom: 12px;
+}
+
+/* 헤더 왼쪽 영역: 아이콘+라벨 가로 배치 */
+.aitool-header-left {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* 헤더 PicoBerry 아이콘 */
+.aitool-header-picoberry-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 헤더 PicoBerry 라벨 텍스트 */
+.aitool-header-picoberry-label {
+    font-size: 14px;
+    color: rgb(220, 220, 220);
+}
+
+/* 헤더 오른쪽 영역: 크레딧 정보 */
+.aitool-header-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* 헤더 크레딧 아이콘 */
+.aitool-header-credit-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 헤더 크레딧 값 텍스트 */
+.aitool-header-credit-value {
+    font-size: 13px;
+    color: rgb(200, 200, 200);
+}
+
+/* 헤더 구분선 */
+.aitool-header-divider {
+    height: 1px;
+    background-color: rgb(70, 70, 70);
+    margin-bottom: 12px;
+}
+
+/* ---------- Page containers (Image, Model, Remesh, Texture, Rigging) ---------- */
+/* 페이지 컨테이너: 기능별 페이지 래퍼 */
+.page-container {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* 페이지 컨테이너 숨김 상태 */
+.page-container.hidden {
+    display: none;
+}
+
+/* 페이지 플레이스홀더 라벨: 기능 미선택 시 안내 텍스트 */
+.page-placeholder-label {
+    color: rgb(155, 155, 155);
+    font-size: 13px;
+    padding: 12px 0;
+}
+
+/* 리메시 폴리곤 슬라이더 */
+.remesh-polygon-slider {
+    margin-top: 6px;
+    margin-bottom: 4px;
+    flex-grow: 1;
+}
+
+/* 리메시 폴리곤 수 입력 필드 */
+.remesh-polygon-int-field {
+    min-width: 120px;
+    max-width: 220px;
+    margin-top: 4px;
+}
+
+/* Model tab: Polygon Count — label row + slider below */
+/* 모델 탭 Tripo 폴리곤 카운트 블록: 세로 배치 */
+.model-tripo-polygon-block {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 6px;
+}
+
+/* 모델 Tripo 폴리곤 블록 내 독립 속성 행: 하단 여백 제거 */
+.model-tripo-polygon-block > .property-row-standalone {
+    margin-bottom: 0;
+}
+
+/* 모델 폴리곤 카운트 정수 입력 필드: 중앙 정렬, 고정 크기 */
+.model-tripo-polygon-block .model-polygon-count-int-field {
+    margin-top: 0;
+    align-self: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* ---------- Function tabs: borderless, vertical icon+text, selected/hover ---------- */
+/* 기능 탭 행: 가로 배치, 줄바꿈 허용 */
+.func-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+/* 기능 탭 버튼: 세로 아이콘+텍스트, 둥근 모서리 */
+.func-tab-btn {
+    flex-grow: 1;
+    min-width: 56px;
+    min-height: 52px;
+    color: var(--ai-inactive-btn-label);
+    background-color: var(--ai-inactive-btn-bg);
+    border-width: 0;
+    border-radius: 7px;
+    font-size: 12px;
+    margin: 2px;
+    padding: 6px 4px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 기능 탭 버튼 호버 상태 */
+.func-tab-btn:hover {
+    background-color: rgb(76, 76, 76);
+    color: rgb(200, 200, 200);
+}
+
+/* 기능 탭 버튼 선택 상태: 강조색 */
+.func-tab-btn.selected {
+    color: var(--ai-active-btn-label);
+    background-color: var(--ai-active-btn-bg);
+    border-color: var(--ai-active-btn-border);
+}
+
+/* 기능 탭 아이콘 */
+.func-tab-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 기능 탭 라벨 텍스트 */
+.func-tab-label {
+    font-size: 12px;
+}
+
+/* ---------- Generation mode (Model page): transparent bg, whiter border; Image to 3D / Text to 3D ---------- */
+/* 생성 모드 래퍼: 투명 배경, 밝은 테두리 */
+.generation-mode-wrap {
+    margin-bottom: 12px;
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: rgb(140, 140, 140);
+    padding: 6px;
+    background-color: transparent;
+}
+
+/* 생성 모드 내부 행: 가로 배치 */
+.generation-mode-inner {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* 생성 모드 버튼: 투명 배경, 가로 아이콘+텍스트 */
+.generation-mode-btn {
+    flex-grow: 1;
+    min-height: 48px;
+    color: var(--ai-inactive-btn-label);
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 6px;
+    font-size: 13px;
+    margin: 0 3px;
+    padding: 6px 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 생성 모드 버튼 호버 상태 */
+.generation-mode-btn:hover {
+    background-color: rgb(60, 60, 60);
+    color: rgb(200, 200, 200);
+}
+
+/* 생성 모드 버튼 선택 상태: 강조색 배경+테두리 */
+.generation-mode-btn.selected {
+    color: var(--ai-active-btn-label);
+    background-color: var(--ai-active-btn-bg);
+    border-width: 1px;
+    border-color: var(--ai-active-btn-border);
+}
+
+/* Remesh / Texture tab: single feature title row (same look as selected generation-mode-btn) */
+/* 후처리 기능 버튼: 선택된 생성 모드와 동일한 스타일 */
+.post-process-feature-btn {
+    flex-grow: 1;
+    min-height: 48px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--ai-active-btn-label);
+    background-color: var(--ai-active-btn-bg);
+    border-width: 1px;
+    border-radius: 6px;
+    border-color: var(--ai-active-btn-border);
+    margin: 0 3px;
+    padding: 6px 8px;
+}
+
+/* 후처리 썸네일 프레임: 중앙 정렬, 둥근 테두리 */
+.post-process-thumb-frame {
+    min-height: 120px;
+    max-height: 160px;
+    margin-bottom: 12px;
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: rgb(80, 80, 80);
+    background-color: rgb(40, 40, 40);
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 후처리 썸네일 이미지: 비율 유지 */
+.post-process-thumb-image {
+    flex-grow: 1;
+    width: 100%;
+    min-height: 100px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 생성 모드 아이콘 */
+.gen-mode-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 생성 모드 라벨 텍스트 */
+.gen-mode-label {
+    font-size: 13px;
+}
+
+/* ---------- Input area ---------- */
+/* 입력 영역: 하단 여백 */
+.input-area {
+    margin-bottom: 12px;
+}
+
+/* 입력 컨테이너: 세로 배치 */
+.input-container {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 입력 컨테이너 숨김 상태 */
+.input-container.hidden {
+    display: none;
+}
+
+/* ---------- Property label (base): shared by horizontal rows and vertical groups ---------- */
+/* 독립 속성 라벨: 볼드체, 회색 */
+.property-label-standalone {
+    font-size: 13px;
+    margin: 0;
+    margin-bottom: 4px;
+    color: rgb(155, 155, 155);
+    -unity-font-style: bold;
+}
+
+/* Inside a horizontal row, the label should not shrink and needs no bottom margin */
+/* 가로 행 내부 속성 라벨: 축소 방지, 하단 여백 제거 */
+.property-row-standalone .property-label-standalone {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+/* Image upload (Model page): slightly taller, larger icon */
+/* 이미지 업로드 드롭존: 점선 스타일, 중앙 정렬 */
+.image-upload-zone {
+    min-height: 130px;
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: rgb(80, 80, 80);
+    -unity-background-image-tint-color: rgb(140, 140, 140);
+    background-color: rgb(40, 40, 40);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin: 0;
+}
+
+/* 이미지 업로드 아이콘: 사진 이미지 */
+.image-upload-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/photo");
+}
+
+/* 이미지 업로드 힌트 텍스트 */
+.image-upload-hint {
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    -unity-text-align: middle-center;
+}
+
+/* 이미지 업로드 포맷 안내 텍스트 */
+.image-upload-format {
+    font-size: 11px;
+    color: rgb(114, 114, 114);
+    margin-top: 2px;
+    -unity-text-align: middle-center;
+}
+
+/* 텍스트 필드 래퍼: 상대 위치(카운터 배치용) */
+.textfield-wrap {
+    position: relative;
+}
+
+/* 프롬프트 텍스트 필드: 가변 높이, 줄바꿈. width:100% — multiline 의 내부 input 이
+   컨텐츠 너비에 맞춰 줄어드는 것을 부모 너비 100% 강제로 차단. */
+.prompt-text-field {
+    flex-grow: 1;
+    min-height: 60px;
+    max-height: 200px;
+    margin: 0;
+    width: 100%;
+}
+
+/* 프롬프트 텍스트 필드 내부 입력 영역 */
+.prompt-text-field .unity-text-field__input {
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+    padding-bottom: 18px;
+    background-color: rgb(26, 26, 26);
+}
+
+/* 프롬프트 플레이스홀더 텍스트 색상 */
+.prompt-text-field .unity-base-text-field__input--placeholder {
+    color: rgb(108, 108, 108);
+}
+
+/* 텍스트 필드 글자 수 카운터: 우하단 절대 위치 */
+.textfield-counter {
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    font-size: 10px;
+    opacity: 0.8;
+    color: rgb(200, 200, 200);
+    -unity-font-style: normal;
+}
+
+/* ---------- Properties: rows ---------- */
+/* 속성 행 그룹: 세로 배치, 하단 여백 */
+.property-rows {
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+/* Horizontal row: label left, control right — unified for both Image and Model pages */
+/* 독립 속성 행: 라벨(좌)+컨트롤(우) 가로 배치 */
+.property-row-standalone {
+    flex-direction: row;
+    height: 36px;
+    min-height: 36px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+/* ---------- Image page: label above, control below (vertical group) ---------- */
+/* 이미지 속성 라벨: 볼드체, 왼쪽 정렬 */
+.image-property-label {
+    flex-grow: 0;
+    color: rgb(155, 155, 155);
+    font-size: 13px;
+    -unity-text-align: middle-left;
+    -unity-font-style: bold;
+}
+
+/* 이미지 속성 세로 그룹: 라벨 위, 컨트롤 아래 */
+.image-property-group-vertical {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 6px;
+}
+
+/* 이미지 속성 세로 그룹 내 라벨: 하단 여백 */
+.image-property-group-vertical .image-property-label {
+    margin-bottom: 4px;
+}
+
+/* 이미지 토글 행: 가로 배치 */
+.image-toggle-row {
+    flex-direction: row;
+    min-height: 27px;
+}
+
+/* 이미지 토글 버튼: 균등 분배, 자동 너비 */
+.image-toggle-btn {
+    flex-grow: 1;
+    min-width: 50px;
+    width: auto;
+}
+
+/* ---------- Filter-toggle (Refine Prompt, Texture, HR) ---------- */
+/* 필터 토글 스위치: 커스텀 iOS 스타일 */
+.filter-toggle {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 28px;
+    height: 16px;
+    position: relative;
+    align-self: center;
+    margin: 0;
+    border-color: var(--ai-filter-toggle-border);
+    border-width: 1px;
+    border-radius: 7px;
+}
+
+/* 필터 토글 기본 입력 숨김 */
+.filter-toggle > .unity-toggle__input {
+    display: none;
+}
+
+/* 필터 토글 텍스트 숨김 */
+.filter-toggle > .unity-toggle__input > .unity-toggle__text {
+    display: none;
+}
+
+/* 필터 토글 트랙: 배경 트랙 */
+.filter-track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    border-radius: 7px;
+    background-color: var(--ai-toggle-inactive);
+}
+
+/* 필터 토글 썸: 원형 드래거 */
+.filter-thumb {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: rgb(250, 250, 250);
+}
+
+/* 필터 토글 체크 상태: 활성 배경색 */
+.filter-toggle:checked > .filter-track {
+    background-color: var(--ai-toggle-active);
+}
+
+/* 필터 토글 체크 상태: 썸 위치 이동 */
+.filter-toggle:checked > .filter-track > .filter-thumb {
+    left: 13px;
+}
+
+/* 이미지 프롬프트 래퍼: 남은 공간 채움 + 가로 전폭 */
+.image-prompt-wrap {
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* 이미지 프롬프트 텍스트 필드: 높이 제한 + 가로 전폭 */
+.image-prompt-text-field {
+    min-height: 120px;
+    max-height: 200px;
+    width: 100%;
+}
+
+/* 멀티라인 TextField 내부 입력 영역도 가로 전폭으로 강제 */
+.image-prompt-text-field > .unity-base-text-field__input {
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* 모델(텍스트→3D) 프롬프트 — 웹 패리티로 더 크게 */
+.model-prompt-text-field {
+    min-height: 160px;
+    max-height: 260px;
+}
+
+/* ---------- Toggle button group ---------- */
+/* 독립 속성 입력: 남은 공간 채움 */
+.property-input-standalone {
+    flex-grow: 1;
+    min-width: 80px;
+}
+
+/* 독립 속성 입력 내부: 어두운 배경, 둥근 모서리 */
+.property-input-standalone .unity-base-field__input {
+    background-color: rgb(26, 26, 26);
+    border-radius: 7px;
+}
+
+/* 토글 그룹 배경: 가로 배치, 어두운 배경 */
+.toggle-group-background {
+    height: 27px;
+    flex-direction: row;
+    background-color: rgb(26, 26, 26);
+    border-radius: 7px;
+}
+
+/* 토글 버튼: 고정 크기, 볼드체, 테마 테두리 */
+.toggle-button {
+    width: 70px;
+    height: 27px;
+    color: var(--ai-inactive-btn-label);
+    background-color: rgb(26, 26, 26);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: var(--ai-btn-border);
+}
+
+/* 토글 버튼 호버 상태 */
+.toggle-button:hover {
+    background-color: rgb(46, 46, 46);
+}
+
+/* 토글 버튼 선택 상태: 강조색 */
+.toggle-button.selected {
+    color: var(--ai-active-btn-label);
+    background-color: var(--ai-active-btn-bg);
+    border-color: var(--ai-active-btn-border);
+}
+
+/* ---------- Generate section ---------- */
+/* 모델 예상 시간/크레딧 행: 중앙 정렬 */
+.model-estimate-row {
+    justify-content: center;
+    padding-left: 0;
+}
+
+/* 모델 예상 행 내부 텍스트: 중앙 정렬 */
+.model-estimate-row .estimate-time-value,
+.model-estimate-row .estimate-sep,
+.model-estimate-row .credit-amount {
+    -unity-text-align: middle-center;
+}
+
+/* 생성 섹션 구분선 */
+.generate-divider {
+    height: 1px;
+    background-color: rgb(50, 50, 50);
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+/* 생성 섹션: 세로 배치, 전체 너비 */
+.generate-section {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* 예상 시간/크레딧 행: 가로 배치 */
+.estimate-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-left: 2px;
+}
+
+/* 이미지 예상 행: 중앙 정렬 */
+.image-estimate-row {
+    justify-content: center;
+    padding-left: 0;
+}
+
+/* 이미지 예상 행 크레딧 금액: 중앙 정렬 */
+.image-estimate-row .credit-amount {
+    -unity-text-align: middle-center;
+}
+
+/* 예상 시간 값 텍스트 */
+.estimate-time-value {
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+    margin-left: 4px;
+}
+
+/* 이미지 예상 행 시간 값: 중앙 정렬 */
+.image-estimate-row .estimate-time-value {
+    -unity-text-align: middle-center;
+}
+
+/* 예상 행 구분자 (|) */
+.estimate-sep {
+    margin-left: 8px;
+    margin-right: 8px;
+    color: rgb(100, 100, 100);
+    font-size: 12px;
+}
+
+/* 크레딧 아이콘: 코인 이미지 */
+.credit-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/coins");
+}
+
+/* 크레딧 금액 텍스트 */
+.credit-amount {
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+}
+
+/* 생성 버튼: 전체 너비, 강조색 배경, 볼드체 */
+.generate-button {
+    width: 100%;
+    height: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ai-generate-btn-bg);
+    color: var(--ai-generate-btn-label);
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: var(--ai-active-btn-border);
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+/* 생성 버튼 아이콘: 스파클 이미지 */
+.generate-button-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/sparkles");
+    -unity-background-image-tint-color: var(--ai-generate-btn-label);
+}
+
+/* 생성 버튼 라벨: 볼드체 */
+.generate-button-label {
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: var(--ai-generate-btn-label);
+}
+
+/* 생성 버튼 호버 상태 */
+.generate-button:hover {
+    background-color: var(--ai-generate-btn-hover);
+}
+
+/* 생성 버튼 클릭 상태 */
+.generate-button:active {
+    background-color: rgb(50, 50, 50);
+}
+
+/* ---------- Image Count: popup for 5-8 ---------- */
+/* 이미지 수 선택 컨트롤: 상대 위치 */
+.image-count-control {
+    position: relative;
+}
+
+/* 이미지 수 팝업: 하단에서 위로 표시 */
+.image-count-popup {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: rgb(26, 26, 26);
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: var(--ai-btn-border);
+    padding: 4px;
+    flex-direction: row;
+    margin-bottom: 2px;
+}
+
+/* 이미지 수 팝업 버튼: 숫자 선택 */
+.image-count-popup-btn {
+    width: 32px;
+    height: 27px;
+    color: var(--ai-inactive-btn-label);
+    background-color: rgb(26, 26, 26);
+    -unity-font-style: bold;
+    margin: 0 2px;
+    padding: 0;
+    border-width: 0px;
+    font-size: 13px;
+}
+
+/* 이미지 수 팝업 버튼 호버 상태 */
+.image-count-popup-btn:hover {
+    background-color: rgb(46, 46, 46);
+    color: rgb(200, 200, 200);
+}
+
+/* 이미지 수 팝업 버튼 선택 상태 */
+.image-count-popup-btn.selected {
+    color: var(--ai-toggle-active);
+    background-color: var(--ai-active-btn-bg);
+    border-color: var(--ai-active-btn-border);
+}
+
+/* ---------- Utility ---------- */
+/* 요소 숨김 유틸리티 */
+.hidden {
+    display: none;
+}
+
+/* ---------- AI Model selector button ---------- */
+/* AI 모델 선택 버튼: 컬러 타일(좌) + 라벨/이름(중) + 크레딧/chevron(우). border 색은 .generation-mode-wrap 과 동일한 밝은 회색으로 통일. */
+.ai-model-select-btn {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    height: 52px;
+    background-color: var(--ai-bg);
+    -unity-font-style: bold;
+    margin: 0;
+    margin-bottom: 6px;
+    padding: 8px 10px;
+    border-width: 1px;
+    border-radius: 7px;
+    border-color: rgb(140, 140, 140);
+}
+
+/* AI 모델 선택 버튼 호버 상태: .generation-mode-btn:hover 와 동일 */
+.ai-model-select-btn:hover {
+    background-color: rgb(60, 60, 60);
+}
+
+/* AI 모델 컬러 타일: 좌측 32x32 둥근 사각형. 배경색은 C# 에서 모델별로 inline 설정. */
+.ai-model-btn-tile {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 6px;
+    background-color: var(--ai-model-accent);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* AI 모델 스파클 아이콘: 타일 내부 중앙 14x14, 흰색 톤 */
+.ai-model-btn-sparkles {
+    width: 14px;
+    height: 14px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/sparkles");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.92);
+}
+
+/* AI 모델 텍스트 컬럼: 라벨(상) + 모델명(하), 가용 공간 차지 */
+.ai-model-btn-text-col {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* AI 모델 버튼 헤더: 상단 'AI Model' 라벨 */
+.ai-model-btn-header {
+    color: rgb(113, 113, 122);
+    font-size: 10px;
+    margin: 0;
+    -unity-text-align: middle-left;
+}
+
+/* AI 모델 이름: 모델명, 흰색 톤, 약간 볼드 */
+.ai-model-btn-name {
+    color: rgb(228, 228, 231);
+    font-size: 12px;
+    margin: 0;
+    margin-top: 2px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
+
+/* AI 모델 우측 영역: 크레딧 + chevron 가로 배치 */
+.ai-model-btn-right {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+/* AI 모델 크레딧 표시 */
+.ai-model-btn-credit {
+    color: rgb(161, 161, 170);
+    font-size: 11px;
+    -unity-font-style: normal;
+    margin: 0;
+}
+
+/* AI 모델 버튼 chevron: 클릭 가능 affordance */
+.ai-model-btn-chevron {
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/chevron-down");
+    -unity-background-image-tint-color: rgb(113, 113, 122);
+}
+
+/* ---------- AI Model popup overlay ---------- */
+/* AI 모델 팝업 오버레이: 반투명 배경, 중앙 배치 */
+.ai-model-popup-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.72);
+    align-items: center;
+    justify-content: center;
+}
+
+/* AI 모델 팝업: 어두운 배경, 둥근 모서리 */
+/* max-height 로 Tool Panel(.aitool-root) 영역을 초과하지 않게 제한.
+   panel 의 height 는 모델 탭에서 polygon-count row 가 보이고/숨겨지면서 변동되므로,
+   popup 이 panel 보다 큰 케이스가 발생할 수 있다. 그 때는 내부 ScrollView 가 스크롤. */
+.ai-model-popup {
+    background-color: rgb(28, 28, 30);
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: rgb(55, 55, 60);
+    padding: 20px;
+    min-width: 320px;
+    max-width: 600px;
+    width: 92%;
+    max-height: 96%;
+}
+
+/* 카드 영역 ScrollView. 헤더 아래 남은 공간을 채우고 카드 row 들은 자연 height 그대로 둔다. */
+.ai-model-cards-scroll {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0;
+    padding: 0;
+}
+
+/* AI 모델 팝업 헤더: 제목+닫기 양끝 배치 */
+.ai-model-popup-header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+/* AI 모델 팝업 헤더 텍스트 영역 */
+.ai-model-popup-header-text {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* AI 모델 팝업 제목: 볼드체 */
+.ai-model-popup-title {
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: rgb(230, 230, 230);
+    margin-bottom: 4px;
+}
+
+/* AI 모델 팝업 부제목 */
+.ai-model-popup-subtitle {
+    font-size: 12px;
+    color: rgb(140, 140, 145);
+}
+
+/* AI 모델 팝업 닫기 버튼 */
+.ai-model-popup-close-btn {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    margin: 0;
+    border-width: 1px;
+    border-color: rgb(70, 70, 75);
+    border-radius: 6px;
+    background-color: rgb(45, 45, 48);
+    color: rgb(180, 180, 180);
+    font-size: 13px;
+    -unity-font-style: bold;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+/* AI 모델 팝업 닫기 버튼 호버 상태: 테마 변수 사용 — Unity 에서 무채색, Picoberry 에서 핑크 강조 */
+.ai-model-popup-close-btn:hover {
+    background-color: var(--ai-close-btn-hover-bg);
+    color: var(--ai-close-btn-hover-color);
+    border-color: var(--ai-close-btn-hover-color);
+}
+
+/* ---------- Model cards grid ---------- */
+/* AI 모델 카드 그리드: 가로 배치, 줄바꿈 */
+.ai-model-cards {
+    flex-direction: column;
+    margin: 0;
+}
+
+/* AI 모델 카드: 어두운 배경, 둥근 모서리 */
+.ai-model-card {
+    flex-grow: 1;
+    flex-basis: 40%;
+    flex-shrink: 1;
+    margin: 4px;
+    padding: 14px 12px 12px 12px;
+    background-color: rgb(36, 36, 38);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(55, 55, 60);
+    flex-direction: column;
+}
+
+/* AI 모델 카드 호버 상태 */
+.ai-model-card:hover {
+    background-color: rgb(44, 44, 48);
+    border-color: rgb(90, 90, 100);
+}
+
+/* AI 모델 카드 선택 상태: 강조색 테두리 */
+.ai-model-card.selected {
+    border-color: var(--ai-model-accent);
+    background-color: var(--ai-model-card-selected-bg);
+}
+
+/* ── AI 모델 카드 Row 레이아웃 (한 줄씩 배치) ─── */
+/* min-height 로 카드 높이 고정. credit 라벨 텍스트 길이가 모델·토글 상태에 따라
+   변하면 content 영역 width 가 달라져 desc 의 wrap 결과(1줄 vs 2줄)가 일관되지 않고,
+   결과적으로 popup 재오픈 시 카드 row 가 압축되어 보이는 현상이 발생한다. */
+.ai-model-card-row {
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 10px;
+    margin: 2px 4px;
+    min-height: 58px;
+    background-color: rgb(36, 36, 38);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(55, 55, 60);
+}
+
+.ai-model-card-row:hover {
+    background-color: rgb(44, 44, 48);
+    border-color: rgb(90, 90, 100);
+}
+
+.ai-model-card-row.selected {
+    border-color: var(--ai-model-accent);
+    background-color: var(--ai-model-card-selected-bg);
+}
+
+/* Coming soon 카드: 회색 처리, 호버 강조·선택 색 무효, 클릭 비활성. */
+.ai-model-card-row.coming-soon {
+    opacity: 0.4;
+    background-color: rgb(36, 36, 38);
+    border-color: rgb(55, 55, 60);
+}
+
+.ai-model-card-row.coming-soon:hover {
+    background-color: rgb(36, 36, 38);
+    border-color: rgb(55, 55, 60);
+}
+
+/* "Coming soon" 우측 라벨: 가격 자리에 표시. */
+.ai-model-card-coming-soon-label {
+    color: rgb(160, 160, 165);
+    -unity-font-style: italic;
+}
+
+/* "Available" / "UpComming" 같은 섹션 헤더. 첫 헤더는 popup-header 바로 아래에 붙고
+   두 번째 헤더(coming soon)는 위 카드 영역과 약간의 간격 — 코드에서 first/secondary 클래스 분리 적용. */
+.ai-model-section-header {
+    color: rgb(140, 140, 145);
+    font-size: 12px;
+    -unity-font-style: bold;
+    /* 위를 아래보다 넓게 — 헤더가 *이전* 그룹이 아닌 *자기* 모델 묶음에 붙어 보이도록
+       (다음 그룹 시작 시 충분한 간격). 웹 ModelSelectModal 의 pt-2/pb-1 비율과 동일 결. */
+    margin-top: 14px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.ai-model-section-header-secondary {
+    margin-top: 10px;
+}
+
+.ai-model-card-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 8px;
+    background-color: rgb(80, 50, 160);
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.ai-model-card-sparkle {
+    width: 18px;
+    height: 18px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.8);
+}
+
+.ai-model-card-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.ai-model-card-name-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.ai-model-card-credits {
+    flex-shrink: 0;
+    font-size: 12px;
+    color: rgb(140, 140, 140);
+    margin-left: 8px;
+}
+
+/* AI 모델 카드 헤더: 이름+뱃지 가로 배치 */
+.ai-model-card-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+/* AI 모델 카드 이름: 볼드체 */
+.ai-model-card-name {
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: rgb(230, 230, 230);
+    margin-right: 6px;
+}
+
+/* AI 모델 베타 뱃지: 노란색 강조 */
+.ai-model-beta-badge {
+    font-size: 9px;
+    -unity-font-style: bold;
+    color: rgb(255, 200, 60);
+    background-color: rgba(200, 130, 0, 0.25);
+    border-width: 1px;
+    border-color: rgba(200, 130, 0, 0.5);
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+
+.ai-model-pro-badge {
+    font-size: 9px;
+    -unity-font-style: bold;
+    color: rgb(140, 180, 255);
+    background-color: rgba(60, 100, 200, 0.25);
+    border-width: 1px;
+    border-color: rgba(60, 100, 200, 0.5);
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+
+/* AI 모델 카드 설명: 줄바꿈 허용. 제목과 살짝 떨어진 위치(상하 대칭). */
+.ai-model-card-desc {
+    font-size: 11px;
+    color: rgb(145, 145, 150);
+    white-space: normal;
+    margin-top: 4px;
+}
+
+/* AI 모델 품질 행: 가로 도트 표시 */
+.ai-model-quality-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+/* AI 모델 품질 라벨 */
+.ai-model-quality-label {
+    font-size: 11px;
+    color: rgb(120, 120, 125);
+    width: 40px;
+    flex-shrink: 0;
+}
+
+/* AI 모델 품질 도트: 비활성 상태 */
+.ai-model-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(60, 60, 65);
+    margin-right: 3px;
+    flex-shrink: 0;
+}
+
+/* AI 모델 품질 도트: 활성(채워진) 상태 */
+.ai-model-dot.filled {
+    background-color: var(--ai-model-accent);
+}
+
+/* AI 모델 소요 시간 행 */
+.ai-model-time-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* AI 모델 번개 아이콘: 속도 표시 */
+.ai-model-lightning-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource('AI/bolt');
+    -unity-background-image-tint-color: rgb(140, 140, 145);
+}
+
+/* AI 모델 소요 시간 라벨 */
+.ai-model-time-label {
+    font-size: 11px;
+    color: rgb(145, 145, 150);
+}
+
+/* AI 모델 크레딧 가격: 볼드체 */
+.ai-model-credits {
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: rgb(220, 220, 220);
+}
+
+/* Image model cards: cap each card at 50% so 3 cards stay 2-per-row at equal width */
+/* 이미지 모델 카드: 2열 배치를 위한 최대 너비 제한 */
+.image-ai-model-cards .ai-model-card {
+    max-width: 48%;
+}
+
+/* ───────── SDUI 폼(model-sdui-form) 레이아웃 — 컨트롤러가 로드하는 메인 uss. 웹 톤 1차. ───────── */
+.model-sdui-form { padding: 8px 4px; }
+.model-sdui-form > * { margin-bottom: 12px; }
+.model-sdui-form .unity-base-field { flex-direction: column; align-items: stretch; }
+.model-sdui-form .unity-base-field__label { min-width: 0; margin-bottom: 6px; -unity-text-align: middle-left; }
+.model-sdui-form .unity-toggle { flex-direction: row; align-items: center; justify-content: space-between; }
+.model-sdui-form .unity-toggle .unity-base-field__label { margin-bottom: 0; flex-grow: 1; }
+/* SDUI 세그먼티드 컨트롤(Single/Multi/Batch): wrapper/buttons 모두 페이지 bg 사용 — Image to 3D/Text to 3D 영역과 동일한 톤. */
+.model-sdui-form .toggle-group-background { flex-direction: row; background-color: var(--ai-bg); }
+.model-sdui-form .toggle-button { flex-grow: 1; flex-basis: 0; -unity-text-align: middle-center; padding: 6px 4px; border-color: rgb(140, 140, 140); }
+
+/* SDUI 선택 상태: 테마 변수 사용 — Unity theme 에서 흰/회색, Picoberry 에서 핑크 */
+.model-sdui-form .toggle-button.selected {
+    background-color: var(--ai-active-btn-bg);
+    color: var(--ai-active-btn-label);
+    border-color: var(--ai-active-btn-border);
+}
+.model-sdui-form .toggle-button {
+    background-color: transparent;
+}
+
+/* ───────── SDUI 텍스처 2카드 (메시만 / 텍스처 포함 + 배지) — 웹 TextureSwitchField 미러 ───────── */
+.sdui-texture-cards { flex-direction: row; margin-bottom: 12px; }
+.sdui-texture-card {
+    flex-grow: 1; flex-basis: 0; flex-direction: column; align-items: flex-start;
+    padding: 10px 12px; margin-right: 8px; border-radius: 10px;
+    border-width: 1px; border-color: rgba(255,255,255,0.1);
+    background-color: rgba(255,255,255,0.03);
+}
+.sdui-texture-cards .sdui-texture-card:last-child { margin-right: 0; }
+.sdui-texture-card:hover { border-color: rgba(255,255,255,0.22); }
+/* 텍스처 카드 선택 상태: 테마 변수 사용 — Unity theme 에서 회색, Picoberry 에서 핑크 */
+.sdui-texture-card.selected {
+    border-color: var(--ai-active-btn-border); background-color: var(--ai-active-btn-bg);
+}
+.sdui-texture-card-title { -unity-font-style: bold; color: rgb(228,228,231); margin-bottom: 2px; }
+.sdui-texture-card.selected .sdui-texture-card-title { color: var(--ai-active-btn-label); }
+.sdui-texture-card-sub { font-size: 10px; color: rgb(120,120,130); }
+/* 배지(+N): 텍스트는 active 라벨, bg 는 카드 selected bg 위에 약간 밝은 오버레이 */
+.sdui-texture-card-badge {
+    position: absolute; right: 10px; bottom: 10px; font-size: 10px;
+    color: var(--ai-active-btn-label); background-color: rgba(255, 255, 255, 0.12);
+    padding: 2px 6px; border-radius: 6px;
+}
+
+/* ───────── SDUI 라이선스 드롭다운 (웹 미러 — 라벨 좌, 드롭다운 우) ───────── */
+.sdui-license-dropdown { min-width: 150px; }
+/* 드롭다운(unity-base-field)이 model-sdui-form 의 column 규칙 + 빈 내부 라벨 6px 여백을 먹어
+   행이 세로로 부푸는 것 방지 — 행 안 인라인 배치(다른 속성 행과 동일 높이·간격). */
+.model-sdui-form .sdui-license-dropdown { flex-direction: row; margin: 0; flex-grow: 0; }
+.model-sdui-form .sdui-license-dropdown .unity-base-field__label { display: none; }
+
+/* ───────── 프롬프트 안 칩 (T-Pose / 매직) — 웹 PromptTextAreaField 미러 ───────── */
+.textfield-counter-left { left: 6px; right: auto; }
+.prompt-chip {
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    height: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(60, 50, 70);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: rgb(180, 180, 190);
+    font-size: 10px;
+    -unity-text-align: middle-center;
+}
+.prompt-chip.selected {
+    background-color: rgba(244, 63, 94, 0.15);
+    border-color: rgba(244, 63, 94, 0.5);
+    color: rgb(244, 120, 140);
+}
+/* 칩 여러 개 — 프롬프트 우하단 가로 묶음(3D / T-Pose / 4-View). */
+.prompt-chip-row { position: absolute; right: 8px; bottom: 6px; flex-direction: row; }
+.prompt-chip-row .prompt-chip { position: relative; right: auto; bottom: auto; margin-left: 4px; }
+
+/* ───────── SDUI 멀티뷰 4슬롯 그리드 + 배치 드롭존 (웹 미러) ───────── */
+.sdui-mv-grid { flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
+.sdui-mv-slot {
+    width: 48%; height: 130px; margin-bottom: 10px; border-width: 1px;
+    border-color: rgba(255,255,255,0.15); border-radius: 10px;
+    align-items: center; justify-content: center; background-color: rgba(255,255,255,0.02);
+}
+.sdui-mv-slot-label { margin-top: 8px; color: rgb(180,180,185); font-size: 11px; }
+.sdui-mv-hint { font-size: 10px; color: rgb(120,120,130); -unity-text-align: middle-center; margin-top: 4px; margin-bottom: 12px; }
+.sdui-batch-zone {
+    height: 200px; align-items: center; justify-content: center; border-width: 1px;
+    border-color: rgba(255,255,255,0.15); border-radius: 10px;
+    background-color: rgba(255,255,255,0.02); margin-bottom: 12px;
+}
+.sdui-batch-title { color: rgb(228,228,231); margin-top: 8px; }
+.sdui-batch-sub { font-size: 10px; color: rgb(120,120,130); margin-top: 4px; }
+/* 참조 이미지 드롭존 — compact(웹 동일, ~56px). batch(200px) 와 구분. */
+.sdui-reference-zone {
+    min-height: 56px; align-items: center; justify-content: center; border-width: 1px;
+    border-color: rgba(255,255,255,0.15); border-radius: 8px;
+    background-color: rgba(255,255,255,0.02); padding: 10px; margin-bottom: 12px;
+}
+/* 업로드된 참조 이미지 썸네일(웹: 드롭존 자리에 바로 표시) */
+.sdui-reference-thumb-wrap { flex-direction: row; align-items: flex-start; margin-bottom: 12px; }
+.sdui-reference-thumb {
+    width: 64px; height: 64px; border-radius: 8px; border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.15); -unity-background-scale-mode: scale-and-crop;
+}
+.sdui-reference-remove {
+    width: 18px; height: 18px; margin-left: 6px; border-radius: 9px; border-width: 0;
+    background-color: rgba(0, 0, 0, 0.5); color: rgb(220, 220, 225); font-size: 11px; padding: 0;
+}

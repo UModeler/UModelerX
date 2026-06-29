@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="about-root" class="about-root">
+        <!-- 메인 이미지 (상단) -->
+        <ui:VisualElement name="main-image" class="about-main-image" />
+
+        <!-- 하단 정보 영역 -->
+        <ui:VisualElement name="bottom-bar" class="about-bottom-bar">
+            <!-- 로고 -->
+            <ui:VisualElement name="logo-image" class="about-logo" />
+
+            <!-- 버전 (클릭 시 복사) -->
+            <ui:Button name="version-btn" class="about-version-btn" />
+
+            <!-- 저작권 -->
+            <ui:Label name="copyright-label" class="about-copyright"
+                      text="Copyright © UModeler, Inc. All Rights Reserved." />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

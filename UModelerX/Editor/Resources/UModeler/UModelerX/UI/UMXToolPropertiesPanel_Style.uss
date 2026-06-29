@@ -1,0 +1,102 @@
+/* UMX Tool Properties Panel - 툴 프로퍼티 패널 USS */
+
+/* 프로퍼티 패널 최상위 컨테이너 */
+.umx-tool-properties-panel {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* 패널 루트 — 세로 배치, 테두리·배경·라운드 처리 */
+.umx-tool-properties-panel__root {
+    flex-direction: column;
+    background-color: var(--umx-bg-surface);
+    border-radius: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    overflow: hidden;
+}
+
+/* 접힌 상태에서 콘텐츠 영역 숨김 */
+.umx-tool-properties-panel__root.collapsed .umx-tool-properties-panel__content {
+    max-height: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+/* 패널 헤더 — 아이콘·제목을 가로로 배치하는 클릭 가능 영역 */
+.umx-tool-properties-panel__header {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-surface);
+    padding: 2px 10px;
+    cursor: link;
+}
+
+/* 헤더 호버 시 배경색 하이라이트 */
+.umx-tool-properties-panel__header:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+/* 헤더 아이콘 */
+.umx-tool-properties-panel__icon {
+    width: 20px;
+    height: 20px;
+	margin-top: 3px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+/* 제목 좌우 정렬을 위한 스페이서 */
+.umx-tool-properties-panel__title-spacer {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+/* 패널 제목 텍스트 — 중앙 정렬·볼드 */
+.umx-tool-properties-panel__title {
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    -unity-font-style: bold;
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+}
+
+/* 패널 콘텐츠 영역 — 프로퍼티 필드들이 배치되는 본문 */
+.umx-tool-properties-panel__content {
+    flex-direction: column;
+    margin: 4px;
+    padding-left: 4px;
+	padding-right: 4px;
+	background-color: var(--umx-bg-content);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    min-height: 40px;
+    max-height: 800px;
+    overflow: hidden;
+    transition-property: max-height, padding, opacity;
+    transition-duration: 0.2s;
+}
+
+/* Unity 의 .unity-base-field 기본 스타일은 margin-right: -2px 가 적용되어
+   부모 우측 경계를 2px 침범한다(Toggle / FloatField / EnumField / CurveField 등).
+   툴 프로퍼티 패널 안의 모든 BaseField 류에 대해 음수 마진을 0 으로 덮어쓴다. */
+.umx-tool-properties-panel__content .unity-base-field {
+    margin-right: 0;
+}
+
+/* Foldout 토글(화살표) 영역 — 좌측 여백 확보 */
+.umx-tool-properties-panel__content .unity-foldout__toggle {
+    margin-left: 4px;
+    padding-left: 2px;
+}
+
+/* Foldout 콘텐츠 — 들여쓰기 최소화 */
+.umx-tool-properties-panel__content .unity-foldout__content {
+    margin-left: 4px;
+    padding-left: 0;
+}

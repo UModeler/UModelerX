@@ -1,0 +1,21 @@
+{
+    "$id": "https://tripolygon.com/strings.schema.json",
+    "title": "",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": ""
+        },
+        "IsEditMode.Description": {
+            "type": "string",
+            "description": ""
+        },
+        "IsObjectMode.Description": {
+            "type": "string",
+            "description": ""
+        },
+        "additionalProperties": false
+    }
+}

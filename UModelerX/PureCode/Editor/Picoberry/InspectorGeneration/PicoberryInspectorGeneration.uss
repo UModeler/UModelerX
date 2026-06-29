@@ -1,0 +1,266 @@
+.pb-root {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.pb-block {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+.pb-message {
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+}
+
+.pb-help {
+    color: rgba(180, 180, 180, 0.85);
+    margin-bottom: 4px;
+    white-space: normal;
+}
+
+.pb-success {
+    color: rgb(120, 200, 120);
+}
+
+.pb-mode-row {
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+
+.pb-mode-btn {
+    flex-grow: 1;
+    height: 22px;
+}
+
+.pb-mode-btn--selected {
+    background-color: rgba(80, 130, 200, 0.7);
+}
+
+.pb-page {
+    margin-top: 4px;
+    margin-bottom: 6px;
+}
+
+.pb-prompt {
+    min-height: 120px;
+    white-space: normal;
+}
+
+.pb-prompt > .unity-base-text-field__input {
+    min-height: 120px;
+    white-space: normal;
+}
+
+.pb-label {
+    margin-bottom: 2px;
+}
+
+.pb-image-upload-zone {
+    min-height: 130px;
+    border-width: 2px;
+    border-radius: 7px;
+    border-color: rgb(80, 80, 80);
+    -unity-background-image-tint-color: rgb(140, 140, 140);
+    background-color: rgb(40, 40, 40);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    margin: 0;
+}
+
+.pb-image-upload-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource("AI/photo");
+}
+
+.pb-image-upload-hint {
+    font-size: 12px;
+    color: rgb(160, 160, 160);
+    -unity-text-align: middle-center;
+}
+
+.pb-image-upload-format {
+    font-size: 11px;
+    color: rgb(114, 114, 114);
+    margin-top: 2px;
+    -unity-text-align: middle-center;
+}
+
+.pb-primary-btn {
+    height: 24px;
+    -unity-font-style: bold;
+    flex-grow: 1;
+}
+
+.pb-secondary-btn {
+    height: 22px;
+    flex-grow: 1;
+    margin-left: 4px;
+}
+
+.pb-button-row {
+    flex-direction: row;
+    margin-top: 4px;
+}
+
+.pb-progress {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    height: 18px;
+}
+
+.pb-foldout {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: rgb(60, 60, 60);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.pb-foldout-header {
+    flex-direction: row;
+    align-items: center;
+    height: 22px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-width: 0;
+    border-radius: 4px;
+    margin: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.pb-foldout-header:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.pb-foldout-arrow {
+    width: 12px;
+    margin-right: 6px;
+    -unity-text-align: middle-center;
+    color: rgb(180, 180, 180);
+    font-size: 9px;
+}
+
+.pb-foldout-title {
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    flex-grow: 1;
+}
+
+.pb-foldout-body {
+    padding: 6px 8px 4px 8px;
+}
+
+.pb-option-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+    min-height: 20px;
+}
+
+.pb-option-label {
+    width: 150px;
+    -unity-text-align: middle-left;
+}
+
+.pb-option-slot {
+    flex-grow: 1;
+}
+
+/* 라벨 슬롯이 없는 컨트롤을 옵션 슬롯에 넣을 때, BaseField 가 내부적으로 차지하는 라벨 영역/마진을 제거해
+   상하 행의 좌측 시작점(드롭다운 / 토글 체크박스)이 정확히 같은 x 좌표에 오도록 보정. */
+.pb-option-slot .unity-base-field {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.pb-option-slot .unity-base-field__label {
+    display: none;
+    min-width: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.pb-option-toggle {
+    margin: 0;
+}
+
+.pb-option-toggle .unity-base-field__label {
+    display: none;
+    min-width: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Picoberry Tool Window 헤더 미러링 — 좌측 브랜드(클릭 불가) + 우측 Asset Library 아이콘 버튼. */
+.pb-brand-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 4px 0;
+    padding: 0 4px;
+}
+
+/* Asset Window의 .assetlib-header-left 와 동일한 좌측 그룹 (Button 이 아닌 컨테이너). */
+.pb-brand-left {
+    flex-direction: row;
+    align-items: center;
+}
+
+.pb-library-icon-btn {
+    width: 28px;
+    height: 28px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.pb-library-icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.pb-library-icon-btn:active {
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0.6;
+}
+
+.pb-library-icon-btn-image {
+    width: 18px;
+    height: 18px;
+    background-image: resource("AI/folders");
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+}
+
+/* Asset Window의 .assetlib-picoberry-icon 와 동일 — margin 없이 라벨이 바로 옆에 옴. */
+.pb-brand-icon {
+    width: 24px;
+    height: 24px;
+    background-image: resource("AI/picoberry");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* Asset Window 헤더와 동일 폰트(SpaceGrotesk) 적용 — Inspector 의 기본 폰트와 시각적으로 다르게 보이지 않도록. */
+.pb-brand-name {
+    -unity-font-definition: resource("Fonts/SpaceGrotesk");
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    font-size: 16px;
+    color: rgb(220, 220, 220);
+}

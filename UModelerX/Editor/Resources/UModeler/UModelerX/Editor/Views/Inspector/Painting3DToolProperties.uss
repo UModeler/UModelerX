@@ -1,0 +1,304 @@
+/* Painting3DToolPropertiesElement: 페인팅 툴 프로퍼티 커스텀 VisualElement 스타일 */
+
+/* ========== 루트 컨테이너 (모디파이어 뷰 통일) ========== */
+.painting3d-tool-properties {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* 공용 패널 헤더 (모디파이어 뷰 통일) */
+.painting3d-panel-header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: link;
+}
+
+/* 헤더 호버 효과 */
+.painting3d-panel-header:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+/* 헤더 아이콘 */
+.painting3d-panel-header__icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+/* 헤더 타이틀 */
+.painting3d-panel-header__title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    flex-grow: 1;
+}
+
+/* ========== 컨텐츠 영역 (모디파이어 뷰 통일) ========== */
+.painting3d-tool-properties-content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* ========== 툴 아이콘 스트립 ========== */
+.painting3d-tool-icon-strip {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    min-height: 32px;
+}
+
+/* 툴 아이콘 버튼 */
+.painting3d-tool-icon-btn {
+    width: 28px;
+    height: 28px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+    border-radius: 3px;
+    background-color: var(--umx-bg-content);
+    flex-shrink: 0;
+}
+
+/* 툴 아이콘 버튼 호버 효과 */
+.painting3d-tool-icon-btn:hover {
+    background-color: var(--umx-bg-hover);
+    border-color: var(--umx-border-faint);
+}
+
+/* 선택된 툴 아이콘 */
+.painting3d-tool-icon-btn--selected {
+    background-color: var(--umx-selection);
+    border-color: #4a90d9;
+}
+
+/* 선택된 툴 아이콘 호버 효과 */
+.painting3d-tool-icon-btn--selected:hover {
+    background-color: var(--umx-selection-hover);
+    border-color: #5aa0e9;
+}
+
+/* 툴 아이콘 이미지 */
+.painting3d-tool-icon-img {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+}
+
+/* ========== 브러시 프리뷰 ========== */
+.painting3d-brush-preview-area {
+    margin-top: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+    flex-shrink: 0;
+}
+
+/* 브러시 프리뷰 이미지 영역 */
+.painting3d-brush-preview {
+    height: 100px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 2px;
+    border-width: 1px;
+    border-color: var(--umx-border);
+}
+
+/* 브러시 프리뷰 IMGUI 컨테이너 */
+.painting3d-brush-preview__imgui {
+    flex-grow: 1;
+}
+
+/* ========== 구분선 ========== */
+.painting3d-tool-separator {
+    height: 1px;
+    background-color: var(--umx-bg-elevated);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+    flex-shrink: 0;
+}
+
+/* ========== 툴 프로퍼티 영역 ========== */
+.painting3d-tool-props-area {
+    min-height: 0;
+    flex-shrink: 0;
+}
+
+/* ========== 슬라이더 + 숫자 입력 조합 ========== */
+.painting3d-slider-field-row {
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    min-width: 0;
+}
+
+/* 슬라이더 영역 */
+.painting3d-slider-field-slider {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 4px;
+    min-width: 0;
+}
+
+/* 숫자 입력 필드 */
+.painting3d-slider-field-num {
+    width: 50px;
+    min-width: 50px;
+    flex-shrink: 0;
+    /* Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진 무력화 (우측 잘림 방지) */
+    margin-right: 0;
+}
+
+/* ========== 레이어 프로퍼티 (Fill/Sticker) ========== */
+
+/* 채널명 헤더 */
+.painting3d-layer-channel-header {
+    -unity-font-style: bold;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    margin-top: 6px;
+    margin-bottom: 2px;
+    padding-left: 4px;
+    padding-top: 4px;
+    border-top-width: 1px;
+    border-top-color: var(--umx-border-subtle);
+}
+
+/* 프로퍼티 행 (라벨 좌측 고정 + 필드 잔여 영역) */
+.painting3d-layer-prop-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-left: 8px;
+    padding-right: 4px;
+    min-height: 20px;
+}
+
+/* 프로퍼티 라벨.
+   외부 Label / BaseField 내부 label / Slider row 의 라벨 모두 동일 클래스로 일관된 너비 확보.
+   고정 px 단위 → Vector2/Vector3 같은 composite field 도 X/Y/Z 모두 충분히 노출됨. */
+.painting3d-layer-prop-label {
+    width: 130px;
+    min-width: 130px;
+    max-width: 130px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    /* BaseField 의 기본 label margin 무력화 (라벨과 필드 사이 불필요한 공백 제거) */
+    margin: 0;
+    padding-right: 4px;
+    /* 긴 라벨은 잘라서 표시 (예: "Constrain Aspect Ratio") */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 프로퍼티 필드 (잔여 영역) */
+.painting3d-layer-prop-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* BaseField (Toggle / FloatField / Vector2Field / Vector3Field 등) 가 row 전체를 차지하고
+   내부적으로 label + input 영역을 가지는 구조에 대응.
+   row layout 의 단일 자식인 BaseField 가 잔여 영역을 모두 차지하도록 강제. */
+.painting3d-layer-prop-row > .unity-base-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+/* BaseField 내부 input 영역(label 우측) 이 잔여 너비를 모두 차지하도록.
+   기본값으로 두면 좁아져서 Vector3 의 Z 가 잘림. */
+.painting3d-layer-prop-row .unity-base-field__input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* ========== Pen 경고 박스 ========== */
+.painting3d-pen-warning {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: #5a5a22;
+    border-right-color: #5a5a22;
+    border-top-color: #5a5a22;
+    border-bottom-color: #5a5a22;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #3a3a20;
+}
+
+/* Pen 경고 아이콘 */
+.painting3d-pen-warning__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+/* Pen 경고 라벨 */
+.painting3d-pen-warning__label {
+    flex-grow: 1;
+    flex-shrink: 1;
+    white-space: normal;
+    font-size: 11px;
+    color: #d4d4a0;
+}
+
+/* Pen 경고 Refresh 버튼: 사용자가 타블렛 연결 후 상태 재평가 요청 */
+.painting3d-pen-warning__refresh {
+    flex-shrink: 0;
+    margin-left: 6px;
+    min-width: 60px;
+    height: 20px;
+    font-size: 11px;
+}
+

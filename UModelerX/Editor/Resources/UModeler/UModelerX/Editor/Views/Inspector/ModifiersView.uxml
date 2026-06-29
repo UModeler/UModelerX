@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement class="umx-modifiers-root" name="ModifiersRoot">
+    <ui:VisualElement class="umx-modifiers-list-slot" name="ModifiersListSlot" />
+    <ui:VisualElement class="umx-source-mesh-slot" name="SourceMeshItemSlot" />
+    <ui:VisualElement class="umx-status-bar-slot" name="StatusBarSlot" />
+  </ui:VisualElement>
+</ui:UXML>

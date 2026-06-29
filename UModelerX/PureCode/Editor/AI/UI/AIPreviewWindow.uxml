@@ -1,0 +1,156 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="root" class="ai-preview-root">
+
+        <!-- ── Remesh / Texture (Tripo-family assets, above toolbar) ───── -->
+        <!-- 임시로 숨김. 추후에 기능 추가 시 해제-->
+        <!--<ui:VisualElement name="preview-post-actions" class="preview-post-actions hidden">
+            <ui:Button name="preview-remesh-btn" class="preview-post-action-btn">
+                <ui:VisualElement name="preview-remesh-icon" class="post-action-icon" />
+                <ui:Label text="Remesh" class="post-action-label" />
+            </ui:Button>
+            <ui:Button name="preview-texture-btn" class="preview-post-action-btn">
+                <ui:VisualElement name="preview-texture-icon" class="post-action-icon" />
+                <ui:Label text="Texture" class="post-action-label" />
+            </ui:Button>
+        </ui:VisualElement>-->
+
+        <!-- ── 상단 툴바 (선택 없을 때 숨김) ─────────────────────────────── -->
+        <ui:VisualElement name="preview-toolbar" class="preview-toolbar hidden">
+            <!-- 좌측: Display Settings + 셰이더 모드 버튼 -->
+            <ui:VisualElement name="toolbar-left" class="toolbar-left">
+                <ui:Button name="display-settings-btn" class="toolbar-icon-btn display-settings" tooltip="Display Settings" />
+                <ui:VisualElement class="toolbar-separator" />
+                <ui:Button name="preview-shader-option-solid"     class="preview-shader-button solid"      tooltip="Solid" />
+                <ui:Button name="preview-shader-option-base"      class="preview-shader-button base"       tooltip="Base Color" />
+                <ui:Button name="preview-shader-option-pbr"       class="preview-shader-button pbr"        tooltip="PBR" />
+                <ui:VisualElement class="toolbar-separator" />
+                <ui:Button name="preview-shader-option-wireframe" class="preview-shader-button wireframe"  tooltip="Wireframe" />
+            </ui:VisualElement>
+            <!-- 우측: 텍스처 썸네일 + UV 뷰어 버튼 -->
+            <ui:VisualElement name="toolbar-right" class="toolbar-right">
+                <ui:Button name="tex-btn-albedo"     class="tex-thumb-btn" tooltip="Albedo" />
+                <ui:Button name="tex-btn-smoothness" class="tex-thumb-btn" tooltip="Smoothness" />
+                <ui:Button name="tex-btn-metallic"   class="tex-thumb-btn" tooltip="Metallic" />
+                <ui:VisualElement name="tex-separator" class="toolbar-separator" />
+                <ui:Button name="uv-viewer-btn" class="toolbar-icon-btn uv-viewer" tooltip="UV Texture Viewer" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ── 프리뷰 영역 ───────────────────────────────────────────────── -->
+        <ui:VisualElement name="preview-wrap" class="preview-wrap">
+            <ui:Image name="img-preview" class="rt-preview" />
+            <ui:Label name="placeholder-label" text="Select an asset to preview" class="preview-placeholder" />
+            <ui:VisualElement name="preview-loading" class="preview-loading hidden">
+                <ui:Image name="preview-loading-icon" class="preview-loading-icon" />
+            </ui:VisualElement>
+
+            <!-- 배경 제거 토글 (이미지 에셋이 bgRemoved 변형과 swap된 경우에만 표시) -->
+            <ui:Button name="bg-toggle-btn" class="bg-toggle-btn hidden" tooltip="Toggle Background" />
+
+            <!-- 통계 박스 (3D 메쉬 선택 시에만 표시) -->
+            <ui:VisualElement name="stats-box" class="stats-box hidden">
+                <ui:VisualElement class="stats-row">
+                    <ui:Label text="Topology" class="stats-row-label" />
+                    <ui:Label name="stats-topology" text="—" class="stats-row-value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="stats-row">
+                    <ui:Label text="Faces" class="stats-row-label" />
+                    <ui:Label name="stats-faces" text="0" class="stats-row-value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="stats-row stats-row-last">
+                    <ui:Label text="Vertices" class="stats-row-label" />
+                    <ui:Label name="stats-verts" text="0" class="stats-row-value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- Display Settings 오버레이 팝업 (기본 숨김) -->
+            <ui:VisualElement name="display-settings-popup" class="display-settings-popup hidden">
+                <ui:Label text="Display Settings" class="settings-popup-title" />
+                <ui:VisualElement class="settings-row">
+                    <ui:Label text="Grid" class="settings-label-text" />
+                    <ui:Toggle name="grid-toggle" />
+                </ui:VisualElement>
+                <ui:VisualElement class="settings-row">
+                    <ui:Label text="Stats" class="settings-label-text" />
+                    <ui:Toggle name="stats-toggle" value="true" />
+                </ui:VisualElement>
+                <ui:VisualElement class="settings-row">
+                    <ui:Label text="Auto Rotate" class="settings-label-text" />
+                    <ui:Toggle name="auto-rotate-toggle" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- 애니메이션 컨트롤 (좌하단 오버레이). 애니메이션 클립이 있는 모델에서만 표시. -->
+            <ui:VisualElement name="animation-controls" class="animation-controls hidden">
+                <ui:Button name="anim-play-pause-btn" class="anim-play-pause-btn play" tooltip="Play / Pause" />
+                <ui:Slider name="anim-timeline" class="anim-timeline" low-value="0" high-value="1" value="0" picking-mode="Position" />
+            </ui:VisualElement>
+
+            <!-- UV 텍스처 뷰어 오버레이 팝업 (기본 숨김) -->
+            <ui:VisualElement name="uv-viewer-backdrop" class="uv-viewer-backdrop hidden" />
+            <ui:VisualElement name="uv-viewer-popup" class="uv-viewer-popup hidden">
+                <ui:VisualElement class="uv-viewer-header">
+                    <ui:Label text="UV Texture" class="uv-viewer-title" />
+                    <ui:Button name="uv-viewer-close" class="uv-close-btn" text="✕" />
+                </ui:VisualElement>
+                <ui:VisualElement name="uv-tex-tabs" class="uv-tex-tabs">
+                    <ui:Button name="uv-tab-albedo"     class="uv-tab uv-tab--selected" text="Albedo" />
+                    <ui:Button name="uv-tab-smoothness" class="uv-tab" text="Smoothness" />
+                    <ui:Button name="uv-tab-metallic"   class="uv-tab" text="Metallic" />
+                </ui:VisualElement>
+                <ui:Image name="uv-tex-image" class="uv-tex-image" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ── 하단 바 ───────────────────────────────────────────────────── -->
+        <ui:VisualElement name="bottom-bar" class="bottom-bar">
+            <ui:Label name="asset-name-label" text="—" class="asset-name-label" />
+            <ui:VisualElement name="bottom-bar-right" class="bottom-bar-right hidden">
+                <ui:Button name="details-toggle-btn" class="details-toggle-btn" />
+                <ui:Button name="reuse-prompt-btn"   class="reuse-prompt-btn"   text="Reuse Prompt" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ── 상세 패널 (기본 숨김, 토글로 표시) ───────────────────────── -->
+        <ui:VisualElement name="details-panel" class="details-panel">
+            <ui:VisualElement class="details-content-row">
+                <ui:VisualElement name="details-source-image" class="details-source-image hidden" />
+                <ui:VisualElement class="details-text-column">
+                    <ui:Label name="details-prompt"     text="" class="details-prompt-text" />
+                    <ui:VisualElement class="details-meta-row">
+                        <ui:Label name="details-mode"    text="" class="details-meta" />
+                        <ui:Label name="details-model"   text="" class="details-meta" />
+                        <ui:Label name="details-polygon" text="" class="details-meta" />
+                        <ui:Label name="details-texsize" text="" class="details-meta" />
+                    </ui:VisualElement>
+                    <ui:Label name="details-created-at" text="" class="details-timestamp" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ── 이미지 액션 바 (이미지 에셋 선택 시 표시) ────────────────────── -->
+        <ui:VisualElement name="image-to-3d-action-bar" class="scene-action-bar hidden">
+            <ui:Button name="select-image-btn" class="scene-action-secondary-btn">
+                <ui:VisualElement name="select-image-icon" class="add-to-scene-icon" />
+                <ui:Label text="Select Image" class="add-to-scene-label" />
+            </ui:Button>
+            <ui:Button name="image-to-3d-btn" class="add-to-scene-btn">
+                <ui:VisualElement name="image-to-3d-icon" class="add-to-scene-icon" />
+                <ui:Label text="Image to 3D" class="add-to-scene-label" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <!-- ── 씬 배치 액션 바 (3D 에셋 선택 시 표시) ────────────────────── -->
+        <ui:VisualElement name="scene-action-bar" class="scene-action-bar hidden">
+            <ui:Button name="select-model-btn" class="scene-action-secondary-btn">
+                <ui:VisualElement name="select-model-icon" class="add-to-scene-icon" />
+                <ui:Label text="Select Model" class="add-to-scene-label" />
+            </ui:Button>
+            <ui:Button name="add-to-scene-btn" class="add-to-scene-btn">
+                <ui:VisualElement name="add-to-scene-icon" class="add-to-scene-icon" />
+                <ui:Label text="Add to Scene" class="add-to-scene-label" />
+            </ui:Button>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

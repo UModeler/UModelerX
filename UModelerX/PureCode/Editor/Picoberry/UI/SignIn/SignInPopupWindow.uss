@@ -1,0 +1,33 @@
+/* Primary action button */
+/* 기본 액션 버튼: 파란 배경, 둥근 모서리, 흰색 텍스트 */
+.primary-button {
+    height: 30px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: white;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    background-color: rgb(61, 120, 194);
+}
+
+/* 기본 액션 버튼 호버 상태: 밝은 파란색 */
+.primary-button:hover {
+    background-color: rgb(99, 147, 206);
+}
+
+/* 기본 액션 버튼 클릭 상태: 어두운 파란색 */
+.primary-button:active {
+    background-color: rgb(49, 95, 155);
+}
+
+/* Primary action button — light theme override */
+/* 기본 액션 버튼 라이트 테마 오버라이드 */
+.primary-button--light {
+    background-color: rgb(58, 114, 176);
+}

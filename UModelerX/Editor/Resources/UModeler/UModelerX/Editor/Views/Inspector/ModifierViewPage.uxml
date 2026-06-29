@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement name="modifier-view-page-root" class="umx-modifier-view-page">
+    <ui:VisualElement name="modifier-view-page-header" class="umx-modifier-view-page__header">
+      <ui:Image name="modifier-view-page-header-icon" class="umx-modifier-view-page__header-icon" />
+      <ui:Label name="modifier-view-page-header-title" class="umx-modifier-view-page__header-title" text="Modifier" />
+    </ui:VisualElement>
+    <ui:VisualElement name="modifier-view-page-content" class="umx-modifier-view-page__content-wrapper">
+      <ui:ScrollView name="modifier-view-page-scroll" class="umx-modifier-view-page__scroll">
+        <ui:VisualElement name="modifier-properties-slot" class="umx-modifier-view-page__properties" />
+        <ui:VisualElement name="modifier-custom-slot" class="umx-modifier-view-page__custom" />
+        <ui:VisualElement name="modifier-buttons-slot" class="umx-modifier-view-page__buttons" />
+      </ui:ScrollView>
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

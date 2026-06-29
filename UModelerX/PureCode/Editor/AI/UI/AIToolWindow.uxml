@@ -1,0 +1,307 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="root" class="aitool-root">
+        <ui:ScrollView name="main-scroll" mode="Vertical" class="aitool-scroll">
+            <ui:VisualElement name="content" class="aitool-content">
+
+                <!-- Page: Image (AI Model -> Prompt -> Pose -> Aspect Ratio -> Resolution -> Image Count) -->
+                <ui:VisualElement name="page-image" class="page-container">
+                    <ui:VisualElement name="image-sdui-form" class="model-sdui-form" />
+                    <ui:VisualElement name="image-property-rows" class="property-rows">
+                        <!-- Prompt -->
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Prompt" class="image-property-label" />
+                            <ui:VisualElement class="textfield-wrap image-prompt-wrap">
+                                <ui:TextField name="image-prompt-field" placeholder-text="Describe the image you want to generate" multiline="true" class="prompt-text-field image-prompt-text-field" />
+                                <ui:Label name="image-prompt-counter" text="0" class="textfield-counter textfield-counter-left" />
+                                <ui:VisualElement name="image-prompt-chips" class="prompt-chip-row">
+                                    <ui:Button name="image-3d-chip" text="3D" class="prompt-chip" />
+                                    <ui:Button name="image-tpose-chip" text="T-Pose" class="prompt-chip" />
+                                    <ui:Button name="image-4view-chip" text="4-View" class="prompt-chip" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <!-- AI Model (overlay selector) — colored tile (left) + label/name (center) + credit/chevron (right). 웹 ModelSelectModal trigger 미러. -->
+                        <ui:Button name="image-ai-model-btn" class="ai-model-select-btn">
+                            <ui:VisualElement name="image-ai-model-btn-tile" class="ai-model-btn-tile">
+                                <ui:VisualElement name="image-ai-model-btn-sparkles" class="ai-model-btn-sparkles" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="ai-model-btn-text-col">
+                                <ui:Label text="AI Model" class="ai-model-btn-header" />
+                                <ui:Label name="image-ai-model-btn-name" text="Nano Banana" class="ai-model-btn-name" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="ai-model-btn-right">
+                                <ui:Label name="image-ai-model-btn-credit" text="5 cr" class="ai-model-btn-credit" />
+                                <ui:VisualElement class="ai-model-btn-chevron" />
+                            </ui:VisualElement>
+                        </ui:Button>
+                        <!-- Refine Prompt: 웹과 동일하게 UI 비노출, payload에서 항상 true. -->
+                        <!-- Pose (None / T-Pose) -->
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Pose" class="image-property-label" />
+                            <ui:VisualElement class="toggle-group-background image-toggle-row">
+                                <ui:Button name="image-pose-none-button" text="None" class="toggle-button image-toggle-btn left selected" />
+                                <ui:Button name="image-pose-tpose-button" text="T-Pose" class="toggle-button image-toggle-btn right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <!-- Aspect Ratio: 선택 모델의 supportedAspectRatios(백엔드 단일소스)에서
+                             버튼을 동적 생성. RebuildAspectRatioButtons() 참고. -->
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Aspect Ratio" class="image-property-label" />
+                            <ui:VisualElement name="image-aspect-ratio-row" class="toggle-group-background image-toggle-row" />
+                        </ui:VisualElement>
+                        <!-- Resolution: 1024 고정 (2048/4096 비활성화됨) -->
+                        <!-- Image Count: 1-4 buttons + more(▾) with popup for 5-8 -->
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Image Count" class="image-property-label" />
+                            <ui:VisualElement name="image-count-control" class="image-count-control">
+                                <ui:VisualElement class="toggle-group-background image-toggle-row">
+                                    <ui:Button name="image-count-1-btn" text="1" class="toggle-button image-toggle-btn left selected" />
+                                    <ui:Button name="image-count-2-btn" text="2" class="toggle-button image-toggle-btn middle" />
+                                    <ui:Button name="image-count-3-btn" text="3" class="toggle-button image-toggle-btn middle" />
+                                    <ui:Button name="image-count-4-btn" text="4" class="toggle-button image-toggle-btn right" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="image-generate-divider" class="generate-divider" />
+                    <ui:VisualElement name="image-generate-section" class="generate-section">
+                        <ui:VisualElement class="estimate-row image-estimate-row">
+                            <ui:VisualElement name="image-credit-icon" class="credit-icon" />
+                            <ui:Label name="image-credit-amount-label" text="5" class="credit-amount" />
+                            <ui:Label name="image-credit-multiplier-label" text="" class="credit-amount hidden" />
+                            <ui:VisualElement name="image-credit-icon-total" class="credit-icon hidden" />
+                            <ui:Label name="image-credit-total-label" text="" class="credit-amount hidden" />
+                        </ui:VisualElement>
+                        <ui:Button name="image-btn-generate" class="generate-button">
+                            <ui:VisualElement name="image-generate-icon" class="generate-button-icon" />
+                            <ui:Label text="Generate" class="generate-button-label" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Page: Model (generation mode, input, properties, generate) -->
+                <ui:VisualElement name="page-model" class="page-container hidden">
+                    <!-- SDUI 생성 폼 (백엔드 form-schema 구동) — AI 모델 최상단, 웹과 동일 순서. -->
+                    <ui:VisualElement name="model-sdui-form" class="model-sdui-form" />
+                    <!-- Generation mode: single bordered box with Image / Text generation buttons inside -->
+                    <ui:VisualElement name="generation-mode" class="generation-mode-wrap">
+                        <ui:VisualElement name="generation-mode-inner" class="generation-mode-inner">
+                            <ui:Button name="mode-image-button" class="generation-mode-btn selected">
+                                <ui:VisualElement name="mode-image-icon" class="gen-mode-icon" />
+                                <ui:Label text="Image to 3D" class="gen-mode-label" />
+                            </ui:Button>
+                            <ui:Button name="mode-text-button" class="generation-mode-btn">
+                                <ui:VisualElement name="mode-text-icon" class="gen-mode-icon" />
+                                <ui:Label text="Text to 3D" class="gen-mode-label" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- Input area -->
+                    <ui:VisualElement name="input-area" class="input-area">
+                        <ui:VisualElement name="image-upload-container" class="input-container">
+                            <ui:Button name="image-upload-button" class="image-upload-zone">
+                                <ui:VisualElement name="image-upload-icon" class="image-upload-icon" />
+                                <ui:Label text="Click or drag and drop to upload image" class="image-upload-hint" />
+                                <ui:Label text="PNG, JPG, JPEG, WEBP (Max 20MB)" class="image-upload-format" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="prompt-container" class="input-container hidden textfield-wrap">
+                            <ui:Label text="Prompt" class="property-label-standalone" />
+                            <ui:TextField name="prompt-field" placeholder-text="Describe what you want to create in 3D. e.g. Fantasy sword, cartoon style car" multiline="true" class="prompt-text-field model-prompt-text-field" />
+                            <ui:Label name="prompt-counter" text="0" class="textfield-counter textfield-counter-left" />
+                            <ui:Button name="model-tpose-chip" text="T-Pose" class="prompt-chip hidden" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- Properties: each row separate (no single group box) -->
+                    <ui:VisualElement name="property-rows" class="property-rows">
+                        <!-- AI Model (overlay selector) — colored tile (left) + label/name (center) + credit/chevron (right). 웹 ModelSelectModal trigger 미러. -->
+                        <ui:Button name="ai-model-btn" class="ai-model-select-btn">
+                            <ui:VisualElement name="ai-model-btn-tile" class="ai-model-btn-tile">
+                                <ui:VisualElement name="ai-model-btn-sparkles" class="ai-model-btn-sparkles" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="ai-model-btn-text-col">
+                                <ui:Label text="AI Model" class="ai-model-btn-header" />
+                                <ui:Label name="ai-model-btn-name" text="Trellis 2.0" class="ai-model-btn-name" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="ai-model-btn-right">
+                                <ui:Label name="ai-model-btn-credit" text="30 cr" class="ai-model-btn-credit" />
+                                <ui:VisualElement class="ai-model-btn-chevron" />
+                            </ui:VisualElement>
+                        </ui:Button>
+                        <ui:VisualElement name="model-tripo-polygon-row" class="model-tripo-polygon-block hidden">
+                            <ui:VisualElement class="property-row-standalone">
+                                <ui:Label text="Polygon Count" class="property-label-standalone" />
+                                <uie:IntegerField name="model-polygon-count-field" value="10000" class="remesh-polygon-int-field model-polygon-count-int-field" />
+                            </ui:VisualElement>
+                            <ui:SliderInt name="model-polygon-count-slider" low-value="1000" high-value="1000000" value="10000" class="remesh-polygon-slider" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="model-pose-row" class="property-row-standalone hidden">
+                            <ui:Label text="T-Pose" class="property-label-standalone" />
+                            <ui:Toggle name="model-tpose-toggle" class="filter-toggle">
+                                <ui:VisualElement name="model-tpose-track" class="filter-track">
+                                    <ui:VisualElement name="model-tpose-thumb" class="filter-thumb" />
+                                </ui:VisualElement>
+                            </ui:Toggle>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property-row-standalone">
+                            <ui:Label text="Texture" class="property-label-standalone" />
+                            <ui:Toggle name="model-texture-toggle" class="filter-toggle">
+                                <ui:VisualElement name="model-texture-track" class="filter-track">
+                                    <ui:VisualElement name="model-texture-thumb" class="filter-thumb" />
+                                </ui:VisualElement>
+                            </ui:Toggle>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="model-hr-texture-row" class="property-row-standalone">
+                            <ui:Label text="High-resolution" class="property-label-standalone" />
+                            <ui:Toggle name="model-hr-texture-toggle" class="filter-toggle">
+                                <ui:VisualElement name="model-hr-texture-track" class="filter-track">
+                                    <ui:VisualElement name="model-hr-texture-thumb" class="filter-thumb" />
+                                </ui:VisualElement>
+                            </ui:Toggle>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- Divider between properties and generation -->
+                    <ui:VisualElement name="generate-divider" class="generate-divider" />
+
+                    <!-- Estimated time | Credit and amount, then Generate button -->
+                    <ui:VisualElement name="generate-section" class="generate-section">
+                        <ui:VisualElement name="estimate-row" class="estimate-row model-estimate-row">
+                            <ui:VisualElement name="credit-icon" class="credit-icon" />
+                            <ui:Label name="credit-amount-label" text="0" class="credit-amount" />
+                        </ui:VisualElement>
+                        <ui:Button name="btn-generate" class="generate-button">
+                            <ui:VisualElement name="model-generate-icon" class="generate-button-icon" />
+                            <ui:Label text="Generate" class="generate-button-label" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Page: Remesh (source asset from library preview) -->
+                <ui:VisualElement name="page-remesh" class="page-container hidden">
+                    <ui:VisualElement name="remesh-feature-header-wrap" class="generation-mode-wrap">
+                        <ui:VisualElement class="generation-mode-inner">
+                            <ui:VisualElement name="remesh-feature-header" class="post-process-feature-btn">
+                                <ui:VisualElement name="remesh-feature-icon" class="gen-mode-icon" />
+                                <ui:Label text="Remesh" class="gen-mode-label" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="remesh-source-thumb-frame" class="post-process-thumb-frame">
+                        <ui:Image name="remesh-source-thumbnail" class="post-process-thumb-image" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="remesh-property-rows" class="property-rows">
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Topology" class="image-property-label" />
+                            <ui:VisualElement class="toggle-group-background image-toggle-row">
+                                <ui:Button name="remesh-topology-triangle-btn" text="Triangle" class="toggle-button image-toggle-btn left selected" />
+                                <ui:Button name="remesh-topology-quad-btn" text="Quad" class="toggle-button image-toggle-btn right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="image-property-group-vertical">
+                            <ui:Label text="Target polygon count" class="image-property-label" />
+                            <ui:VisualElement class="toggle-group-background image-toggle-row">
+                                <ui:Button name="remesh-poly-3k-btn" text="3K" class="toggle-button image-toggle-btn left" />
+                                <ui:Button name="remesh-poly-30k-btn" text="30K" class="toggle-button image-toggle-btn middle selected" />
+                                <ui:Button name="remesh-poly-100k-btn" text="100K" class="toggle-button image-toggle-btn middle" />
+                                <ui:Button name="remesh-poly-custom-btn" text="Custom" class="toggle-button image-toggle-btn right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="remesh-custom-polygon-block" class="image-property-group-vertical hidden">
+                            <ui:Label text="Polygon Count" class="image-property-label" />
+                            <ui:SliderInt name="remesh-polygon-count-slider" low-value="1000" high-value="500000" value="30000" class="remesh-polygon-slider" />
+                            <uie:IntegerField name="remesh-polygon-count-field" value="30000" class="remesh-polygon-int-field" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="remesh-generate-divider" class="generate-divider" />
+                    <ui:VisualElement name="remesh-generate-section" class="generate-section">
+                        <ui:VisualElement name="remesh-estimate-row" class="estimate-row model-estimate-row">
+                            <ui:VisualElement name="remesh-credit-icon" class="credit-icon" />
+                            <ui:Label name="remesh-credit-amount-label" text="—" class="credit-amount" />
+                        </ui:VisualElement>
+                        <ui:Button name="remesh-btn-generate" class="generate-button">
+                            <ui:VisualElement name="remesh-generate-icon" class="generate-button-icon" />
+                            <ui:Label text="Generate" class="generate-button-label" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Page: Texture (source asset from library preview) -->
+                <ui:VisualElement name="page-texture" class="page-container hidden">
+                    <ui:VisualElement name="texture-feature-header-wrap" class="generation-mode-wrap">
+                        <ui:VisualElement class="generation-mode-inner">
+                            <ui:VisualElement name="texture-feature-header" class="post-process-feature-btn">
+                                <ui:VisualElement name="texture-feature-icon" class="gen-mode-icon" />
+                                <ui:Label text="Texture" class="gen-mode-label" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="texture-source-thumb-frame" class="post-process-thumb-frame">
+                        <ui:Image name="texture-source-thumbnail" class="post-process-thumb-image" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="texture-post-property-rows" class="property-rows">
+                        <ui:VisualElement class="textfield-wrap">
+                            <ui:Label text="Prompt" class="property-label-standalone" />
+                            <ui:TextField name="texture-post-prompt-field" multiline="true" class="prompt-text-field" />
+                            <ui:Label name="texture-post-prompt-counter" text="0/800" class="textfield-counter" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property-row-standalone">
+                            <ui:Label text="HD texture" class="property-label-standalone" />
+                            <ui:Toggle name="texture-post-hr-toggle" class="filter-toggle">
+                                <ui:VisualElement name="texture-post-hr-track" class="filter-track">
+                                    <ui:VisualElement name="texture-post-hr-thumb" class="filter-thumb" />
+                                </ui:VisualElement>
+                            </ui:Toggle>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="texture-generate-divider" class="generate-divider" />
+                    <ui:VisualElement name="texture-generate-section" class="generate-section">
+                        <ui:VisualElement name="texture-estimate-row" class="estimate-row model-estimate-row">
+                            <ui:VisualElement name="texture-credit-icon" class="credit-icon" />
+                            <ui:Label name="texture-credit-amount-label" text="—" class="credit-amount" />
+                        </ui:VisualElement>
+                        <ui:Button name="texture-btn-generate" class="generate-button">
+                            <ui:VisualElement name="texture-generate-icon" class="generate-button-icon" />
+                            <ui:Label text="Generate" class="generate-button-label" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Page: Rigging (empty) -->
+                <ui:VisualElement name="page-rigging" class="page-container hidden">
+                    <ui:Label text="Coming soon" class="page-placeholder-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <!-- Image AI Model Selection Popup Overlay -->
+        <ui:VisualElement name="image-ai-model-popup-overlay" class="ai-model-popup-overlay hidden">
+            <ui:VisualElement name="image-ai-model-popup" class="ai-model-popup">
+                <ui:VisualElement class="ai-model-popup-header">
+                    <ui:VisualElement class="ai-model-popup-header-text">
+                        <ui:Label text="AI Model Selection" class="ai-model-popup-title" />
+                    </ui:VisualElement>
+                    <ui:Button name="image-ai-model-popup-close" text="✕" class="ai-model-popup-close-btn" />
+                </ui:VisualElement>
+                <ui:ScrollView class="ai-model-cards-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
+                    <ui:VisualElement name="image-ai-model-cards" class="ai-model-cards image-ai-model-cards" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <!-- AI Model Selection Popup Overlay -->
+        <ui:VisualElement name="ai-model-popup-overlay" class="ai-model-popup-overlay hidden">
+            <ui:VisualElement name="ai-model-popup" class="ai-model-popup">
+                <ui:VisualElement class="ai-model-popup-header">
+                    <ui:VisualElement class="ai-model-popup-header-text">
+                        <ui:Label text="AI Model Selection" class="ai-model-popup-title" />
+                    </ui:VisualElement>
+                    <ui:Button name="ai-model-popup-close" text="✕" class="ai-model-popup-close-btn" />
+                </ui:VisualElement>
+                <ui:ScrollView class="ai-model-cards-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
+                    <ui:VisualElement name="ai-model-cards" class="ai-model-cards" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

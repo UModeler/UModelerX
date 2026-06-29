@@ -1,0 +1,112 @@
+/* VertexTool 전용 툴 프로퍼티 USS */
+
+/* 버텍스 그룹 컨테이너 */
+.vertex-tool__vertex-group-container {
+    margin-top: 6px;
+    flex-direction: column;
+}
+
+/* 버텍스 그룹 리스트 */
+.vertex-tool__vertex-group-list {
+    margin-top: 4px;
+    flex-direction: column;
+    margin-bottom: 2px;
+    min-height: 24px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: rgb(34, 34, 34);
+    border-width: 1px;
+    border-color: var(--umx-border);
+    border-radius: 2px;
+}
+
+/* 버텍스 그룹 없음 표시 */
+.vertex-tool__vertex-group-empty {
+    height: 20px;
+    -unity-text-align: middle-center;
+    color: rgb(150, 150, 150);
+}
+
+/* 버텍스 그룹 하단 추가/삭제 버튼 행 */
+.vertex-tool__vertex-group-bottom-row {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+/* 버텍스 그룹 하단 소형 버튼 */
+.vertex-tool__vertex-group-bottom-button {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* 버텍스 그룹 행 */
+.vertex-tool__vertex-group-row {
+    min-height: 44px;
+    margin-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+}
+
+/* 버텍스 그룹 행 우측 영역 */
+.vertex-tool__vertex-group-row-right {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 버텍스 그룹 이름/카운트 행 */
+.vertex-tool__vertex-group-name-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 버텍스 그룹 행별 액션 버튼 행 */
+.vertex-tool__vertex-group-row-actions {
+    flex-direction: row;
+    margin-top: 2px;
+}
+
+/* 버텍스 그룹 행별 액션 버튼 */
+.vertex-tool__vertex-group-row-action {
+    flex-grow: 1;
+    height: 18px;
+}
+
+/* 버텍스 그룹 표시 토글 */
+.vertex-tool__visibility-button {
+    width: 22px;
+    height: 20px;
+    margin-right: 4px;
+    margin-top: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 버텍스 그룹 이름 */
+.vertex-tool__vertex-group-name {
+    min-width: 80px;
+    margin-right: 4px;
+}
+
+/* 버텍스 그룹 페이스 수 */
+.vertex-tool__vertex-group-count {
+    width: 36px;
+    -unity-text-align: middle-right;
+}
+
+/* 공용 버튼 행 */
+.vertex-tool__button-row {
+    flex-direction: row;
+    margin-top: 2px;
+}

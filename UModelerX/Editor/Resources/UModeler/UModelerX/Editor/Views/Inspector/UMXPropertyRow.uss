@@ -1,0 +1,117 @@
+/* UMXPropertyRowBuilder 공용 프로퍼티 행 스타일 */
+
+/* ========== 프로퍼티 행 ========== */
+.umx-prop-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* 숫자 프로퍼티 드래그 가능 라벨 (좌우 슬라이더 커서) */
+.umx-prop-row__label--draggable {
+    cursor: slide-arrow;
+}
+
+/* 프로퍼티 라벨 — 비율 기반으로 좁은 인스펙터에서도 레이아웃 유지 */
+.umx-prop-row__label {
+    width: 42%;
+    min-width: 80px;
+    max-width: 250px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    -unity-text-align: middle-left;
+    margin-right: 2px;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* 프로퍼티 필드 컨테이너 */
+.umx-prop-row__field-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+/* Unity 기본 인스펙터 스타일에서 .unity-base-field 에 적용되는 margin-right: -2px 음수 마진을
+ * 우리 커스텀 컨테이너 안에서 무력화한다. 음수 마진이 그대로 적용되면 필드 우측이 컨테이너 밖으로
+ * 튀어나가 인스펙터/패널 우측 경계에서 잘림이 발생한다. */
+.umx-prop-row__field-container > .unity-base-field {
+    margin-right: 0;
+}
+
+/* ========== 단일 필드 (flex-grow: 1) ========== */
+.umx-prop-field {
+    flex-grow: 1;
+}
+
+/* ========== 슬라이더 + 숫자 필드 조합 ========== */
+.umx-slider-row {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.umx-slider-row > Slider,
+.umx-slider-row > SliderInt {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 6px;
+}
+
+.umx-slider-row > IntegerField,
+.umx-slider-row > FloatField {
+    width: 60px;
+    flex-shrink: 0;
+    /* Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진 무력화
+     * (.umx-prop-row__field-container > .unity-base-field 규칙은 grandchild 인 이 필드에 미적용) */
+    margin-right: 0;
+}
+
+/* ========== SelectionGrid ========== */
+.umx-selection-grid {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.umx-selection-grid > VisualElement {
+    flex-direction: row;
+}
+
+.umx-selection-grid__button {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ========== On/Off 이미지 토글 버튼 ========== */
+.umx-image-toggle {
+    width: 19px;
+    height: 11px;
+    min-width: 19px;
+    min-height: 11px;
+    max-width: 19px;
+    max-height: 11px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: auto;
+}
+
+.umx-image-toggle > VisualElement {
+    width: 19px;
+    height: 11px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}

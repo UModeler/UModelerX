@@ -1,0 +1,55 @@
+﻿#pragma kernel CSMain
+
+struct VertexData
+{
+    float3 vertex;
+};
+
+struct Result
+{
+	uint id;
+	float distance;
+};
+
+StructuredBuffer<VertexData> vertexBuffer;
+StructuredBuffer<uint> selectVertexIDs;
+
+uint vertexCount;
+uint selectVertexCount;
+uint offset;
+
+float selectionRange;
+
+AppendStructuredBuffer<Result> resultBuffer;
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	uint index = offset + id.x;
+
+	if (index < vertexCount)
+	{
+		float d = selectionRange;
+		float3 vtx = vertexBuffer[index].vertex;
+
+		for (uint i = 0; i < selectVertexCount; i++)
+		{
+			uint v = selectVertexIDs[i];
+			float l = distance(vtx, vertexBuffer[v].vertex);
+			if (l < d)
+			{
+				d = l;
+				if (v == index)
+					return;
+			}
+		}
+
+		if (d < selectionRange)
+		{
+			Result r;
+			r.id = index;
+			r.distance = d;
+			resultBuffer.Append(r);
+		}
+	}
+}

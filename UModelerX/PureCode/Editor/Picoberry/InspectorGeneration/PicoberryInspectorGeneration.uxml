@@ -1,0 +1,94 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="picoberry-inspector-root" class="pb-root">
+
+        <!-- Picoberry 브랜드 헤더 — Tool Window 헤더 미러링. 좌측은 브랜드 표시(클릭 불가), 우측은 Asset Library 열기 버튼. -->
+        <ui:VisualElement class="pb-brand-header">
+            <ui:VisualElement class="pb-brand-left">
+                <ui:VisualElement class="pb-brand-icon" />
+                <ui:Label text="PicoBerry" class="pb-brand-name" />
+            </ui:VisualElement>
+            <ui:Button name="open-library-btn" class="pb-library-icon-btn" tooltip="Open Asset Library">
+                <ui:VisualElement class="pb-library-icon-btn-image" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <!-- 로그인 안내 (인증 미완료 시) — Asset Window의 SignInUIBuilder UI가 런타임에 주입됨 -->
+        <ui:VisualElement name="login-block" class="pb-block hidden" />
+
+        <!-- Multi-edit 안내 -->
+        <ui:VisualElement name="multi-edit-block" class="pb-block hidden">
+            <ui:Label text="Multi-object editing is not supported." class="pb-message" />
+        </ui:VisualElement>
+
+        <!-- Input 단계 -->
+        <ui:VisualElement name="input-block" class="pb-block hidden">
+            <ui:VisualElement class="pb-mode-row">
+                <ui:Button name="text-mode-btn"  text="Text"  class="pb-mode-btn pb-mode-btn--selected" />
+                <ui:Button name="image-mode-btn" text="Image" class="pb-mode-btn" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="text-page" class="pb-page">
+                <ui:Label text="Prompt" class="pb-label" />
+                <ui:TextField name="prompt-field"
+                              multiline="true"
+                              class="pb-prompt" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="image-page" class="pb-page hidden">
+                <ui:Button name="image-upload-btn" class="pb-image-upload-zone">
+                    <ui:VisualElement name="image-upload-icon" class="pb-image-upload-icon" />
+                    <ui:Label text="Click or drag and drop to upload image" class="pb-image-upload-hint" />
+                    <ui:Label text="PNG, JPG, JPEG, WEBP" class="pb-image-upload-format" />
+                </ui:Button>
+            </ui:VisualElement>
+
+            <!-- Options foldout (열고 닫을 수 있는 목록) -->
+            <ui:VisualElement name="options-foldout" class="pb-foldout">
+                <ui:Button name="options-header" class="pb-foldout-header">
+                    <ui:Label name="options-header-arrow" text="▶" class="pb-foldout-arrow" />
+                    <ui:Label text="Options" class="pb-foldout-title" />
+                </ui:Button>
+                <ui:VisualElement name="options-body" class="pb-foldout-body hidden">
+                    <ui:VisualElement class="pb-option-row">
+                        <ui:Label text="AI Model" class="pb-option-label" />
+                        <ui:VisualElement name="option-model-slot" class="pb-option-slot" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="option-tpose-row" class="pb-option-row">
+                        <ui:Label text="T-Pose" class="pb-option-label" />
+                        <ui:Toggle name="option-tpose-toggle" class="pb-option-toggle" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="pb-option-row">
+                        <ui:Label text="Texture" class="pb-option-label" />
+                        <ui:Toggle name="option-texture-toggle" class="pb-option-toggle" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="option-hr-row" class="pb-option-row">
+                        <ui:Label text="High-resolution" class="pb-option-label" />
+                        <ui:Toggle name="option-hr-toggle" class="pb-option-toggle" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:Button name="generate-btn" text="Generate" class="pb-primary-btn" />
+        </ui:VisualElement>
+
+        <!-- Uploading / Generating 단계 -->
+        <ui:VisualElement name="generating-block" class="pb-block hidden">
+            <ui:Label name="generating-status" text="Generating..." class="pb-message" />
+            <ui:ProgressBar name="generating-progress" value="0" low-value="0" high-value="100" class="pb-progress" />
+        </ui:VisualElement>
+
+        <!-- Complete 단계 -->
+        <ui:VisualElement name="complete-block" class="pb-block hidden">
+            <ui:Label text="Generation complete." class="pb-message pb-success" />
+            <ui:Label text="Click Apply to bake the mesh into this GameObject." class="pb-help" />
+            <ui:Button name="apply-btn" text="Apply" class="pb-primary-btn" />
+        </ui:VisualElement>
+
+        <!-- Importing 단계 -->
+        <ui:VisualElement name="importing-block" class="pb-block hidden">
+            <ui:Label text="Downloading model..." class="pb-message" />
+            <ui:ProgressBar name="importing-progress" value="0" low-value="0" high-value="100" class="pb-progress" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

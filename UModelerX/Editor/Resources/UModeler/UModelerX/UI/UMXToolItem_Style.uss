@@ -1,0 +1,161 @@
+/* UMX Tool Item - 툴 아이콘/버튼 USS */
+
+/* 툴 아이템 컨테이너 — 아이콘과 라벨을 중앙 정렬 */
+.umx-tool-item {
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    min-width: 40px;
+    min-height: 54px;
+    margin: 2px;
+    border-radius: 2px;
+    flex-shrink: 1;
+    cursor: link;
+    overflow: visible;
+}
+
+/* 선택되지 않은 아이템에만 호버 적용 (클래스는 C#에서 선택 시 제거) */
+.umx-tool-item--hoverable:hover {
+    background-color: var(--umx-accent-bg);
+
+}
+
+/* 선택된 툴 - 눌린 효과 */
+.umx-tool-item--selected {
+    background-color: var(--umx-accent-bg);
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: var(--umx-accent);
+}
+
+/* 선택된 툴의 아이콘 — 틴트 색상 강조 */
+.umx-tool-item--selected .umx-tool-item__icon {
+    -unity-background-image-tint-color: var(--umx-accent-light);
+}
+
+/* 선택된 툴의 라벨 — 밝은 색상으로 강조 */
+.umx-tool-item--selected .umx-tool-item__label {
+    color: var(--umx-accent-text);
+}
+
+/* 툴 아이콘 이미지 */
+.umx-tool-item__icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 2px;
+    -unity-background-image-tint-color: var(--umx-accent);
+}
+
+/* 비활성화된 툴 — 반투명 + 커서 변경 */
+.umx-tool-item--disabled {
+    opacity: 0.35;
+    cursor: arrow;
+}
+
+/* 비활성화 상태에서는 호버 효과 무시 */
+.umx-tool-item--disabled.umx-tool-item--hoverable:hover {
+    background-color: initial;
+}
+
+/* 툴 라벨 텍스트 — 아이콘 아래 표시되는 도구 이름 */
+.umx-tool-item__label {
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    white-space: normal;
+    overflow: visible;
+    -unity-text-align: middle-center;
+    min-width: 0;
+    max-width: 100%;
+    align-self: stretch;
+}
+
+/* ToolViewMode — 아이콘 모드: 라벨 숨김, 아이템 축소 */
+.umx-toolviewmode-icon .umx-tool-item__label {
+    display: none;
+}
+
+.umx-toolviewmode-icon .umx-tool-item {
+    width: 36px;
+    min-width: 36px;
+    min-height: 36px;
+}
+
+/* ToolViewMode — 텍스트 모드: 아이콘 숨김, 폰트 확대, 테두리 추가 */
+.umx-toolviewmode-text .umx-tool-item__icon {
+    display: none;
+}
+
+.umx-toolviewmode-text .umx-tool-item {
+    width: 30%;
+    min-height: 28px;
+    padding: 4px 4px;
+    margin: 2px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    flex-shrink: 1;
+}
+
+/* 텍스트 모드: 호버 하이라이트 */
+.umx-toolviewmode-text .umx-tool-item--hoverable:hover {
+    background-color: #666;
+}
+
+/* 텍스트 모드: 선택된 툴 어두운 배경 */
+.umx-toolviewmode-text .umx-tool-item--selected {
+    background-color: var(--umx-accent-bg);
+    border-color: var(--umx-accent);
+}
+
+/* 내부 UXML 클론의 중첩 umx-tool-item 보더 제거 */
+.umx-toolviewmode-text .umx-tool-item .umx-tool-item {
+    border-width: 0;
+    padding: 0;
+    margin: 2px;
+    width: auto;
+    min-height: 24px;
+}
+
+.umx-toolviewmode-text .umx-tool-item__label {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ──────────────────────────────────────────── */
+/* 옵션 오버레이 아이콘 — 툴 아이콘 우하단에 표시 */
+/* ──────────────────────────────────────────── */
+
+.umx-tool-item__option-overlay {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    right: -1px;
+    bottom: -1px;
+    display: none;
+}
+
+/* 옵션이 있는 툴에서 오버레이를 표시 */
+.umx-tool-item--has-options .umx-tool-item__option-overlay {
+    display: flex;
+}
+
+/* ──────────────────────────────────────────── */
+/* 옵션 라벨 — Text 모드에서만 표시             */
+/* ──────────────────────────────────────────── */
+
+.umx-tool-item__option-label {
+    display: none;
+    font-size: 9px;
+    color: var(--umx-text-muted);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    overflow: visible;
+}
+
+/* Text 모드에서 옵션이 있는 툴만 옵션 라벨 표시 */
+.umx-toolviewmode-text .umx-tool-item--has-options .umx-tool-item__option-label {
+    display: flex;
+    font-size: 10px;
+}

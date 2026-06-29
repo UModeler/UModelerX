@@ -1,0 +1,96 @@
+/* WeightTool 프로퍼티 패널 USS */
+
+/* 프리셋 버튼 행 */
+.weight-tool__preset-row {
+    flex-direction: row;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.weight-tool__preset-button {
+    flex-grow: 1;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    min-width: 0;
+}
+
+/* Apply Weight 행: 슬라이더 + FloatField + 버튼 */
+.weight-tool__apply-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.weight-tool__apply-slider {
+    flex-grow: 1;
+    margin-right: 4px;
+}
+
+.weight-tool__apply-float {
+    width: 50px;
+    margin-right: 4px;
+}
+
+.weight-tool__apply-button {
+    width: 60px;
+}
+
+/* 구분선 */
+.weight-tool__separator {
+    height: 1px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* 본 가중치 섹션 */
+.weight-tool__bone-section {
+    flex-direction: column;
+}
+
+/* 본 가중치 행 */
+.weight-tool__bone-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+/* 선택된 본 강조 (파란색 배경) */
+.weight-tool__bone-row--selected {
+    background-color: rgba(50, 120, 220, 0.3);
+    border-width: 1px;
+    border-color: rgba(50, 120, 220, 0.6);
+    border-radius: 2px;
+}
+
+/* 본 이름 라벨 */
+.weight-tool__bone-name {
+    width: 80px;
+    min-width: 60px;
+    font-size: 11px;
+    overflow: hidden;
+    -unity-text-align: middle-left;
+    margin-right: 4px;
+    color: var(--umx-text-secondary);
+}
+
+.weight-tool__bone-row--selected .weight-tool__bone-name {
+    color: #8ac4ff;
+    -unity-font-style: bold;
+}
+
+/* 본 가중치 슬라이더 */
+.weight-tool__bone-slider {
+    flex-grow: 1;
+    margin-right: 4px;
+}
+
+/* 본 가중치 FloatField */
+.weight-tool__bone-float {
+    width: 50px;
+}

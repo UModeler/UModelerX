@@ -1,0 +1,97 @@
+/* 머티리얼 리스트 최상위 컨테이너 */
+.umx-material-list {
+}
+
+/* 머티리얼 리스트 내부 컨테이너 — 세로 배치 */
+.umx-material-list__container {
+    margin-top: 4px;
+    flex-direction: column;
+}
+
+/* 머티리얼 리스트 헤더 텍스트 — 볼드 */
+.umx-material-list__header {
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+}
+
+/* 머티리얼 항목 목록 — 세로 배치 */
+.umx-material-list__list {
+    flex-direction: column;
+    margin-bottom: 2px;
+}
+
+/* 하단 버튼 행 — 우측 정렬 */
+.umx-material-list__bottom-row {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+/* 하단 행 버튼 크기 */
+.umx-material-list__bottom-row-button {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 하단 행 버튼 간 좌측 간격 (특이도 보강) */
+.umx-material-list__bottom-row-button.umx-material-list__bottom-row-button {
+    margin-left: 4px;
+}
+
+/* 머티리얼 행 — 프리뷰와 필드를 가로로 배치 */
+.umx-material-list__row {
+    flex-direction: row;
+    align-items: stretch;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 6px;
+    padding-bottom: 3px;
+}
+
+/* 머티리얼 프리뷰 썸네일 */
+.umx-material-list__preview {
+    width: 40px;
+    height: 40px;
+    margin-right: 4px;
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+/* 행 우측 영역 — 필드와 버튼을 세로로 배치 */
+.umx-material-list__row-right {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 머티리얼 오브젝트 필드 — 남은 공간 채움 */
+.umx-material-list__field {
+    flex-grow: 1;
+}
+
+/* 행 내 버튼 그룹 — 가로 배치 */
+.umx-material-list__row-buttons {
+    flex-direction: row;
+    margin-top: 2px;
+}
+
+/* 행 내 개별 버튼 — 균등 분배 */
+.umx-material-list__row-button {
+    flex-grow: 1;
+}
+
+/* 드래그 호버 시 행 하이라이트 */
+.umx-material-list__row--highlight {
+    background-color: var(--umx-bg-hover);
+}
+
+/* 선택된 머티리얼 행 — 파란색 강조 */
+.umx-material-list__row--selected {
+    background-color: rgb(60, 90, 150);
+}

@@ -1,0 +1,160 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="root" class="assetlib-root">
+        <!-- Header: PicoBerry icon + label (left) + Credit display (right) -->
+        <ui:VisualElement name="header-row" class="assetlib-header-row">
+            <ui:Button name="picoberry-home-button" class="assetlib-header-left assetlib-picoberry-home-btn" tooltip="Open PicoBerry workspace">
+                <ui:VisualElement name="picoberry-icon" class="assetlib-picoberry-icon" />
+                <ui:Label text="PicoBerry" class="assetlib-picoberry-label" />
+            </ui:Button>
+            <ui:VisualElement name="header-right" class="assetlib-header-right">
+                <ui:Button name="credit-button" class="assetlib-credit-group assetlib-picoberry-home-btn" tooltip="Open billing dashboard">
+                    <ui:VisualElement name="credit-icon" class="assetlib-credit-icon" />
+                    <ui:Label name="credit-value" text="0" class="assetlib-credit-value" />
+                </ui:Button>
+                <ui:Button name="workspace-switcher-button" class="assetlib-workspace-switcher-button" tooltip="Switch workspace">
+                    <ui:VisualElement name="workspace-switcher-icon" class="assetlib-workspace-switcher-icon" />
+                </ui:Button>
+                <ui:Button name="profile-dashboard-button" class="assetlib-profile-dashboard-button" tooltip="Open PicoBerry profile">
+                    <ui:VisualElement name="profile-dashboard-icon" class="assetlib-profile-dashboard-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Profile dropdown popup (root 직속, header 위에 절대 배치) -->
+        <ui:VisualElement name="profile-popup" class="profile-popup hidden">
+            <ui:Button name="profile-popup-profile-btn" class="profile-popup-item" text="Profile" />
+            <ui:Button name="profile-popup-logout-btn"  class="profile-popup-item profile-popup-logout" text="Logout" />
+        </ui:VisualElement>
+
+        <!-- Workspace switcher overlay: MAX 멤버용 토글. 외부 클릭으로 dismiss. -->
+        <ui:VisualElement name="workspace-overlay" class="workspace-overlay hidden">
+            <ui:VisualElement name="workspace-overlay-backdrop" class="workspace-overlay-backdrop" />
+            <ui:VisualElement name="workspace-popup" class="workspace-popup">
+                <ui:Label text="CHOOSE WORKSPACE" class="workspace-popup-title" />
+                <ui:Button name="workspace-popup-personal-btn" class="workspace-popup-item">
+                    <ui:VisualElement name="workspace-popup-personal-icon" class="workspace-popup-item-icon" />
+                    <ui:VisualElement class="workspace-popup-item-body">
+                        <ui:VisualElement class="workspace-popup-item-row">
+                            <ui:Label text="Personal" class="workspace-popup-item-label" />
+                            <ui:VisualElement name="workspace-popup-personal-check" class="workspace-popup-check hidden" />
+                        </ui:VisualElement>
+                        <ui:Label name="workspace-popup-personal-desc" text="Your private workspace. Assets and collections you create here are only visible to you." class="workspace-popup-item-desc" />
+                    </ui:VisualElement>
+                </ui:Button>
+                <ui:Button name="workspace-popup-shared-btn" class="workspace-popup-item">
+                    <ui:VisualElement name="workspace-popup-shared-icon" class="workspace-popup-item-icon" />
+                    <ui:VisualElement class="workspace-popup-item-body">
+                        <ui:VisualElement class="workspace-popup-item-row">
+                            <ui:Label text="Team" class="workspace-popup-item-label" />
+                            <ui:VisualElement name="workspace-popup-shared-check" class="workspace-popup-check hidden" />
+                        </ui:VisualElement>
+                        <ui:Label name="workspace-popup-shared-desc" text="A workspace all 4 team members share. Assets and collections you create here are visible to everyone in the group." class="workspace-popup-item-desc" />
+                    </ui:VisualElement>
+                </ui:Button>
+                <ui:Label name="workspace-popup-note" text="Heads up — workspace switching applies to the asset list and collections. Newly generated assets save to the currently active workspace." class="workspace-popup-note" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Workspace promo overlay: 비-MAX 사용자에게 팀 플랜 안내. 외부 클릭으로 dismiss. -->
+        <ui:VisualElement name="workspace-promo-overlay" class="workspace-overlay hidden">
+            <ui:VisualElement name="workspace-promo-overlay-backdrop" class="workspace-overlay-backdrop" />
+            <ui:VisualElement name="workspace-promo-popup" class="workspace-promo-popup">
+                <ui:VisualElement name="workspace-promo-icon" class="workspace-promo-icon" />
+                <ui:Label text="Team workspace" class="workspace-promo-title" />
+                <ui:Label text="On the MAX plan, up to 4 members share a single workspace, group-pool credits, and every premium model." class="workspace-promo-desc" />
+                <ui:VisualElement class="workspace-promo-features">
+                    <ui:Label text="• Shared asset library and collections" class="workspace-promo-feature" />
+                    <ui:Label text="• Pooled credits for the whole team" class="workspace-promo-feature" />
+                    <ui:Label text="• Up to 4 seats (owner + 3)" class="workspace-promo-feature" />
+                </ui:VisualElement>
+                <ui:Button name="workspace-promo-cta-btn" class="workspace-promo-cta-btn" text="See MAX plan" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Category filter row: Image / 3D (outside scroll, visually attached to content) -->
+        <ui:VisualElement name="filter-row" class="assetlib-filter-row">
+            <ui:Button name="filter-image" class="assetlib-filter-btn left">
+                <ui:VisualElement name="filter-image-icon" class="assetlib-filter-icon" />
+                <ui:Label text="Image" class="assetlib-filter-label" />
+            </ui:Button>
+            <ui:Button name="filter-3d" class="assetlib-filter-btn right selected">
+                <ui:VisualElement name="filter-3d-icon" class="assetlib-filter-icon" />
+                <ui:Label text="3D" class="assetlib-filter-label" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <!-- Generate button (attached below filter row) -->
+        <ui:Button name="btn-generate" class="assetlib-generate-button-inline">
+            <ui:VisualElement name="generate-icon" class="assetlib-generate-icon" />
+            <ui:Label name="generate-label" text="Generate 3D" class="assetlib-generate-label" />
+        </ui:Button>
+
+        <!-- Content area (separate background from header) -->
+        <ui:VisualElement name="content-area" class="assetlib-content-area">
+            <!-- Refresh bar -->
+            <ui:VisualElement name="refresh-bar" class="assetlib-refresh-bar">
+                <ui:VisualElement name="free-plan-usage-badge" class="assetlib-free-plan-usage-badge">
+                    <ui:Label name="free-usage-downloads" class="assetlib-free-usage-text" />
+                    <ui:Button name="free-usage-downloads-upgrade" text="Upgrade" class="assetlib-free-usage-upgrade-btn" tooltip="Upgrade to remove the monthly download limit" />
+                    <ui:Label name="free-usage-assets" class="assetlib-free-usage-text" />
+                    <ui:Button name="free-usage-assets-upgrade" text="Upgrade" class="assetlib-free-usage-upgrade-btn" tooltip="Upgrade to remove the asset storage limit" />
+                </ui:VisualElement>
+                <ui:Button name="btn-bulk-delete" class="assetlib-bulk-action-btn hidden" tooltip="Delete selected assets">
+                    <ui:VisualElement name="bulk-delete-icon" class="assetlib-bulk-action-icon" />
+                </ui:Button>
+                <ui:Button name="btn-bulk-add-to-scene" class="assetlib-bulk-action-btn hidden" tooltip="Add selected assets to Scene">
+                    <ui:VisualElement name="bulk-add-to-scene-icon" class="assetlib-bulk-action-icon" />
+                </ui:Button>
+                <ui:Button name="btn-bulk-add-to-collection" class="assetlib-bulk-action-btn hidden" tooltip="Add selected assets to Collection">
+                    <ui:VisualElement name="bulk-add-to-collection-icon" class="assetlib-bulk-action-icon" />
+                </ui:Button>
+                <ui:Button name="btn-clear-selection" class="assetlib-bulk-action-btn hidden" tooltip="Clear selection">
+                    <ui:VisualElement name="clear-selection-icon" class="assetlib-bulk-action-icon" />
+                </ui:Button>
+                <ui:VisualElement name="bulk-separator" class="assetlib-bulk-separator hidden" />
+                <ui:Button name="btn-refresh" class="assetlib-refresh-btn" tooltip="Refresh asset list">
+                    <ui:VisualElement name="refresh-icon" class="assetlib-refresh-icon" />
+                </ui:Button>
+                <ui:Button name="btn-view-toggle" class="assetlib-view-toggle-btn" tooltip="Toggle view mode">
+                    <ui:VisualElement name="view-toggle-icon" class="assetlib-view-toggle-icon" />
+                </ui:Button>
+                <ui:Button name="btn-collections" class="assetlib-view-toggle-btn" tooltip="Open collections">
+                    <ui:VisualElement name="collections-icon" class="assetlib-view-toggle-icon" />
+                </ui:Button>
+            </ui:VisualElement>
+            <!-- Asset grid -->
+            <ui:ScrollView name="asset-scroll" mode="Vertical" class="asset-scroll">
+                <ui:VisualElement name="asset-grid" class="asset-grid" />
+            </ui:ScrollView>
+
+            <!-- Empty state -->
+            <ui:VisualElement name="empty-state" class="empty-state hidden">
+                <ui:Label text="No assets yet" class="empty-state-label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Tool overlay container -->
+        <ui:VisualElement name="tool-overlay" class="overlay-container hidden">
+            <ui:VisualElement name="tool-overlay-backdrop" class="overlay-backdrop" />
+            <ui:VisualElement name="tool-overlay-panel" class="overlay-panel" />
+        </ui:VisualElement>
+
+        <!-- Collection overlay container (rendered below preview so asset preview can appear on top) -->
+        <ui:VisualElement name="collection-overlay" class="overlay-container hidden">
+            <ui:VisualElement name="collection-overlay-backdrop" class="overlay-backdrop" />
+            <ui:VisualElement name="collection-overlay-panel" class="overlay-panel" />
+        </ui:VisualElement>
+
+        <!-- Preview overlay container -->
+        <ui:VisualElement name="preview-overlay" class="overlay-container overlay-container-bottom hidden">
+            <ui:VisualElement name="preview-overlay-backdrop" class="overlay-backdrop" />
+            <ui:VisualElement name="preview-overlay-panel" class="overlay-panel preview-overlay-panel" />
+        </ui:VisualElement>
+
+        <!-- Add-to-Collection dialog overlay (rendered on top of everything else) -->
+        <ui:VisualElement name="add-to-collection-overlay" class="overlay-container hidden">
+            <ui:VisualElement name="add-to-collection-overlay-backdrop" class="overlay-backdrop" />
+            <ui:VisualElement name="add-to-collection-overlay-panel" class="overlay-panel" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

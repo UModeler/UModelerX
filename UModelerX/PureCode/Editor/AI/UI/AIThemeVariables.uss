@@ -1,0 +1,27 @@
+/* ---------- AI Theme Variables (Unity default) ---------- */
+/* Applied to root of AI windows; override with AIThemePicoBerry.uss when theme is PicoBerry. */
+
+/* Unity 기본 테마 CSS 변수: 회색 계열 기본 색상 */
+:root {
+    --ai-bg: rgb(56, 56, 56);
+    --ai-active-btn-bg: rgb(75, 75, 75);
+    --ai-active-btn-border: rgb(75, 75, 75);
+    --ai-btn-border: rgb(26, 26, 26);
+    --ai-filter-toggle-border: rgb(86, 86, 86);
+    --ai-active-btn-label: rgb(255, 255, 255);
+    --ai-inactive-btn-label: rgb(146, 146, 146);
+    --ai-inactive-btn-bg: rgb(56, 56, 56);
+    --ai-toggle-active: rgb(186, 186, 186);
+    --ai-toggle-inactive: rgb(82, 82, 82);
+    --ai-generate-btn-bg: rgb(66, 66, 66);
+    --ai-generate-btn-label: rgb(255, 255, 255);
+    --ai-generate-btn-hover: rgb(86, 86, 86);
+    --ai-preview-option-active: rgb(220, 220, 220);
+    --ai-loading-tint: rgb(152, 152, 152);
+    --ai-generating-percent: rgb(145, 145, 145);
+    --ai-selected-asset-border: rgb(186, 186, 186);
+    --ai-model-accent: rgb(175, 175, 175);
+    --ai-model-card-selected-bg: rgba(125, 125, 125, 0.3);
+    --ai-close-btn-hover-bg: rgb(80, 80, 80);
+    --ai-close-btn-hover-color: rgb(220, 220, 220);
+}

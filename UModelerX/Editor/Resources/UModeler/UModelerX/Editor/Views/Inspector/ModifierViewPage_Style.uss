@@ -1,0 +1,236 @@
+/* 모디파이어 리스트뷰와 동일한 패널 스타일 */
+.umx-panel {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    overflow: hidden;
+}
+
+/* 패널 헤더 */
+.umx-panel__header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 패널 콘텐츠 영역 */
+.umx-panel__content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* ModifierViewPage: 툴 프로퍼티 패널과 동일한 구조 */
+.umx-modifier-view-page {
+    flex-direction: column;
+    background-color: var(--umx-bg-base);
+    border-radius: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-width: 2px;
+    border-color: var(--umx-border);
+    overflow: hidden;
+}
+
+/* 접힌 상태 */
+.umx-modifier-view-page.collapsed .umx-modifier-view-page__content-wrapper {
+    max-height: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+/* 모디파이어 프로퍼티 타이틀바 (툴 프로퍼티 패널 헤더와 동일) */
+.umx-modifier-view-page__header {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-surface);
+    padding: 6px 10px;
+    cursor: link;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--umx-border);
+}
+
+/* 모디파이어 헤더 호버 상태 */
+.umx-modifier-view-page__header:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+/* 헤더 아이콘 (크기 고정, 우측 여백) */
+.umx-modifier-view-page__header-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+/* 헤더 타이틀 (볼드, 중앙 정렬, 남은 공간 채움) */
+.umx-modifier-view-page__header-title {
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    -unity-font-style: bold;
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+}
+
+/* 헤더 우측 스페이서 (아이콘과 대칭되는 빈 공간) */
+.umx-modifier-view-page__header-spacer {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+/* 콘텐츠 래퍼 (접힘 대상, 툴 프로퍼티 콘텐츠와 동일) */
+.umx-modifier-view-page__content-wrapper {
+    flex-direction: column;
+    padding: 6px 8px;
+    background-color: var(--umx-bg-content);
+    min-height: 40px;
+    max-height: 800px;
+    overflow: hidden;
+    transition-property: max-height, padding, opacity;
+    transition-duration: 0.2s;
+}
+
+/* 콘텐츠 스크롤 뷰 (가로 오버플로 방지) */
+.umx-modifier-view-page__scroll {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* 스크롤 뷰포트 최소 폭 제거 (가로 스크롤 방지) */
+.umx-modifier-view-page__scroll .unity-scroll-view__content-viewport {
+    min-width: 0;
+}
+
+/* 스크롤 콘텐츠 컨테이너 (축소 방지, 최소 폭 제거) */
+.umx-modifier-view-page__scroll .unity-scroll-view__content-container {
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+/* 프로퍼티 영역 (세로 배치, 하단 여백) */
+.umx-modifier-view-page__properties {
+    flex-direction: column;
+    margin-bottom: 8px;
+    min-width: 0;
+}
+
+/* 커스텀 UI 영역 (세로 배치, 상하 여백) */
+.umx-modifier-view-page__custom {
+    flex-direction: column;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 0;
+}
+
+/* 그리드 버튼 선택 상태 (파란색 강조) */
+.umx-grid-button--selected {
+    background-color: var(--umx-selection-soft);
+}
+
+/* 버튼 컨테이너 (가로 배치, 줄바꿈 허용) */
+.umx-modifier-view-page__buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2px;
+    min-width: 0;
+}
+
+/* 버튼 행 (BuildButtonsSection) */
+.umx-modifier-view-page__buttons-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* 버튼 행 내부 버튼 간격 */
+.umx-modifier-view-page__buttons-row .unity-button {
+    margin-right: 4px;
+    margin-bottom: 2px;
+}
+
+/* 프로퍼티 필드 공통 (BuildPropertyRow) */
+.umx-modifier-view-page__property-field {
+    margin-bottom: 2px;
+    margin-left: 6px;
+    margin-right: 6px;
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+/* 기타 타입 행 (unknown property type) */
+.umx-modifier-view-page__other-type-row {
+    flex-direction: row;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 0;
+}
+
+/* 기타 타입 라벨 (최대 폭 120px, 축소 방지) */
+.umx-modifier-view-page__other-type-row .umx-modifier-view-page__other-type-label {
+    min-width: 0;
+    flex-shrink: 0;
+    max-width: 120px;
+}
+
+/* 기타 타입 값 (남은 공간 채움) */
+.umx-modifier-view-page__other-type-row .umx-modifier-view-page__other-type-value {
+    min-width: 0;
+    flex-grow: 1;
+}
+
+/* 그리드 버튼 행 (CreateIntegerGridButtons) */
+.umx-modifier-view-page__grid-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 0;
+}
+
+/* 그리드 행 라벨 (축소 방지, 우측 여백) */
+.umx-modifier-view-page__grid-row .umx-modifier-view-page__grid-label {
+    min-width: 0;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+/* 그리드 버튼 컨테이너 (가로 배치, 줄바꿈 허용) */
+.umx-modifier-view-page__grid-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* 그리드 버튼 간격 */
+.umx-modifier-view-page__grid-buttons .unity-button {
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+/* Reset 버튼: 좌우 폭 전체 차지, 위 공백 축소 */
+.umx-modifier-view-page__reset-button {
+    margin-top: 0;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    flex-grow: 1;
+    flex-basis: 100%;
+    align-self: stretch;
+}

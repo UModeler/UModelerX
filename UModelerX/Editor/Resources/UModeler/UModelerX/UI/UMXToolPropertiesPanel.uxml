@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement name="umx-tool-properties-panel__root" class="umx-tool-properties-panel__root">
+    <ui:VisualElement name="umx-tool-properties-panel__header" class="umx-tool-properties-panel__header">
+      <ui:Image name="umx-tool-properties-panel__icon" class="umx-tool-properties-panel__icon" />
+      <ui:Label name="umx-tool-properties-panel__title" class="umx-tool-properties-panel__title" text="Tool Properties" />
+    </ui:VisualElement>
+    <ui:ScrollView name="umx-tool-properties-panel__content" class="umx-tool-properties-panel__content" mode="Vertical" horizontal-scroller-visibility="Hidden" />
+  </ui:VisualElement>
+</ui:UXML>

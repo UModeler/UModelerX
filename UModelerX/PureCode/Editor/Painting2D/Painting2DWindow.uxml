@@ -1,0 +1,278 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Style src="Painting2DWindow.uss" />
+    <ui:VisualElement class="main-container">
+
+        <!--menu bar-->
+        <ui:VisualElement name="menu-bar" class="menu-bar">
+            <ui:Button name="file-menu-button" text="File" class="menu-button" />
+            <ui:Button name="image-menu-button" text="Image" class="menu-button" />
+            <ui:Button name="view-menu-button" text="View" class="menu-button" />
+            <ui:VisualElement class="current-asset-spacer" />
+            <ui:Label name="current-asset-label" text="" class="current-asset-label" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="top-toolbar" class="top-toolbar">
+            <ui:VisualElement name="toolbar-left" class="toolbar-group-left">
+                <Tripolygon.UModelerX.Editor.Views.Inspector.UMXColorField name="painting-color-field" class="color-field"/>
+                <ui:VisualElement name="painting-color-separator" class="separator"/>
+                <ui:VisualElement name="settings-hand" class="tool-settings-page">
+                </ui:VisualElement>
+                <ui:VisualElement name="settings-move" class="tool-settings-page">
+                </ui:VisualElement>
+                <ui:VisualElement name="settings-brush" class="tool-settings-page active">
+                    <ui:Button text="●" tooltip="Shape: Circle/Square" class="brush-type-button"/>
+                    <ui:VisualElement class="separator" />
+                    <ui:Button name="brush-shape-button" class="composite-button">
+                        <ui:Label name="brush-size-label" text="15" class="comp-text-size"/>
+                        <ui:VisualElement name="brush-preview" class="comp-preview"/>
+                        <ui:Label text="▼" class="comp-arrow"/>
+                    </ui:Button>
+                    <ui:VisualElement class="separator" />
+                    <ui:VisualElement name="brush-opacity-box" class="composite-box">
+                        <ui:Label text="Opacity" class="composite-label"/>
+                        <uie:IntegerField name ="brush-opacity-field" value="100" class="prop-field"/>
+                        <ui:Button name="brush-opacity-button" text="▼" tooltip="Opacity" class="empty-button"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="separator" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="settings-eraser" class="tool-settings-page">
+                    <ui:Button text="●" tooltip="Shape: Circle/Square" class="brush-type-button"/>
+                    <ui:VisualElement class="separator" />
+                    <ui:Button name="eraser-shape-button" class="composite-button">
+                        <ui:Label name="eraser-size-label" text="15" class="comp-text-size"/>
+                        <ui:VisualElement name="eraser-preview" class="comp-preview"/>
+                        <ui:Label text="▼" class="comp-arrow"/>
+                    </ui:Button>
+                    <ui:VisualElement class="separator" />
+                    <ui:VisualElement name="eraser-opacity-box" class="composite-box">
+                        <ui:Label text="Opacity" class="composite-label"/>
+                        <uie:IntegerField name="eraser-opacity-field" value="100" class="prop-field"/>
+                        <ui:Button name="eraser-opacity-button" text="▼" tooltip="Opacity" class="empty-button"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="separator" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="settings-bucket" class="tool-settings-page">
+                    <ui:Button name="bucket-mode-button" class="property-dropdown">
+                        <ui:Label name="bucket-mode-label" text="Polygon Fill" class="bucket-mode-label"/>
+                        <ui:Label text="▼" class="comp-arrow bucket-mode-arrow"/>
+                    </ui:Button>
+                    <ui:VisualElement class="separator" />
+                    <ui:VisualElement name="bucket-flood-tolerance-row" class="brush-setting-property" style="display: none;">
+                        <ui:Label name="bucket-flood-tolerance-label" text="Tolerance" class="brush-property-label"/>
+                        <uie:IntegerField name="bucket-flood-tolerance-field" value="0" class="brush-property-field"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="separator" />
+                    <ui:Button name="bucket-triangle-button" class="small-icon-button triangle-icon"/>
+                    <ui:Button name="bucket-erase-button" class="small-icon-button eraser-icon"/>
+                    <ui:VisualElement class="separator" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="settings-eye-dropper" class="tool-settings-page"/>
+                <ui:VisualElement name="settings-gradient" class="tool-settings-page">
+                    <uie:GradientField name="gradient-field" class="gradient-preview"/>
+                    <ui:VisualElement class="separator" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="settings-free-transform" class="tool-settings-page">
+                </ui:VisualElement>
+                <ui:VisualElement name="settings-selection" class="tool-settings-page">
+                    <ui:VisualElement name="dynamic-selection-bounds-container" class="dynamic-selection-bounds-container"/>
+                    <ui:VisualElement name="rect-selection-bounds" class="rect-selection-bounds-row" style="display: none;">
+                        <ui:VisualElement name="rect-selection-x-row" class="brush-setting-property">
+                            <ui:Label text="X" class="rect-selection-bounds-label"/>
+                            <uie:IntegerField name="rect-selection-x-field" value="0" class="rect-selection-bounds-field"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="rect-selection-y-row" class="brush-setting-property">
+                            <ui:Label text="Y" class="rect-selection-bounds-label"/>
+                            <uie:IntegerField name="rect-selection-y-field" value="0" class="rect-selection-bounds-field"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="rect-selection-width-row" class="brush-setting-property">
+                            <ui:Label text="W" class="rect-selection-bounds-label"/>
+                            <uie:IntegerField name="rect-selection-width-field" value="0" class="rect-selection-bounds-field"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="rect-selection-height-row" class="brush-setting-property">
+                            <ui:Label text="H" class="rect-selection-bounds-label"/>
+                            <uie:IntegerField name="rect-selection-height-field" value="0" class="rect-selection-bounds-field"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="separator" />
+                    <ui:VisualElement name="selection-padder-box" class="composite-box">
+                        <ui:Label name="selection-padder-label" text="Padder" class="comp-text-label"/>
+                        <uie:FloatField name="selection-padder-field" value="0 px" class="prop-field"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="magic-wand-settings" class="magic-wand-settings-row" style="display: none;">
+                        <ui:VisualElement name="magic-wand-tolerance-row" class="brush-setting-property">
+                            <ui:Label name="magic-wand-tolerance-label" text="Tolerance" class="brush-property-label"/>
+                            <uie:IntegerField name="magic-wand-tolerance-field" value="0" class="brush-property-field"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="separator" />
+                        <ui:VisualElement name="magic-wand-contiguous-row" class="brush-setting-property">
+                            <ui:Label name="magic-wand-contiguous-label" text="Contiguous" class="brush-property-label"/>
+                            <ui:Toggle name="magic-wand-contiguous-toggle" value="true" class="magic-wand-contiguous-toggle" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <!--동적 툴 설정 패널: CreateSettingsPanel()이 non-null을 반환하는 새 툴에 사용됨-->
+                <ui:VisualElement name="dynamic-tool-settings-page" class="tool-settings-page" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tool-actions-container" class="toolbar-tool-actions" />
+            <ui:VisualElement class="separator" />
+            <ui:VisualElement class="toolbar-group-right">
+                <ui:Button name="grid-button" tooltip="Show Grid" class="small-icon-button grid-icon" />
+                <ui:Button name="snap-button" tooltip="Snap" class="small-icon-button snap-none" />
+                <ui:Button name="wire-button" tooltip="Show Wireframe" class="small-icon-button wire-icon" />
+                <ui:Button name="repeat-texture-button" tooltip="Repeat Texture" class="small-icon-button repeat-texture-icon" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement class="body-container">
+            <ui:VisualElement class="viewport">
+                <ui:Image name="test-image" class="render-image"/>
+            </ui:VisualElement>
+
+            <!--right-toolbar: 버튼은 Painting2DToolbarManager에 의해 동적으로 생성됨-->
+            <ui:VisualElement name="right-toolbar" class="right-toolbar" />
+
+            <!--레이어 패널-->
+            <ui:VisualElement name="layer-panel-container" class="layer-panel-container" />
+        </ui:VisualElement>
+
+        <!--overlay popups-->
+        <ui:VisualElement name="brush-shape-popup" class="brush-shape-popup hidden">
+            <ui:VisualElement name="brush-shape-popup-container" class="brush-shape-popup-container">
+                <ui:VisualElement name="bursh-size-setting" class="brush-setting-property">
+                    <ui:Label name="brush-size-label" text="Size" class="brush-property-label"/>
+                    <ui:SliderInt name="brush-size-slider" class="brush-property-slider"/>
+                    <uie:IntegerField name="brush-size-field" class="brush-property-field"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="bursh-hardness-setting" class="brush-setting-property">
+                    <ui:Label name="brush-hardness-label" text="Hardness" class="brush-property-label"/>
+                    <ui:SliderInt name="brush-hardness-slider" class="brush-property-slider"/>
+                    <uie:IntegerField name="brush-hardness-field" class="brush-property-field"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="bursh-jittering-setting" class="brush-setting-property">
+                    <ui:Label name="brush-jittering-label" text="Jittering" class="brush-property-label"/>
+                    <ui:SliderInt name="brush-jittering-slider" class="brush-property-slider"/>
+                    <uie:IntegerField name="brush-jittering-field" class="brush-property-field"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="bursh-spacing-setting" class="brush-setting-property">
+                    <ui:Label name="brush-spacing-label" text="Spacing" class="brush-property-label"/>
+                    <ui:SliderInt name="brush-spacing-slider" class="brush-property-slider"/>
+                    <uie:IntegerField name="brush-spacing-field" class="brush-property-field"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="brush-opacity-popup" class="brush-opacity-popup hidden">
+            <ui:VisualElement name="brush-opacity-popup-container" class="brush-opacity-popup-container">
+                <ui:SliderInt name="brush-opacity-slider" class="brush-property-slider"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="bucket-mode-popup" class="bucket-mode-popup hidden">
+            <ui:VisualElement name="bucket-mode-popup-container" class="bucket-mode-popup-container">
+                <ui:Button name="bucket-polygon-mode-button" class="bucket-mode-popup-list-property selected"/>
+                <ui:Button name="bucket-flood-mode-button" class="bucket-mode-popup-list-property"/>
+                <ui:Button name="bucket-rect-mode-button" class="bucket-mode-popup-list-property"/>
+                <ui:Button name="bucket-polygonal-lasso-mode-button" class="bucket-mode-popup-list-property"/>
+                <ui:Button name="bucket-island-mode-button" class="bucket-mode-popup-list-property"/>
+                <ui:Button name="bucket-isolation-mode-button" class="bucket-mode-popup-list-property"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!--menu dropdowns-->
+        <ui:VisualElement name="file-menu-dropdown" class="menu-dropdown hidden">
+            <ui:VisualElement name="file-menu-dropdown-container" class="menu-dropdown-container">
+                <ui:Button name="file-new-button" text="New" class="menu-item-button" />
+                <ui:Button name="file-save-button" text="Save" class="menu-item-button" />
+                <ui:Button name="file-save-as-button" text="Save As New" class="menu-item-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="image-menu-dropdown" class="menu-dropdown hidden">
+            <ui:VisualElement name="image-menu-dropdown-container" class="menu-dropdown-container">
+                <ui:Button name="image-resolution-button" text="Resolution" class="menu-item-button" />
+                <ui:Button name="image-canvas-button" text="Canvas" class="menu-item-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="view-menu-dropdown" class="menu-dropdown hidden">
+            <ui:VisualElement name="view-menu-dropdown-container" class="menu-dropdown-container">
+                <ui:Button name="view-grid-button" text="Grid" class="menu-item-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="resolution-popup" class="resolution-popup hidden">
+            <ui:VisualElement name="resolution-popup-container" class="resolution-popup-container">
+                <ui:VisualElement class="resolution-row">
+                    <ui:Label text="W" class="resolution-label" />
+                    <uie:IntegerField name="resolution-width-field" value="512" class="resolution-field" />
+                </ui:VisualElement>
+                <ui:VisualElement class="resolution-row">
+                    <ui:Label text="H" class="resolution-label" />
+                    <uie:IntegerField name="resolution-height-field" value="512" class="resolution-field" />
+                </ui:VisualElement>
+                <ui:VisualElement class="resolution-lock-row">
+                    <ui:VisualElement class="lock-icon-element" />
+                    <ui:Toggle name="resolution-lock-toggle" value="true" />
+                </ui:VisualElement>
+                <ui:Button name="resolution-apply-button" text="Apply" class="resolution-apply-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="canvas-popup" class="canvas-popup hidden">
+            <ui:VisualElement name="canvas-popup-container" class="canvas-popup-container">
+                <ui:VisualElement class="resolution-row">
+                    <ui:Label text="W" class="resolution-label" />
+                    <uie:IntegerField name="canvas-width-field" value="512" class="resolution-field" />
+                </ui:VisualElement>
+                <ui:VisualElement class="resolution-row">
+                    <ui:Label text="H" class="resolution-label" />
+                    <uie:IntegerField name="canvas-height-field" value="512" class="resolution-field" />
+                </ui:VisualElement>
+                <ui:VisualElement name="canvas-anchor-grid" class="canvas-anchor-grid">
+                    <ui:VisualElement class="canvas-anchor-row">
+                        <ui:Button name="canvas-anchor-0" class="canvas-anchor-button" />
+                        <ui:Button name="canvas-anchor-1" class="canvas-anchor-button" />
+                        <ui:Button name="canvas-anchor-2" class="canvas-anchor-button" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="canvas-anchor-row">
+                        <ui:Button name="canvas-anchor-3" class="canvas-anchor-button" />
+                        <ui:Button name="canvas-anchor-4" class="canvas-anchor-button active" />
+                        <ui:Button name="canvas-anchor-5" class="canvas-anchor-button" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="canvas-anchor-row">
+                        <ui:Button name="canvas-anchor-6" class="canvas-anchor-button" />
+                        <ui:Button name="canvas-anchor-7" class="canvas-anchor-button" />
+                        <ui:Button name="canvas-anchor-8" class="canvas-anchor-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Button name="canvas-apply-button" text="Apply" class="resolution-apply-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="grid-popup" class="grid-popup hidden">
+            <ui:VisualElement name="grid-popup-container" class="grid-popup-container">
+                <ui:VisualElement class="grid-popup-mode-row">
+                    <ui:Button name="grid-mode-pixel-button" text="Pixel" class="grid-popup-mode-button active" />
+                    <ui:Button name="grid-mode-ratio-button" text="Ratio" class="grid-popup-mode-button" />
+                </ui:VisualElement>
+                <ui:VisualElement name="grid-pixel-row" class="grid-popup-row">
+                    <ui:Label text="Size (px)" class="grid-popup-label" />
+                    <uie:IntegerField name="grid-pixel-size-field" value="16" class="grid-popup-field" />
+                </ui:VisualElement>
+                <ui:VisualElement name="grid-ratio-row" class="grid-popup-row" style="display: none;">
+                    <ui:Label text="Divisions" class="grid-popup-label" />
+                    <uie:IntegerField name="grid-ratio-divisions-field" value="8" class="grid-popup-field" />
+                </ui:VisualElement>
+                <ui:VisualElement name="grid-subdivisions-row" class="grid-popup-row">
+                    <ui:Label text="Subdivisions" class="grid-popup-label" />
+                    <uie:IntegerField name="grid-subdivisions-field" value="2" class="grid-popup-field" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,25 @@
+﻿#pragma kernel CSMain
+
+struct VertexData
+{
+    float3 vertex;
+};
+
+RWStructuredBuffer<VertexData> vertexBuffer;
+
+AppendStructuredBuffer<uint> resultBuffer;
+float4x4 projTM;
+int offset;
+
+[numthreads(1,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	int index = offset + id.x;
+	float4 v1 = mul(projTM, float4(vertexBuffer[index].vertex, 1));
+	float2 p1 = v1.xy / v1.w;
+
+	if (p1.x <= 1 && p1.y <= 1 && p1.x >= 0 && p1.y >= 0)
+	{
+		resultBuffer.Append(index);
+	}
+}

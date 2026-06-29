@@ -1,0 +1,778 @@
+/* ── AIPreviewWindow — 웹 버전 레이아웃 적용 ────────────────────────────── */
+
+/* 프리뷰 루트 컨테이너: 세로 방향, 전체 높이 사용 */
+.ai-preview-root {
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--ai-bg);
+}
+
+/* ── Post actions (Remesh / Texture) ──────────────────────────────────── */
+
+/* 후처리 액션 버튼 행: 가로 정렬, 중앙 배치 */
+.preview-post-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 6px 4px;
+    background-color: var(--ai-bg);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(20, 20, 20);
+}
+
+/* 후처리 액션 버튼: 둥근 모서리, 가로 중앙 정렬 */
+.preview-post-action-btn {
+    height: 32px;
+    width: 45%;
+    max-width: 150px;
+    margin: 0 4px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgb(60, 60, 60);
+    background-color: rgb(45, 45, 45);
+    color: rgb(220, 220, 220);
+    -unity-font-style: normal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 후처리 액션 버튼 호버 상태 */
+.preview-post-action-btn:hover {
+    background-color: rgb(58, 58, 58);
+    border-color: rgb(80, 80, 80);
+}
+
+/* 후처리 액션 아이콘: 고정 크기, 오른쪽 여백 */
+.post-action-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+}
+
+/* 후처리 액션 라벨 텍스트 */
+.post-action-label {
+    font-size: 12px;
+    color: rgb(220, 220, 220);
+}
+
+/* ── 상단 툴바 ─────────────────────────────────────────────────────────── */
+
+/* 프리뷰 상단 툴바: 좌우 양끝 배치, 고정 높이 */
+.preview-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 34px;
+    min-height: 34px;
+    padding: 0 6px;
+    background-color: var(--ai-bg);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(20, 20, 20);
+}
+
+/* 툴바 왼쪽 영역: 가로 배치 */
+.toolbar-left {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 0;
+}
+
+/* 툴바 오른쪽 영역: 가로 배치 */
+.toolbar-right {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 0;
+}
+
+/* 툴바 구분선: 세로 1px 라인 */
+.toolbar-separator {
+    width: 1px;
+    height: 18px;
+    background-color: rgb(60, 60, 60);
+    margin: 0 6px;
+    flex-shrink: 0;
+}
+
+/* 툴바 아이콘 버튼: 투명 배경, 22px 정사각형 */
+.toolbar-icon-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 18px 18px;
+    -unity-background-image-tint-color: rgb(180, 180, 180);
+}
+
+/* 툴바 아이콘 버튼 호버 상태 */
+.toolbar-icon-btn:hover {
+    background-color: rgb(60, 60, 60);
+    -unity-background-image-tint-color: rgb(160, 160, 160);
+}
+
+/* 디스플레이 설정 아이콘 */
+.toolbar-icon-btn.display-settings {
+    background-image: resource('AI/view-option');
+}
+
+/* UV 뷰어 아이콘 */
+.toolbar-icon-btn.uv-viewer {
+    background-image: resource('AI/texture-detail');
+}
+
+/* 툴바 아이콘 버튼 활성 상태 색상 */
+.toolbar-icon-btn.enabled {
+    -unity-background-image-tint-color: var(--ai-preview-option-active);
+}
+
+/* 셰이더 모드 버튼 (기존 스타일 유지) */
+.preview-shader-button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0 2px;
+    border-width: 0;
+    border-radius: 4px;
+    background-size: 18px 18px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(128, 128, 128);
+}
+
+/* 셰이더 모드 버튼 호버 상태 */
+.preview-shader-button:hover {
+    background-color: rgb(60, 60, 60);
+    -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+
+/* 셰이더 모드별 아이콘: Solid, Base, PBR, Wireframe */
+.preview-shader-button.solid     { background-image: resource('AI/solid'); }
+.preview-shader-button.base      { background-image: resource('AI/texture'); }
+.preview-shader-button.pbr       { background-image: resource('AI/pbr'); }
+.preview-shader-button.wireframe { background-image: resource('AI/wireframe'); }
+
+/* 셰이더 모드 버튼 활성 상태 색상 */
+.preview-shader-button.enabled {
+    -unity-background-image-tint-color: var(--ai-preview-option-active);
+}
+
+/* 텍스처 썸네일 버튼 */
+.tex-thumb-btn {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    margin: 0 2px;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    background-color: rgb(50, 50, 50);
+    background-size: 100% 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 텍스처 썸네일 버튼 호버 상태 */
+.tex-thumb-btn:hover {
+    border-color: rgb(140, 140, 140);
+}
+
+/* 텍스처 썸네일 버튼 선택 상태 */
+.tex-thumb-btn.selected {
+    border-color: rgb(255, 255, 255);
+}
+
+/* ── 통계 박스 (프리뷰 위 오버레이) ────────────────────────────────────── */
+
+/* 통계 박스: 프리뷰 좌상단 절대 위치 오버레이 */
+.stats-box {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(18, 18, 18, 0.82);
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+/* 통계 행: 라벨+값 가로 배치 */
+.stats-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+/* 통계 행 마지막 항목: 하단 여백 제거 — C# 코드에서 .stats-row-last 클래스를 부여 */
+.stats-row-last {
+    margin-bottom: 0;
+}
+
+/* 통계 라벨: 고정 너비, 작은 폰트 */
+.stats-row-label {
+    font-size: 10px;
+    color: rgb(130, 130, 130);
+    width: 58px;
+    flex-shrink: 0;
+}
+
+/* 통계 값: 볼드체 */
+.stats-row-value {
+    font-size: 10px;
+    color: rgb(210, 210, 210);
+    -unity-font-style: bold;
+}
+
+/* ── 배경 제거 토글 버튼 (우상단 오버레이) ──────────────────────────────── */
+
+/* 기본: 어두운 박스 위 아이콘. .active 클래스가 붙으면 강조 색으로 변경. */
+.bg-toggle-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-radius: 6px;
+    background-color: rgba(18, 18, 18, 0.82);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.bg-toggle-btn:hover {
+    background-color: rgba(40, 40, 40, 0.92);
+}
+
+.bg-toggle-btn.active {
+    background-color: rgba(60, 132, 255, 0.92);
+}
+
+/* ── 프리뷰 영역 ────────────────────────────────────────────────────────── */
+
+/* 프리뷰 래퍼: 상대 위치, 남은 공간 채움 */
+.preview-wrap {
+    position: relative;
+    flex-grow: 1;
+}
+
+/* 렌더 텍스처 프리뷰 이미지 */
+.rt-preview {
+    width: 100%;
+    height: 400px;
+}
+
+/* 프리뷰 플레이스홀더 텍스트: 중앙 배치 */
+.preview-placeholder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    color: rgb(150, 150, 150);
+    font-size: 14px;
+    -unity-text-align: middle-center;
+}
+
+/* 프리뷰 로딩 오버레이: 반투명 배경 */
+.preview-loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* 프리뷰 로딩 아이콘: 회전 애니메이션용 */
+.preview-loading-icon {
+    width: 36px;
+    height: 36px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource('AI/loader');
+}
+
+/* ── Display Settings 팝업 ─────────────────────────────────────────────── */
+
+/* 디스플레이 설정 팝업: 프리뷰 좌상단 절대 위치 */
+.display-settings-popup {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 180px;
+    background-color: rgb(28, 28, 28);
+    border-color: rgb(60, 60, 60);
+    border-width: 1px;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+/* 설정 팝업 제목: 볼드체, 하단 여백 */
+.settings-popup-title {
+    font-size: 11px;
+    -unity-font-style: bold;
+    color: rgb(200, 200, 200);
+    margin-bottom: 6px;
+}
+
+/* 설정 행: 라벨과 컨트롤 양끝 배치 */
+.settings-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+/* 설정 행 (슬라이더 전용): 상단 여백 추가 */
+.settings-row--slider {
+    margin-top: 2px;
+}
+
+/* 설정 라벨 텍스트 */
+.settings-label-text {
+    font-size: 11px;
+    color: rgb(180, 180, 180);
+    flex-grow: 1;
+}
+
+/* 설정 슬라이더: 왼쪽 여백, 남은 공간 채움 */
+.settings-slider {
+    flex-grow: 1;
+    padding: 0;
+    margin: 0 0 0 6px;
+}
+
+/* 설정 슬라이더 입력부 중앙 정렬 */
+.settings-slider > .unity-base-field__input {
+    align-self: center;
+}
+
+/* Light 슬라이더 아이콘 (기존 스타일 재사용) */
+.preview-option-light-icon {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    background-size: 16px 16px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgb(160, 160, 160);
+}
+
+/* 조명 강도 아이콘 */
+.preview-option-light-icon.intensity {
+    background-image: resource('AI/Light_Intensity');
+}
+
+/* 조명 회전 아이콘 */
+.preview-option-light-icon.rotate {
+    background-image: resource('AI/Light_Rotate');
+}
+
+/* ── UV 텍스처 뷰어 팝업 ──────────────────────────────────────────────── */
+
+/* UV 뷰어 팝업: 프리뷰 내 중앙 오버레이 */
+.uv-viewer-backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.uv-viewer-popup {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background-color: rgb(24, 24, 24);
+    border-color: rgb(60, 60, 60);
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 10px;
+    flex-direction: column;
+}
+
+/* UV 뷰어 헤더: 제목+닫기 양끝 배치 */
+.uv-viewer-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+/* UV 뷰어 제목: 볼드체 */
+.uv-viewer-title {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgb(210, 210, 210);
+}
+
+/* UV 뷰어 닫기 버튼 */
+.uv-close-btn {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(160, 160, 160);
+    font-size: 12px;
+}
+
+/* UV 뷰어 닫기 버튼 호버 상태 */
+.uv-close-btn:hover {
+    background-color: var(--ai-close-btn-hover-bg, rgb(80, 50, 50));
+    color: var(--ai-close-btn-hover-color, rgb(220, 100, 100));
+}
+
+/* UV 텍스처 탭 행: 가로 배치 */
+.uv-tex-tabs {
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+
+/* UV 텍스처 탭 버튼: 균등 분배, 둥근 모서리 */
+.uv-tab {
+    flex-grow: 1;
+    height: 24px;
+    font-size: 11px;
+    border-width: 0;
+    border-radius: 4px;
+    margin: 0 2px;
+    background-color: rgb(45, 45, 45);
+    color: rgb(140, 140, 140);
+}
+
+/* UV 텍스처 탭 호버 상태 */
+.uv-tab:hover {
+    background-color: rgb(60, 60, 60);
+    color: rgb(200, 200, 200);
+}
+
+/* UV 텍스처 탭 선택 상태: 볼드체, 흰색 텍스트 */
+.uv-tab--selected {
+    background-color: rgb(75, 75, 75);
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+}
+
+/* UV 텍스처 이미지: 남은 공간 채움 */
+.uv-tex-image {
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgb(15, 15, 15);
+    border-radius: 4px;
+}
+
+/* ── 하단 바 ────────────────────────────────────────────────────────────── */
+
+/* 하단 바: 에셋 이름 + 컨트롤 양끝 배치, 고정 높이 */
+.bottom-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    min-height: 30px;
+    padding: 0 8px;
+    background-color: rgb(26, 26, 26);
+    border-top-width: 1px;
+    border-top-color: rgb(20, 20, 20);
+    flex-shrink: 0;
+}
+
+/* 에셋 이름 라벨: 볼드체, 말줄임 처리 */
+.asset-name-label {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgb(210, 210, 210);
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 하단 바 오른쪽 영역: 가로 배치 */
+.bottom-bar-right {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* 상세 패널 토글 버튼: 셰브론 아이콘 */
+.details-toggle-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin-right: 4px;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: resource('AI/chevron-up');
+    background-size: 16px 16px;
+    -unity-background-image-tint-color: rgb(160, 160, 160);
+}
+
+/* 상세 패널 토글 버튼 호버 상태 */
+.details-toggle-btn:hover {
+    background-color: rgb(50, 50, 50);
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+}
+
+/* 상세 패널 토글 버튼 열림 상태: 아래 방향 화살표 */
+.details-toggle-btn.open {
+    background-image: resource('AI/chevron-down');
+}
+
+/* 프롬프트 재사용 버튼 */
+.reuse-prompt-btn {
+    height: 22px;
+    font-size: 10px;
+    padding: 0 6px;
+    border-width: 0px;
+    background-color: rgb(26, 26, 26);
+    color: rgb(152, 152, 152);
+}
+
+/* 프롬프트 재사용 버튼 호버 상태 */
+.reuse-prompt-btn:hover {
+    color: rgb(212, 212, 212);
+}
+
+/* 프롬프트 재사용 버튼 비활성 상태 */
+.reuse-prompt-btn:disabled {
+    opacity: 0.4;
+}
+
+/* ── 씬 배치 액션 바 ───────────────────────────────────────────────────── */
+
+/* 씬 배치 액션 바: 중앙 정렬, 상단 구분선 */
+.scene-action-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    background-color: rgb(26, 26, 26);
+    border-top-width: 1px;
+    border-top-color: rgb(20, 20, 20);
+    flex-shrink: 0;
+}
+
+/* 씬 추가 버튼: 강조색 배경, 둥근 모서리 */
+.add-to-scene-btn {
+    height: 32px;
+    flex-grow: 1;
+    max-width: 280px;
+    padding: 0 16px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--ai-generate-btn-bg);
+    background-color: var(--ai-generate-btn-bg);
+    color: var(--ai-generate-btn-label);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 씬 추가 버튼 호버 상태 */
+.add-to-scene-btn:hover {
+    background-color: var(--ai-generate-btn-hover);
+    border-color: var(--ai-generate-btn-hover);
+}
+
+/* 씬 추가 버튼 비활성 상태 */
+.add-to-scene-btn:disabled {
+    opacity: 0.4;
+}
+
+/* 보조 버튼: 투명 배경, 테두리만 */
+.scene-action-secondary-btn {
+    height: 32px;
+    padding: 0 12px;
+    margin-right: 6px;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgb(80, 80, 80);
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(180, 180, 180);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-action-secondary-btn:hover {
+    background-color: rgb(50, 50, 50);
+    border-color: rgb(110, 110, 110);
+}
+
+.scene-action-secondary-btn .add-to-scene-icon {
+    -unity-background-image-tint-color: rgb(180, 180, 180);
+}
+
+.scene-action-secondary-btn .add-to-scene-label {
+    color: rgb(180, 180, 180);
+}
+
+/* 씬 추가 아이콘: 버튼 내부 아이콘 */
+.add-to-scene-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--ai-generate-btn-label);
+}
+
+/* 씬 추가 라벨: 볼드체 */
+.add-to-scene-label {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: var(--ai-generate-btn-label);
+}
+
+/* ── 상세 패널 ─────────────────────────────────────────────────────────── */
+
+/* 상세 패널: 접기/펼치기 애니메이션 지원 */
+.details-panel {
+    background-color: rgb(22, 22, 22);
+    border-top-width: 1px;
+    border-top-color: rgb(20, 20, 20);
+    flex-shrink: 0;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 10px;
+    transition-property: max-height, opacity, padding;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+}
+
+/* 상세 패널 열림 상태 */
+.details-panel.open {
+    max-height: 200px;
+    opacity: 1;
+    padding: 8px 10px;
+}
+
+/* 상세 패널 콘텐츠 행: 소스 이미지 + 텍스트 열 */
+.details-content-row {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.details-text-column {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* 소스 이미지 썸네일 (Image-to-3D) */
+.details-source-image {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    margin-right: 8px;
+    border-radius: 4px;
+    background-color: rgb(35, 35, 35);
+    -unity-background-scale-mode: scale-to-fit;
+    flex-shrink: 0;
+}
+
+/* 상세 패널 프롬프트 텍스트: 줄바꿈 허용 */
+.details-prompt-text {
+    font-size: 11px;
+    color: rgb(200, 200, 200);
+    white-space: normal;
+    margin-bottom: 5px;
+}
+
+/* 상세 메타 행: 가로 배치, 줄바꿈 허용 */
+.details-meta-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+/* 상세 메타 텍스트: 회색, 작은 폰트 */
+.details-meta {
+    font-size: 10px;
+    color: rgb(140, 140, 140);
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+/* 상세 타임스탬프: 어두운 회색 */
+.details-timestamp {
+    font-size: 10px;
+    color: rgb(100, 100, 100);
+}
+
+/* ── 애니메이션 컨트롤 (좌하단 오버레이) ─────────────────────────────── */
+
+/* Play/Pause + 타임라인 행 — 프리뷰 영역 좌하단 절대 위치 */
+.animation-controls {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    background-color: rgba(28, 28, 28, 0.85);
+    border-radius: 4px;
+    padding: 0 6px 0 4px;
+}
+
+/* Play/Pause 버튼 — 정사각, 좌측 고정 */
+.anim-play-pause-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0 6px 0 0;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 14px 14px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+    flex-shrink: 0;
+}
+
+.anim-play-pause-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Play 상태 (기본): play 아이콘 */
+.anim-play-pause-btn.play {
+    background-image: resource('AI/play');
+}
+
+/* Pause 상태: 재생 중일 때 표시 */
+.anim-play-pause-btn.pause {
+    background-image: resource('AI/pause');
+}
+
+/* 타임라인 슬라이더 — 버튼 오른쪽, 남은 공간 채움 */
+.anim-timeline {
+    flex-grow: 1;
+    margin: 0;
+    min-height: 18px;
+}
+
+/* 슬라이더 트랙 영역 가운데 정렬 */
+.anim-timeline > .unity-base-field__input {
+    align-self: center;
+    flex-grow: 1;
+}
+
+/* ── 공통 ───────────────────────────────────────────────────────────────── */
+
+/* 요소 숨김 유틸리티 */
+.hidden {
+    display: none;
+}

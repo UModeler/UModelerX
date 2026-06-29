@@ -1,0 +1,106 @@
+/* UMXEdMeshInfoElement 씬뷰 정보 패널 */
+
+/* 루트 패널 (공통) */
+#umx-edmesh-info {
+    width: 200px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+/* 가시성 토글 버튼 */
+.umx-edmesh-vis-btn {
+    width: 18px;
+    height: 16px;
+    margin-right: 2px;
+    margin-left: 0;
+    padding: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 가시성 버튼 내 아이콘 */
+.umx-edmesh-vis-btn__icon {
+    width: 16px;
+    height: 14px;
+}
+
+/* 헤더 행 (공통) */
+.umx-edmesh-info__header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+    border-bottom-width: 1px;
+    padding-bottom: 2px;
+}
+
+/* 타이틀 레이블 (공통) */
+.umx-edmesh-info__title {
+    font-size: 11px;
+    -unity-font-style: bold;
+    flex-grow: 1;
+}
+
+/* 데이터 행 (공통) */
+.umx-edmesh-info__row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1px;
+    height: 18px;
+}
+
+/* 이름 레이블 (공통) */
+.umx-edmesh-info__name {
+    font-size: 11px;
+    min-width: 70px;
+}
+
+/* 값 레이블 (공통) */
+.umx-edmesh-info__value {
+    font-size: 11px;
+    flex-grow: 1;
+    -unity-text-align: middle-right;
+}
+
+
+/* ═══════════════════════════════════════════════
+ * 다크 테마
+ * ═══════════════════════════════════════════════ */
+.umx-theme--dark#umx-edmesh-info {
+    background-color: rgba(10, 10, 10, 0.5);
+}
+
+.umx-theme--dark .umx-edmesh-info__header {
+    border-bottom-color: rgba(77, 77, 77, 0.5);
+}
+
+.umx-theme--dark .umx-edmesh-info__name {
+    color: rgb(179, 179, 179);
+}
+
+
+/* ═══════════════════════════════════════════════
+ * 라이트 테마
+ * ═══════════════════════════════════════════════ */
+.umx-theme--light#umx-edmesh-info {
+    background-color: rgba(210, 210, 210, 0.4);
+}
+
+.umx-theme--light .umx-edmesh-info__header {
+    border-bottom-color: rgba(80, 80, 80, 0.4);
+}
+
+.umx-theme--light .umx-edmesh-info__title {
+    color: #1a1a1a;
+}
+
+.umx-theme--light .umx-edmesh-info__name {
+    color: #444444;
+}
+
+.umx-theme--light .umx-edmesh-info__value {
+    color: #1a1a1a;
+}

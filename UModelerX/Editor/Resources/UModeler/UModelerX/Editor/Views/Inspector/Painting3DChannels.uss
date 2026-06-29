@@ -1,0 +1,76 @@
+/* Painting3D Channels 섹션 스타일 */
+
+/* 채널 섹션 콘텐츠 영역 */
+.painting3d-channels-content {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+/* 채널 리스트 */
+#channels-list {
+    min-height: 26px;
+    max-height: 200px;
+}
+
+/* 해상도 드롭다운 */
+#channels-resolution {
+    margin-top: 4px;
+}
+
+/* Height as Normal 컨테이너 */
+#channels-height-normal {
+    margin-top: 4px;
+}
+
+/* Height as Normal 슬라이더 들여쓰기 */
+#channels-height-normal-strength {
+    margin-left: 16px;
+}
+
+/* Export 컨테이너 */
+#channels-export {
+    margin-top: 6px;
+}
+
+/* Export 버튼 간격 */
+#channels-export .unity-button {
+    margin-bottom: 2px;
+}
+
+/* 채널 상태바 (추가/삭제 버튼 영역) */
+#channels-status-bar {
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 25px;
+    margin-top: 4px;
+}
+
+/* 채널 추가/삭제 버튼 */
+#channels-status-bar .unity-button {
+    width: 24px;
+    height: 20px;
+}
+
+/* 채널 리스트 아이템 행 */
+.painting3d-channel-row {
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    padding-left: 4px;
+}
+
+/* 채널 이름 라벨 */
+#channel-name-label {
+    flex-grow: 1;
+}
+
+/* 채널 포맷 라벨 */
+#channel-format-label {
+    width: 60px;
+    -unity-text-align: middle-right;
+    font-size: 10px;
+    color: var(--umx-text-muted);
+    margin-right: 4px;
+}

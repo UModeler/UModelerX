@@ -1,0 +1,46 @@
+/* GradientSlider — 그라데이션 트랙 슬라이더 USS */
+
+/* 최상위 컨테이너 */
+.gradient-slider {
+    flex-grow: 1;
+}
+
+/* 트랙 전체 영역 — 클릭/드래그 대상 */
+.gradient-slider__track {
+    height: 16px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    overflow: visible;
+    position: relative;
+    cursor: link;
+}
+
+/* 그라데이션 배경 — Texture2D가 여기에 적용됨 */
+.gradient-slider__track-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 2px;
+}
+
+/* 핸들 — 값 위치 표시 */
+.gradient-slider__handle {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 16px;
+    margin-left: -5px;
+    margin-top: -8px;
+    border-radius: 2px;
+    background-color: var(--umx-text-secondary);
+    border-width: 1px;
+    border-color: var(--umx-border-faint);
+}
+
+.gradient-slider__handle:hover {
+    background-color: var(--umx-text);
+    border-color: var(--umx-text-muted);
+}

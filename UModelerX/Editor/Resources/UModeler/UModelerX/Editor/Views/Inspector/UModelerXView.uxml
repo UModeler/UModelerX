@@ -1,0 +1,41 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement class="umx-inspector-root" name="UModelerXViewRoot">
+    <ui:VisualElement class="umx-warning-slot" name="WarningViewSlot" />
+    <ui:VisualElement name="prefab-panel" class="umx-prefab-panel">
+      <ui:VisualElement name="title-bar-root" class="title-bar-root">
+        <ui:Image name="title-bar-icon" class="title-bar-icon" />
+        <ui:Label name="title-bar-label" text="UModeler X" class="title-bar-label" />
+        <ui:Button name="title-bar-manual-button" class="title-bar-manual-button" tooltip="Open Online Manual">
+          <ui:Image name="title-bar-manual-icon" class="title-bar-manual-icon" />
+        </ui:Button>
+      </ui:VisualElement>
+      <ui:VisualElement name="prefab-content" class="umx-prefab-content">
+        <ui:VisualElement class="umx-prefab-slot" name="PrefabInstanceViewSlot" />
+        <ui:VisualElement class="umx-prefab-slot" name="PrefabAssetViewSlot" />
+        <ui:VisualElement class="umx-prefab-slot" name="PrefabNestedViewSlot" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="main-content" class="main-content">
+      <ui:VisualElement name="tab-bar-root" class="tab-bar-root">
+        <ui:VisualElement name="tabs-container" class="tab-bar-tabs">
+          <ui:Button name="tab-0" class="tab-item tab-selected">
+            <ui:Image name="tab-0-icon" class="tab-icon" />
+            <ui:Label name="tab-0-label" text="Modeling" class="tab-label" />
+          </ui:Button>
+          <ui:Button name="tab-1" class="tab-item">
+            <ui:Image name="tab-1-icon" class="tab-icon" />
+            <ui:Label name="tab-1-label" text="Rigging" class="tab-label" />
+          </ui:Button>
+          <ui:Button name="tab-2" class="tab-item">
+            <ui:Image name="tab-2-icon" class="tab-icon" />
+            <ui:Label name="tab-2-label" text="Painting3D" class="tab-label" />
+          </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="buttons-container" class="tab-bar-buttons" />
+      </ui:VisualElement>
+      <ui:VisualElement name="tab-content-wrapper" class="tab-content-wrapper">
+        <ui:VisualElement name="ModifiersContentSlot" class="umx-modifiers-content-slot" />
+      </ui:VisualElement>
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

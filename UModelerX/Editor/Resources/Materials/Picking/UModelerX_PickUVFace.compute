@@ -1,0 +1,85 @@
+﻿#pragma kernel CSMain
+
+struct VertexData
+{
+    float2 vertex;
+};
+
+struct TriangleData
+{
+	int triangle1;
+	int triangle2;
+	int triangle3;
+};
+
+bool IntersectTriangle(float2 v1, float2 v2, float2 v3, float4 rect)
+{
+	float2 s = 1.0 / (rect.zw - rect.xy);
+	float2 p1 = (v1.xy - rect.xy) * s;
+	float2 p2 = (v2.xy - rect.xy) * s;
+	float2 p3 = (v3.xy - rect.xy) * s;
+
+	float2 minp = min(p1, min(p2, p3));
+	float2 maxp = max(p1, max(p2, p3));
+
+	if (minp.x <= 1 && minp.y <= 1 && maxp.x >= 0 && maxp.y >= 0)
+	{
+		float2 v1 = p2 - p1;
+		float2 v2 = p3 - p1;
+		bool front = v1.x * v2.y - v1.y * v2.x >= 0 ? true : false;
+
+		float sign = front ? 1 : -1;
+
+		float2 n, p;
+		n = p2 - p1;
+		n = float2(n.y, -n.x) * sign;
+
+		p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+		if (dot(n, p) > dot(n, p1))
+		{
+			return false;
+		}
+        else
+        {
+            n = p3 - p2;
+            n = float2(n.y, -n.x) * sign;
+            p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+            if (dot(n, p) > dot(n, p2))
+            {
+                return false;
+            }
+            else
+            {
+                n = p1 - p3;
+                n = float2(n.y, -n.x) * sign;
+                p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+                if (dot(n, p) > dot(n, p3))
+                    return false;
+                else
+                    return true;
+            }
+        }
+	}
+    else
+    {
+        return false;
+    }
+}
+
+RWStructuredBuffer<VertexData> vertexBuffer;
+RWStructuredBuffer<TriangleData> trianglesBuffer;
+
+AppendStructuredBuffer<uint> resultBuffer;
+float4 rect;
+int offset;
+
+[numthreads(1,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	int index = offset + id.x;
+
+	if (IntersectTriangle(vertexBuffer[trianglesBuffer[index].triangle1].vertex, vertexBuffer[trianglesBuffer[index].triangle2].vertex, vertexBuffer[trianglesBuffer[index].triangle3].vertex, rect))
+	{
+		resultBuffer.Append((uint)trianglesBuffer[index].triangle1);
+	}
+}

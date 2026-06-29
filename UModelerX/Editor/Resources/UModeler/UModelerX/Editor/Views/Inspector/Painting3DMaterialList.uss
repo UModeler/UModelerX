@@ -1,0 +1,176 @@
+/* Painting3DMaterialListElement: 페인팅 매터리얼 리스트 커스텀 VisualElement 스타일 */
+
+/* ========== 모디파이어 리스트뷰와 동일한 패널 스타일 ========== */
+.umx-panel {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    overflow: hidden;
+}
+
+/* 패널 헤더 */
+.umx-panel__header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 패널 컨텐츠 영역 */
+.umx-panel__content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* ========== 루트 컨테이너 ========== */
+.painting3d-material-list {
+    flex-shrink: 0;
+}
+
+/* 섹션 타이틀 (리깅 모드 공용) */
+.rigging-section-title {
+    -unity-font-style: bold;
+}
+
+/* 패널 헤더 커서 */
+.painting3d-panel-header {
+    cursor: link;
+}
+
+/* 패널 헤더 호버 효과 */
+.painting3d-panel-header:hover {
+    background-color: var(--umx-bg-surface);
+}
+
+/* 모드 헤더 에디터 아이콘 */
+.umx-mode-header__icon {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+/* 헤더 타이틀 */
+.painting3d-panel-header__title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    flex-grow: 1;
+}
+
+/* Materials 서브타이틀 */
+.painting3d-mat-sub-title {
+    -unity-font-style: bold;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    margin-top: 6px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+/* ========== 컨텐츠 영역 ========== */
+.painting3d-mat-content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+    /* 내부 자식(필드/리스트/버튼)이 패널 테두리에 붙지 않도록 좌우 여백 부여 */
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}
+
+/* All 토글 행 (material-list-body 래퍼를 거치므로 자손 결합자 사용) */
+.painting3d-mat-content .painting3d-mat-all-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+/* All 토글 행 라벨 */
+.painting3d-mat-all-row > Label {
+    margin-left: 4px;
+}
+
+/* 매터리얼 리스트뷰 (material-list-body 래퍼를 거치므로 자손 결합자 사용) */
+.painting3d-mat-content ListView {
+    min-height: 24px;
+    max-height: 200px;
+}
+
+/* ========== 매터리얼 아이템 ========== */
+.painting3d-mat-item {
+    flex-direction: row;
+    align-items: center;
+    height: 24px;
+    padding-left: 2px;
+}
+
+/* 매터리얼 토글 */
+.mat-item-toggle {
+    margin-right: 4px;
+}
+
+/* 매터리얼 이름 라벨 */
+.mat-item-label {
+    flex-grow: 1;
+}
+
+/* ========== 섹션 ========== */
+.painting3d-mat-section {
+    margin-top: 4px;
+}
+
+/* 프로퍼티 좌우 정렬: 라벨 40% */
+.painting3d-mat-section > .unity-base-field {
+    /* flex 컨테이너가 부모보다 작게 줄어들 수 있도록 min-width 해제 */
+    min-width: 0;
+}
+
+.painting3d-mat-section > .unity-base-field > .unity-base-field__label {
+    width: 40%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.painting3d-mat-section > .unity-base-field {
+    margin-right: 0;
+}
+
+/* 우측 입력 영역: 라벨 외 60% 폭 안에서 줄어들도록 강제 */
+.painting3d-mat-section > .unity-base-field > .unity-base-field__input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* ObjectField / PopupField 의 내부 컨트롤도 줄어들 수 있도록 min-width 해제.
+   이 처리가 없으면 객체 이름/선택 텍스트의 자연 최소폭 때문에 입력 영역이 우측으로 밀려나간다. */
+.painting3d-mat-section .unity-object-field__input,
+.painting3d-mat-section .unity-object-field-display,
+.painting3d-mat-section .unity-object-field-display__label,
+.painting3d-mat-section .unity-popup-field__input,
+.painting3d-mat-section .unity-base-popup-field__text,
+.painting3d-mat-section .unity-text-element {
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+/* 섹션 내 버튼 상단 여백 */
+.painting3d-mat-section > Button {
+    margin-top: 4px;
+}

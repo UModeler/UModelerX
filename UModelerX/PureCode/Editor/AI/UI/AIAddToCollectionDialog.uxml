@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="add-collection-root" class="add-collection-root">
+        <!-- Title -->
+        <ui:VisualElement class="add-collection-header">
+            <ui:Label name="add-collection-title" text="Add to Collection" class="add-collection-title" />
+            <ui:VisualElement class="add-collection-spacer" />
+            <ui:Button name="add-collection-close-btn" class="add-collection-icon-btn" tooltip="Close">
+                <ui:VisualElement name="add-collection-close-icon" class="add-collection-icon" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <ui:Label name="add-collection-subtitle" text="" class="add-collection-subtitle" />
+
+        <!-- Search -->
+        <ui:TextField name="add-collection-search" class="add-collection-search" />
+
+        <!-- Tree -->
+        <ui:ScrollView name="add-collection-tree-scroll" mode="Vertical" class="add-collection-tree-scroll">
+            <ui:VisualElement name="add-collection-tree" class="add-collection-tree" />
+        </ui:ScrollView>
+
+        <!-- New collection inline input (hidden by default) -->
+        <ui:VisualElement name="add-collection-new-row" class="add-collection-new-row hidden">
+            <ui:TextField name="add-collection-new-input" class="add-collection-new-input" />
+            <ui:Button name="add-collection-new-confirm" text="Create" class="add-collection-action-btn primary" />
+            <ui:Button name="add-collection-new-cancel" text="Cancel" class="add-collection-action-btn" />
+        </ui:VisualElement>
+
+        <!-- Footer buttons -->
+        <ui:VisualElement class="add-collection-footer">
+            <ui:Button name="add-collection-new-btn" text="+ New Collection" class="add-collection-action-btn" />
+            <ui:VisualElement class="add-collection-spacer" />
+            <ui:Button name="add-collection-cancel-btn" text="Cancel" class="add-collection-action-btn" />
+            <ui:Button name="add-collection-confirm-btn" text="Confirm" class="add-collection-action-btn primary" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

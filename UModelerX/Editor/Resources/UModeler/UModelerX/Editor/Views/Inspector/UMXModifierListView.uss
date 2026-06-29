@@ -1,0 +1,218 @@
+/* UMXModifierListView: 모디파이어 리스트/콘텐츠 영역 레이아웃 */
+
+/* 리깅 모드와 동일한 패널 스타일 */
+.umx-panel {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+	border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    overflow: hidden;
+}
+
+/* 패널 헤더 (배경·패딩·하단 테두리, 가로 정렬) */
+.umx-panel__header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0px;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 패널 콘텐츠 영역 (내부 패딩, 배경색) */
+.umx-panel__content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* 섹션 타이틀 (볼드) */
+.rigging-section-title {
+    -unity-font-style: bold;
+}
+
+/* 모드 헤더 에디터 아이콘 */
+.umx-mode-header__icon {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+/* 모디파이어 리스트 뷰 컨테이너 (세로 배치) */
+.umx-modifier-list-view {
+    flex-direction: column;
+}
+
+/* 모디파이어 리스트 헤더 (하단 여백 제거) */
+.umx-modifier-list-header {
+    margin-bottom: 0;
+}
+
+/* 리스트 박스 */
+#modifier-list-box {
+    flex-grow: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* ScrollView/container 기본 배경을 투명으로 강제 (Unity 2022 기본 스타일 덮어쓰기) */
+#modifier-list-scroll {
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 스크롤 뷰 자식 요소 배경 투명 처리 */
+#modifier-list-scroll > * {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 모디파이어 리스트 내부 컨테이너 (배경 투명, 크기 고정) */
+#modifier-list-container {
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 모디파이어 버튼 컨테이너 (가로 배치, 우측 정렬) */
+#modifier-button-container {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 4px;
+    flex-grow: 0;
+}
+
+/* 모디파이어 버튼 크기 고정, 투명 배경 */
+#modifier-button-container .unity-button {
+    width: 14px;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-radius: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* 모디파이어 버튼 호버 하이라이트 */
+#modifier-button-container .unity-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* content-area: 마진/패딩 없음 → 모디파이어 프로퍼티는 툴 프로퍼티와 동일 폭 */
+#modifier-content-area {
+    flex-grow: 1;
+    min-width: 0;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+/* 모디파이어/소스메시 항목 내부 행 */
+.umx-modifier-item-row {
+    flex-direction: row;
+    align-items: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+	border-bottom-width: 1px;
+	border-color: var(--umx-border);
+}
+
+/* 항목 행 내 아이콘 (16x16, 우측 여백) */
+.umx-modifier-item-row .unity-image {
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+}
+
+/* 항목 이름 라벨 (남은 공간 채움, 좌측 여백) */
+.umx-modifier-item-row #modifier-name-label,
+.umx-modifier-item-row .umx-modifier-item-label {
+    flex-grow: 1;
+    margin-left: 5px;
+}
+
+/* 타입 라벨 (선택 시 표시) */
+#modifier-type-label,
+#source-mesh-type-label {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+}
+
+/* 소스메시 타입 라벨 (약간 어두운 텍스트 색상) */
+#source-mesh-type-label {
+    color: var(--umx-text-tertiary);
+}
+
+/* 선택 상태 */
+.umx-modifier-item.selected,
+#source-mesh-item.selected {
+    background-color: rgba(0, 122, 204, 0.8);
+}
+
+/* 비선택 상태 (투명 배경) */
+.umx-modifier-item,
+#source-mesh-item {
+    background-color: transparent;
+}
+
+/* 드래그 고스트 */
+#modifier-drag-ghost {
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(51, 102, 204, 0.1);
+    border-width: 1px;
+    border-color: rgba(102, 153, 255, 0.6);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* 드래그 고스트 아이콘 (16x16) */
+#modifier-drag-ghost .unity-image {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+/* 드래그 고스트 라벨 (남은 공간 채움) */
+#modifier-drag-ghost .unity-label {
+    flex-grow: 1;
+    margin-left: 5px;
+}
+
+/* 드롭 인디케이터 */
+#modifier-drag-drop-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(51, 153, 255, 0.9);
+}
+
+/* 모디파이어 이름 변경 입력 필드 (남은 공간 채움) */
+.umx-modifier-rename-field {
+    flex-grow: 1;
+    margin-left: 5px;
+}

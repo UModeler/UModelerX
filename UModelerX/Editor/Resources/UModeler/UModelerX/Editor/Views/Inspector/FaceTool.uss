@@ -1,0 +1,102 @@
+/* FaceTool 전용 툴 프로퍼티 USS */
+
+/* 스무딩 그룹 컨테이너 */
+.face-tool__smoothing-container {
+    margin-top: 4px;
+    flex-direction: column;
+}
+
+/* 프로퍼티 행 (라벨 + 입력 필드) */
+.face-tool__row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+/* 프로퍼티 라벨 (고정 너비) */
+.face-tool__label {
+    width: 90px;
+    -unity-text-align: middle-left;
+}
+
+/* 스무딩 그룹 번호 버튼 그리드 컨테이너 */
+.face-tool__smoothing-grid {
+    flex-direction: column;
+    margin-bottom: 2px;
+}
+
+/* 스무딩 그리드 한 행 */
+.face-tool__smoothing-row {
+    flex-direction: row;
+}
+
+/* 스무딩 그룹 번호 개별 버튼.
+   margin-right 만 주면 행의 마지막 버튼의 오른쪽 여백이 부모 너비를 초과해 잘리므로
+   좌우로 균등하게 1px 씩 부여한다. */
+.face-tool__smoothing-button {
+    flex-grow: 1;
+    flex-basis: 0;
+    height: 18px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 2px;
+}
+
+/* Auto Smooth 행 (버튼 + Angle 슬라이더) */
+.face-tool__auto-smooth-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Auto Smooth 버튼: 행을 1:1 로 나누되, 인스펙터가 좁아지면 함께 줄어들 수 있도록 한다. */
+.face-tool__auto-smooth-button {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* Angle 라벨 */
+.face-tool__angle-label {
+    -unity-text-align: middle-left;
+    margin-left: 4px;
+    flex-shrink: 0;
+}
+
+/* Angle 슬라이더: 좁은 인스펙터에서도 줄어들 수 있도록 min-width 를 0 으로 둔다. */
+.face-tool__angle-slider {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* Angle 에디터 필드: 좁아질 때 살짝 줄어들 수 있도록 한다 (기본 너비 50px). */
+.face-tool__angle-field {
+    width: 50px;
+    min-width: 32px;
+    flex-shrink: 1;
+}
+
+/* 하단 액션 버튼 행 */
+.face-tool__button-row {
+    flex-direction: row;
+    margin-top: 2px;
+}
+
+/* 하단: 할당된 스무딩 그룹 버튼 그리드 */
+.face-tool__selected-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+/* 섹션 라벨 */
+.face-tool__section-label {
+    margin-top: 6px;
+    margin-bottom: 2px;
+    -unity-font-style: bold;
+}

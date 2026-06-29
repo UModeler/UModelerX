@@ -1,0 +1,49 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" editor-extension-mode="False">
+
+    <!-- Progress view (hidden by default) -->
+    <ui:VisualElement name="ProgressContainer" style="display: none; align-items: center; justify-content: center; flex-grow: 1; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px;">
+        <ui:Label text="Signing in via browser..." style="-unity-text-align: middle-center; font-size: 12px; color: rgb(180, 180, 180);" />
+        <ui:Button name="CancelButton" text="Cancel" style="margin-top: 10px; width: 70px; height: 24px; font-size: 11px;" />
+    </ui:VisualElement>
+
+    <!-- Sign-in form (shown when signed out) -->
+    <ui:VisualElement name="SignInContainer" style="flex-grow: 1; justify-content: center; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px;">
+
+        <ui:Label text="Sign in to PicoBerry" style="-unity-text-align: middle-center; font-size: 15px; -unity-font-style: bold; margin-bottom: 3px;" />
+
+        <ui:Label text="Log in to connect your Unity Editor" style="-unity-text-align: middle-center; font-size: 10px; color: rgb(160, 160, 160); margin-bottom: 14px;" />
+
+        <!-- Error message (hidden by default) -->
+        <ui:Label name="ErrorLabel" style="display: none; color: rgb(235, 80, 80); font-size: 10px; margin-bottom: 6px; white-space: normal; -unity-text-align: middle-center;" />
+
+        <!-- Sign In button -->
+        <ui:Button name="SignInButton" text="Sign In" class="primary-button" />
+
+        <!-- Keep me signed in -->
+        <ui:Toggle name="KeepMeSignedInToggle" label="Keep me signed in" value="true" style="align-self: flex-start; font-size: 11px;" />
+
+    </ui:VisualElement>
+
+    <!-- Signed-in view (shown when authenticated) -->
+    <ui:VisualElement name="SignedInContainer" style="display: none; flex-grow: 1; justify-content: center; padding-left: 16px; padding-right: 16px; padding-top: 12px; padding-bottom: 12px;">
+
+        <ui:Label text="Connected to PicoBerry" style="-unity-text-align: middle-center; font-size: 15px; -unity-font-style: bold; margin-bottom: 3px;" />
+
+        <!-- Status row: green dot + Signed in -->
+        <ui:VisualElement style="flex-direction: row; justify-content: center; align-items: center; margin-bottom: 4px;">
+            <ui:VisualElement style="width: 8px; height: 8px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; background-color: rgb(80, 200, 100); margin-right: 5px;" />
+            <ui:Label text="Signed in" style="font-size: 11px; color: rgb(80, 200, 100);" />
+        </ui:VisualElement>
+
+        <!-- User email -->
+        <ui:Label name="EmailLabel" text="" style="-unity-text-align: middle-center; font-size: 11px; color: rgb(180, 180, 180); margin-bottom: 14px;" />
+
+        <!-- Open Web Workspace button -->
+        <ui:Button name="OpenWorkspaceButton" text="Open Web Workspace" class="primary-button" />
+
+        <!-- Sign out link -->
+        <ui:Button name="SignOutButton" text="Sign out" style="align-self: center; height: 20px; font-size: 11px; color: rgb(130, 170, 220); background-color: rgba(0, 0, 0, 0); border-top-width: 0; border-bottom-width: 0; border-left-width: 0; border-right-width: 0; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px;" />
+
+    </ui:VisualElement>
+
+</ui:UXML>

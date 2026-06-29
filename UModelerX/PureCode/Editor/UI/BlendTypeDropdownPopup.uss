@@ -1,0 +1,61 @@
+/* =================================================================
+   BlendTypeDropdownPopup — 레이어 BlendType 드롭다운
+   글로벌 UMX 테마 변수 사용
+   ================================================================= */
+
+.blend-popup-root {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: var(--umx-bg-elevated);
+    border-width: 1px;
+    border-color: var(--umx-border);
+    padding: 4px 0;
+}
+
+.blend-popup-scroll {
+    flex-grow: 1;
+}
+
+.blend-popup-list {
+    flex-direction: column;
+}
+
+.blend-popup-item {
+    flex-direction: row;
+    align-items: center;
+    height: 22px;
+    padding: 0 8px 0 4px;
+    background-color: transparent;
+}
+
+.blend-popup-item:hover {
+    background-color: var(--umx-bg-hover);
+}
+
+.blend-popup-item--selected {
+    background-color: var(--umx-bg-selected);
+}
+
+.blend-popup-check {
+    width: 14px;
+    font-size: 11px;
+    color: var(--umx-text);
+    -unity-text-align: middle-center;
+    flex-shrink: 0;
+}
+
+.blend-popup-label {
+    flex-grow: 1;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    margin-left: 2px;
+}
+
+.blend-popup-item:hover .blend-popup-label {
+    color: var(--umx-text);
+}
+
+.blend-popup-item--selected .blend-popup-label {
+    color: var(--umx-text);
+}

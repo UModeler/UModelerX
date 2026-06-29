@@ -1,0 +1,12 @@
+/* Painting3D Start Painting 섹션 스타일 */
+
+/* Start Painting 머터리얼 리스트 */
+#start-materials-list {
+    min-height: 24px;
+    max-height: 200px;
+}
+
+/* Start Painting 버튼 */
+#start-painting-button {
+    margin-top: 4px;
+}

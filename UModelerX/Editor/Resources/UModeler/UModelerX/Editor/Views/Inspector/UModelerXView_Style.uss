@@ -1,0 +1,378 @@
+/* 인스펙터 루트 컨테이너 (세로 배치, 좌우 패딩) */
+.umx-inspector-root {
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/* 경고/프리팹/모디파이어/콘텐츠 슬롯 (세로 배치) */
+.umx-warning-slot,
+.umx-prefab-slot,
+.umx-modifiers-slot,
+.umx-modifiers-content-slot {
+    flex-direction: column;
+}
+
+/* 프리팹 슬롯 - 콘텐츠 영역 내부, 패딩은 부모(.umx-prefab-content)에서 처리 */
+.umx-prefab-slot {
+    padding: 0;
+}
+
+/* 프리팹 에디터 열기 버튼 (전체 폭, 중앙 정렬) */
+.umx-prefab-open-button {
+    flex-grow: 1;
+    width: 100%;
+    height: 24px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 6px 12px;
+    background-color: var(--umx-bg-hover);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    color: var(--umx-text-secondary);
+    font-size: 13px;
+    -unity-font-style: normal;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 프리팹 버튼 호버 상태 */
+.umx-prefab-open-button:hover {
+    background-color: var(--umx-bg-hover);
+    border-color: #606060;
+}
+
+/* 프리팹 패널 컨테이너 (모디파이어뷰와 동일한 카드 스타일) */
+.umx-prefab-panel {
+    flex-direction: column;
+    background-color: var(--umx-bg-surface);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+	padding: 0px;
+    overflow: hidden;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+/* TitleBar - 패널 헤더 (모디파이어뷰 헤더와 동일한 스타일) */
+.title-bar-root {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-surface);
+    padding: 2px 10px;
+    cursor: link;
+    overflow: hidden;
+}
+
+/* 타이틀바 호버 상태 (매뉴얼 버튼 호버 중에는 비활성) */
+.title-bar-root:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+.title-bar-root.title-bar-no-hover:hover {
+    background-color: var(--umx-bg-surface);
+}
+
+/* 프리팹 활성 시 타이틀바 하단 구분선 (헤더/콘텐츠 분리) */
+.title-bar-root.umx-prefab-active {
+    border-bottom-width: 0px;
+    border-bottom-color: var(--umx-border);
+}
+
+/* 프리팹 콘텐츠 영역 (모디파이어뷰 콘텐츠와 동일한 스타일) */
+.umx-prefab-content {
+    flex-direction: column;
+    margin: 4px;
+	padding: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    background-color: var(--umx-bg-raised);
+    display: none;
+}
+
+/* 타이틀바 아이콘 (24x24, 투명 배경) */
+.title-bar-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+}
+
+/* 타이틀바 라벨 (14px 볼드, 회색 텍스트) — flex-grow로 우측 버튼 밀어냄 */
+.title-bar-label {
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: var(--umx-text-tertiary);
+    flex-grow: 1;
+}
+
+/* 타이틀바 매뉴얼 버튼 (우측 정렬) */
+.title-bar-manual-button {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 2px;
+    border-width: 0;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center;
+    justify-content: center;
+}
+
+.title-bar-manual-button:hover {
+    background-color: var(--umx-bg-hover);
+}
+
+/* 매뉴얼 버튼 아이콘 */
+.title-bar-manual-icon {
+    width: 16px;
+    height: 16px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* TabBar */
+.tab-bar-root {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0px 2px;
+    padding-bottom: 0;
+    flex-wrap: nowrap;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    flex-shrink: 0;
+}
+
+/* 탭 콘텐츠 래퍼 (음수 마진으로 좌우 확장) */
+.tab-content-wrapper {
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: visible;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+/* 탭 콘텐츠 내 툴 그룹 상단 여백 제거 */
+.tab-content-wrapper .umx-tool-group {
+    margin-top: 0;
+}
+
+/* 탭 콘텐츠 내 툴 그룹 행 좌우 여백 제거 */
+.tab-content-wrapper .umx-tool-group__row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Modifier 리스트 패널은 umx-panel 마진을 사용 */
+
+/* 탭바 탭 목록 (가로 배치, 축소 방지) */
+.tab-bar-tabs {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+	margin-bottom: -11px;
+}
+
+/* 개별 탭 아이템 (하단 모서리 직각, 볼드 텍스트) */
+.tab-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 6px 10px 6px;
+    margin-right: 2px;
+    border-radius: 4px;
+    cursor: link;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    background-color: var(--umx-bg-surface);
+    -unity-font-style: normal;
+    color: var(--umx-text-secondary);
+    min-width: 16px;
+    min-height: 28px;
+	border-bottom-width: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* 탭 호버 상태 */
+.tab-item:hover {
+    background-color: var(--umx-bg-hover);
+    border-color: #000000;
+}
+
+/* 선택된 탭 (파란색 강조) */
+.tab-item.tab-selected {
+    background-color: var(--umx-selection-soft);
+}
+
+/* 선택된 탭 호버 상태 (밝은 파란색) */
+.tab-item.tab-selected:hover {
+    background-color: var(--umx-primary-hover);
+    border-color: #60a5fa;
+}
+
+/* 탭 아이콘 (12x12, 투명 배경) */
+.tab-icon {
+    width: 13px;
+    height: 13px;
+    margin-right: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 4px;
+}
+
+/* 선택된 탭의 아이콘 우측 여백 (라벨 공간 확보) */
+.tab-item.tab-selected .tab-icon {
+    margin-right: 6px;
+}
+
+/* 탭 라벨 (기본 숨김, 선택 시 표시) */
+.tab-label {
+    font-size: 12px;
+    color: var(--umx-text);
+    display: none;
+}
+
+/* 선택된 탭의 라벨 표시 */
+.tab-item.tab-selected .tab-label {
+    display: flex;
+}
+
+/* 탭바 우측 버튼 영역 (가로 배치) */
+.tab-bar-buttons {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* 탭바 버튼 기본 스타일 */
+.tab-bar-button {
+    flex-direction: row;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 10px;
+    margin-left: 0px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    background-color: var(--umx-bg-surface);
+    color: var(--umx-text-secondary);
+    font-size: 11px;
+    -unity-font-style: bold;
+    cursor: link;
+}
+
+/* 탭바 버튼 내 아이콘 */
+.tab-bar-button__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+/* 탭바 버튼 호버 상태 */
+.tab-bar-button:hover {
+    background-color: var(--umx-bg-elevated);
+    border-color: #000000;
+}
+
+/* 탭바 주요 액션 버튼 (파란색 강조) */
+.tab-bar-button-primary {
+    background-color: var(--umx-primary);
+}
+
+/* 주요 버튼 호버 상태 (밝은 파란색) */
+.tab-bar-button-primary:hover {
+    background-color: var(--umx-primary-hover);
+    border-color: #60a5fa;
+}
+
+/* main-content - 타이틀바 클릭 시 접기/펼치기 */
+.main-content {
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: visible;
+}
+
+/* 메인 콘텐츠 접힌 상태 (높이 0, 투명) */
+.main-content.collapsed {
+    overflow: hidden;
+    max-height: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    opacity: 0;
+    transition-property: max-height, margin, padding, opacity;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+/* 툴 스택 (세로 배치) */
+.umx-tool-stack {
+    flex-direction: column;
+}
+
+/* 툴 그룹 (세로 배치, 전체 테두리 1px) */
+.umx-tool-group {
+    flex-direction: column;
+    padding: 6px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+/* 툴 헤더 (볼드) */
+.umx-tool-header {
+    -unity-font-style: bold;
+}
+
+/* 모디파이어 리스트 (자동 확장 방지) */
+.umx-modifiers-list {
+    flex-grow: 0;
+}
+
+/* 소스메시 행 (상하 여백) */
+.umx-source-mesh-row {
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+/* 툴 버튼 (최소 폭 60px) */
+.umx-tool-button {
+    min-width: 60px;
+    margin: 2px;
+}
+
+/* 소스메시/에디터/모디파이어/상태바 뷰 (세로 배치) */
+.umx-source-mesh-view,
+.umx-editor-view,
+.umx-modifier-view,
+.umx-status-bar-view {
+    flex-direction: column;
+}
+
+/* 툴셋 뷰 (하단 여백) */
+.umx-tool-set-view {
+    margin-bottom: 8px;
+}
+
+/* 모디파이어 헤더 (볼드, 하단 여백) */
+.umx-modifier-header {
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+}

@@ -1,0 +1,147 @@
+/* Painting3DFilterElement: 페인팅 필터 패널 — Layers / Map Source 와 동일한 패널 뼈대 */
+
+/* ========== 루트 컨테이너 (모디파이어 뷰 통일) ========== */
+.painting3d-filter {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* ========== 헤더 (한 줄: 아이콘 + Filter) ========== */
+.painting3d-filter-header {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    cursor: link;
+}
+
+.painting3d-filter-header:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+.painting3d-filter-header__icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+.painting3d-filter-header__title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+/* ========== 컨텐츠 영역 (레이어 트리 내부와 동일) ========== */
+.painting3d-filter-content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+/* ========== 필터 토글 행 (고정 너비 라벨 + 토글 일렬) ========== */
+.painting3d-filter-toggle-row {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 0;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.painting3d-filter-toggle-label {
+    width: 50%;
+    flex-shrink: 1;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    white-space: normal;
+}
+
+.painting3d-filter-toggle {
+    flex-shrink: 0;
+}
+
+/* ========== 슬라이더 그룹 (토글 On 시에만 표시) ========== */
+.painting3d-filter-slider-group {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: visible;
+}
+
+/* ========== 슬라이더 (좁은 인스펙터에서 FloatField가 밖으로 나가지 않도록) ========== */
+/* 자체가 .unity-base-field 이므로 Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진을 무력화 */
+.painting3d-filter-slider {
+    margin-bottom: 2px;
+    margin-right: 0;
+    min-width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+}
+
+.painting3d-filter-slider > .unity-base-field__label {
+    min-width: 84px;
+    max-width: 42%;
+    flex-shrink: 1;
+    overflow: hidden;
+    -unity-text-align: middle-left;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.painting3d-filter-slider > .unity-base-field__input {
+    min-width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: visible;
+}
+
+/* 슬라이더 드래그 영역은 남는 공간만 사용 (Unity: unity-base-slider__drag-container) */
+.painting3d-filter-slider .unity-base-slider__drag-container {
+    min-width: 24px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.painting3d-filter-slider FloatField {
+    width: 44px;
+    min-width: 40px;
+    max-width: 52px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-left: 4px;
+    margin-right: 2px;
+}

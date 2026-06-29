@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" editor-extension-mode="False">
+    <ui:VisualElement name="RootContainer" style="padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; background-color: rgb(59, 59, 59); color: rgb(238, 238, 238); min-width: 350px; min-height: 400px; height: 100%; flex-grow: 1;">
+        <ui:Label text="Offline Authentication" style="font-size: 20px; -unity-font-style: bold; margin-bottom: 15px; border-bottom-width: 1px; border-bottom-color: rgb(85, 85, 85);" />
+        <ui:VisualElement style="margin-bottom: 20px;">
+            <ui:Label text="1. Hardware Request Hash" style="margin-bottom: 5px; -unity-font-style: bold;" />
+            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                <ui:TextField name="HashField" value="WAITING_FOR_HASH..." readonly="true" style="flex-grow: 1; margin-right: 5px; font-size: 16px; max-width: 70%;" />
+                <ui:Button name="CopyHashBtn" text="Copy" style="width: 60px; height: 25px; background-color: rgb(68, 68, 68);" />
+            </ui:VisualElement>
+            <ui:Label text="Please copy this code and send it to the administrator." style="font-size: 10px; color: rgb(170, 170, 170); margin-top: 2px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="margin-bottom: 20px;">
+            <ui:Label text="2. Paste Activation Key" style="margin-bottom: 5px; -unity-font-style: bold;" />
+            <ui:TextField name="AuthKeyInput" multiline="true" style="height: 60px; white-space: normal; align-self: auto; justify-content: flex-end; align-items: auto; align-content: auto; font-size: 16px;" />
+            <ui:Button name="ApplyBtn" text="Verify &amp; Apply" style="height: 40px; margin-top: 10px; background-color: rgb(58, 121, 194); font-size: 14px; -unity-font-style: bold; color: white;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ResultPanel" style="padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: rgb(40, 40, 40); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: rgb(100, 180, 100); margin-top: 10px;">
+            <ui:Label name="StatusTitle" text="Status: Authenticated" style="font-size: 16px; -unity-font-style: bold; margin-bottom: 10px; -unity-text-align: middle-center; color: rgb(100, 255, 100);" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 5px;">
+                <ui:Label text="Expiration Date:" style="color: rgb(204, 204, 204);" />
+                <ui:Label name="ExpirationText" text="2025-12-31" style="-unity-font-style: bold; color: white;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                <ui:Label text="Time Remaining:" style="color: rgb(204, 204, 204);" />
+                <ui:Label name="TimeLeftText" text="365 Days" style="-unity-font-style: bold; color: white;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

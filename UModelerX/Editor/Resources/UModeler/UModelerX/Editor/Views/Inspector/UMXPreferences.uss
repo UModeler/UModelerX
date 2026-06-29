@@ -1,0 +1,205 @@
+/* ─────────────────────────────────────────────────────────
+ * UModeler X Preferences 스타일시트
+ * ─────────────────────────────────────────────────────────
+ *
+ * 색상은 UMXGlobalTheme.uss 의 var(--umx-*) 변수를 사용합니다.
+ *
+ * Preferences 트리 구조:
+ *   UModelerX (루트)       ← 접이식 그룹: SceneToolbar, Debug, Display, Notice, Settings
+ *   ├── Modeling           ← 접이식 그룹: Modeling, Editable Mesh, Translate, Material, Lightmap, Export, Import
+ *   ├── Rigging            ← 단일 카테고리 (플랫 행)
+ *   ├── Painting           ← 단일 카테고리 (플랫 행)
+ *   ├── UV Editor          ← 단일 카테고리 (플랫 행)
+ *   ├── Hotspot            ← 단일 카테고리 (플랫 행)
+ *   ├── PicoBerry          ← 별도 프로바이더 (PreferencePicoberryView)
+ *   └── Shortcuts          ← 별도 프로바이더 (PreferenceUMXShortcutView)
+ *
+ * DOM 구조 — 접이식 그룹 탭 (루트, Modeling):
+ *   .umx-pref-root
+ *     └─ .umx-pref-scroll
+ *          ├─ .umx-pref-group                  ← 접이식 그룹 컨테이너
+ *          │   ├─ .umx-pref-group__header      ← 클릭하여 접기/펼치기
+ *          │   │   ├─ .umx-pref-group__title   ← 카테고리 이름 라벨
+ *          │   │   └─ .umx-pref-group__reset   ← 카테고리 리셋 버튼
+ *          │   └─ .umx-pref-group__content     ← 콘텐츠 외곽 (테두리)
+ *          │       └─ .umx-pref-group__content-inner  ← 콘텐츠 내부 (패딩)
+ *          │           └─ .umx-pref-row
+ *          └─ .umx-pref-reset-all              ← 전체 리셋 버튼
+ *
+ * DOM 구조 — 단일 카테고리 탭 (Rigging, Painting 등):
+ *   .umx-pref-root
+ *     └─ .umx-pref-scroll
+ *          ├─ .umx-pref-row                    ← 개별 프로퍼티 행
+ *          │   ├─ .umx-pref-row__label         ← 이름 라벨 (고정 폭)
+ *          │   └─ .umx-pref-row__field         ← 값 필드 컨테이너
+ *          └─ .umx-pref-category__reset        ← 카테고리 리셋 버튼
+ * ─────────────────────────────────────────────────────────
+ */
+
+
+/* ── 최상위 컨테이너 ── */
+.umx-pref-root {
+    flex-direction: column;
+}
+
+/* ── 탭 타이틀 (각 탭 최상단) ── */
+.umx-pref-tab-title {
+    -unity-font-style: bold;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+/* ── 스크롤 영역 ── */
+.umx-pref-scroll {
+    flex-grow: 1;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * 접이식 그룹
+ * ─────────────────────────────────────────────────────────
+ */
+
+.umx-pref-group {
+    flex-direction: column;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.umx-pref-group__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-bottom-width: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: var(--umx-bg-surface);
+    border-color: var(--umx-border-strong);
+    color: var(--umx-text);
+}
+
+.umx-pref-group__header.collapsed {
+    opacity: 0.8;
+    border-bottom-width: 1px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.umx-pref-group__title {
+    -unity-font-style: bold;
+    font-size: 11px;
+}
+
+.umx-pref-group__reset {
+    min-width: 40px;
+}
+
+.umx-pref-group__content {
+    border-width: 1px;
+    border-top-width: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 4px;
+    padding-top: 2px;
+    background-color: var(--umx-bg-surface);
+    border-color: var(--umx-border-strong);
+}
+
+.umx-pref-group__content-inner {
+    flex-direction: column;
+    border-width: 1px;
+    padding: 4px;
+    background-color: var(--umx-bg-default);
+    border-color: var(--umx-border-strong);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * 프로퍼티 행
+ * ─────────────────────────────────────────────────────────
+ */
+
+.umx-pref-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.umx-pref-row__label {
+    width: 350px;
+    min-width: 350px;
+    max-width: 500px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    -unity-text-align: middle-left;
+    margin-right: 12px;
+    padding-right: 8px;
+}
+
+.umx-pref-row__field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * 필드 타입별
+ * ─────────────────────────────────────────────────────────
+ */
+
+.umx-pref-field {
+    flex-grow: 1;
+}
+
+.umx-pref-slider-row {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.umx-pref-slider {
+    flex-grow: 1;
+    margin-right: 6px;
+}
+
+.umx-pref-slider-value {
+    width: 60px;
+    flex-shrink: 0;
+    /* Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진 무력화 (우측 잘림 방지) */
+    margin-right: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+ * 리셋 버튼
+ * ─────────────────────────────────────────────────────────
+ */
+
+.umx-pref-reset-all {
+    height: 30px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.umx-pref-category__reset {
+    height: 30px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+}

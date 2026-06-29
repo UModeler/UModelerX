@@ -1,0 +1,12 @@
+/* 모디파이어 뷰 루트 컨테이너 (세로 배치, 항목 간격 6px) */
+.umx-modifiers-root {
+    flex-direction: column;
+    /* gap: 6px; removed for Unity 2022 compat */
+}
+
+/* 모디파이어 리스트/소스메시/상태바 슬롯 (세로 배치) */
+.umx-modifiers-list-slot,
+.umx-source-mesh-slot,
+.umx-status-bar-slot {
+    flex-direction: column;
+}

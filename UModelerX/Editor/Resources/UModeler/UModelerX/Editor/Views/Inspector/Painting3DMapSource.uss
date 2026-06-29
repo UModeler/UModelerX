@@ -1,0 +1,232 @@
+/* Painting3DMapSourceElement: 페인팅 맵 소스 (채널) 커스텀 VisualElement 스타일 */
+
+/* ========== 루트 컨테이너 (모디파이어 뷰 통일) ========== */
+.painting3d-map-source {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* 공용 패널 헤더 (모디파이어 뷰 통일) */
+.painting3d-panel-header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: link;
+}
+
+/* 헤더 호버 효과 */
+.painting3d-panel-header:hover {
+    background-color: var(--umx-bg-elevated);
+}
+
+/* 헤더 아이콘 */
+.painting3d-panel-header__icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+/* 헤더 타이틀 */
+.painting3d-panel-header__title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    flex-grow: 1;
+}
+
+/* ========== 컨텐츠 영역 (모디파이어 뷰 통일) ========== */
+.painting3d-map-source-content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* ========== 채널 리스트 ScrollView ========== */
+.painting3d-channel-scroll {
+    min-height: 26px;
+    max-height: 200px;
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border);
+    border-radius: 2px;
+}
+
+/* 채널 아이템 행 */
+.painting3d-channel-item {
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    padding-left: 8px;
+    padding-right: 4px;
+    background-color: var(--umx-bg-elevated);
+    margin-bottom: 1px;
+    flex-shrink: 0;
+}
+
+/* 채널 아이템 호버 효과 */
+.painting3d-channel-item:hover {
+    background-color: var(--umx-bg-raised);
+}
+
+/* 선택된 채널 */
+.painting3d-channel-item--selected {
+    background-color: var(--umx-selection);
+}
+
+/* 선택된 채널 호버 효과 */
+.painting3d-channel-item--selected:hover {
+    background-color: var(--umx-selection-hover);
+}
+
+/* 채널 페인팅(붓) 아이콘 — 어떤 채널에 칠하는지(활성). 다중 선택. */
+.painting3d-channel-paint-brush {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    cursor: link;
+    --unity-image-tint-color: var(--umx-text-tertiary);
+}
+
+/* 페인팅 활성 채널의 붓 — 흰색 틴트 (비활성은 회색) */
+.painting3d-channel-paint-brush--active {
+    --unity-image-tint-color: #ffffff;
+}
+
+/* 채널 이름 라벨 */
+.painting3d-channel-name {
+    flex-grow: 1;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ========== 채널 디테일 섹션 ========== */
+.painting3d-channel-detail {
+    margin-top: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* 프로퍼티 좌우 정렬: 라벨 40% */
+.painting3d-channel-detail > .unity-base-field > .unity-base-field__label,
+.painting3d-height-normal > .unity-base-field > .unity-base-field__label {
+    width: 40%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진 무력화 (우측 잘림 방지) */
+.painting3d-channel-detail > .unity-base-field,
+.painting3d-height-normal > .unity-base-field {
+    margin-right: 0;
+}
+
+/* 디테일 행 */
+.painting3d-detail-row {
+    flex-direction: row;
+    align-items: center;
+    height: 20px;
+    margin-bottom: 2px;
+}
+
+/* 디테일 라벨 (좌측) */
+.painting3d-detail-label {
+    width: 110px;
+    min-width: 110px;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* 디테일 값 (우측) */
+.painting3d-detail-value {
+    flex-grow: 1;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+}
+
+/* Height as Normal 컨테이너 */
+.painting3d-height-normal {
+    margin-top: 4px;
+    padding-left: 2px;
+}
+
+/* Height as Normal 강도 슬라이더 */
+.painting3d-height-normal-strength {
+    margin-left: 16px;
+}
+
+/* ========== Export 버튼 컨테이너 ========== */
+.painting3d-export-container {
+    margin-top: 6px;
+}
+
+/* Export 좌우 배치 (Output 라벨 | 버튼 스택) */
+.painting3d-export-row {
+    flex-direction: row;
+}
+
+/* Export 라벨 (좌측) */
+.painting3d-export-label {
+    width: 40%;
+    min-width: 0;
+    flex-shrink: 0;
+    padding-top: 4px;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+}
+
+/* Export 버튼 스택 (우측) */
+.painting3d-export-buttons {
+    flex-grow: 1;
+}
+
+/* Export 개별 버튼 */
+.painting3d-export-btn {
+    margin-bottom: 2px;
+}
+
+/* ========== 상태바 ========== */
+.painting3d-map-source-status-bar {
+    flex-direction: row;
+    align-items: center;
+    height: 24px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: var(--umx-bg-base);
+    border-top-width: 1px;
+    border-top-color: var(--umx-border);
+    flex-shrink: 0;
+}
+
+/* 상태바 스페이서 */
+.painting3d-map-source-status-bar__spacer {
+    flex-grow: 1;
+}
+
+/* 상태바 버튼 */
+.painting3d-map-source-status-btn {
+    width: 24px;
+    height: 20px;
+    font-size: 10px;
+    margin-left: 1px;
+    flex-shrink: 0;
+}

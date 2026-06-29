@@ -1,0 +1,478 @@
+/* =================================================================
+   Painting2D Layer Panel — 2D 윈도우 디자인 언어 전용 스타일
+   글로벌 테마 변수 사용
+   ================================================================= */
+
+/* === 루트 컨테이너 === */
+.p2d-layer-panel {
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: var(--umx-bg-elevated);
+}
+
+/* === 최상단 툴바 === */
+.p2d-layer-toolbar {
+    flex-shrink: 0;
+    flex-direction: row;
+    height: 28px;
+    background-color: var(--umx-bg-content);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+    align-items: center;
+    padding: 0 4px;
+}
+
+.p2d-layer-toolbar-btn {
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 3px;
+    padding: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--umx-text-tertiary);
+}
+
+.p2d-layer-toolbar-btn:hover {
+    background-color: var(--umx-bg-hover);
+    -unity-background-image-tint-color: var(--umx-text);
+}
+
+/* === 상단 헤더: 선택된 레이어 속성 === */
+.p2d-layer-header {
+    flex-shrink: 0;
+    flex-direction: column;
+    padding: 6px 8px;
+    background-color: var(--umx-bg-content);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+}
+
+.p2d-layer-header__row {
+    flex-direction: row;
+    align-items: center;
+    height: 22px;
+    margin-bottom: 4px;
+}
+
+.p2d-layer-header__row-last {
+    margin-bottom: 0;
+}
+
+.p2d-layer-header__label {
+    font-size: 10px;
+    color: var(--umx-text-tertiary);
+    width: 48px;
+    -unity-text-align: middle-left;
+    flex-shrink: 0;
+}
+
+/* BlendMode 드롭다운 버튼 */
+.p2d-layer-blend-dropdown {
+    flex-grow: 1;
+    height: 20px;
+    font-size: 10px;
+    color: var(--umx-text-secondary);
+    background-color: var(--umx-bg-hover);
+    border-width: 0;
+    border-radius: 3px;
+    -unity-text-align: middle-left;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.p2d-layer-blend-dropdown:hover {
+    background-color: var(--umx-bg-hover);
+}
+
+/* Opacity 슬라이더 */
+.p2d-layer-opacity-slider {
+    flex-grow: 1;
+    height: 18px;
+}
+
+/* Opacity 수치 필드 */
+.p2d-layer-opacity-value {
+    width: 36px;
+    height: 20px;
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+/* === 레이어 목록 === */
+.p2d-layer-list {
+    flex-grow: 1;
+    background-color: var(--umx-bg-elevated);
+}
+
+/* === 레이어 행 === */
+.p2d-layer-row {
+    flex-direction: row;
+    align-items: center;
+    height: 26px;
+    padding: 0 4px;
+    background-color: var(--umx-bg-elevated);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+}
+
+.p2d-layer-row:hover {
+    background-color: var(--umx-bg-raised);
+}
+
+.p2d-layer-row--selected {
+    background-color: var(--umx-selection);
+}
+
+.p2d-layer-row--selected:hover {
+    background-color: var(--umx-selection-hover);
+}
+
+/* 가시성 토글 */
+.p2d-layer-vis {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+/* 그룹 접기/펴기 아이콘 */
+.p2d-layer-group-icon {
+    width: 16px;
+    height: 22px;
+    font-size: 9px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    margin-right: 2px;
+    flex-shrink: 0;
+    padding: 0;
+    background-color: transparent;
+    border-width: 0;
+}
+
+/* 썸네일 */
+.p2d-layer-thumb {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+    border-radius: 2px;
+}
+
+/* 레이어 썸네일 선택 상태 (마스크 미선택 = 레이어 편집 중) */
+.p2d-layer-thumb--selected {
+    border-color: var(--umx-text-secondary);
+}
+
+/* 마스크 썸네일 */
+.p2d-layer-mask-thumb {
+    width: 22px;
+    height: 22px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+    border-radius: 2px;
+}
+
+/* 마스크 선택 상태 */
+.p2d-layer-mask-thumb--selected {
+    border-color: var(--umx-text-secondary);
+}
+
+/* 레이어 이름 (라벨) */
+.p2d-layer-name {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 레이어 이름 (편집 필드) */
+.p2d-layer-name-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 11px;
+    height: 20px;
+}
+
+/* === 래스터화 버튼 (레이어 행 오른쪽) === */
+.p2d-layer-rasterize-btn {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    align-self: center;
+    margin-right: 4px;
+    background-color: transparent;
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/rasterize');
+    background-size: 14px 14px;
+    -unity-background-image-tint-color: var(--umx-text-tertiary);
+    border-width: 0;
+    border-radius: 3px;
+    padding: 0;
+}
+
+.p2d-layer-rasterize-btn:hover {
+    background-color: var(--umx-bg-hover);
+    -unity-background-image-tint-color: var(--umx-text);
+}
+
+.p2d-layer-rasterize-btn:active {
+    background-color: var(--umx-bg-surface);
+}
+
+/* === 하단 액션 바 === */
+.p2d-layer-action-bar {
+    flex-shrink: 0;
+    flex-direction: row;
+    height: 28px;
+    background-color: var(--umx-bg-content);
+    border-top-width: 1px;
+    border-top-color: var(--umx-border);
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 4px;
+}
+
+.p2d-layer-action-btn {
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 3px;
+    font-size: 13px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    margin: 0 1px;
+    padding: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: var(--umx-text-tertiary);
+}
+
+.p2d-layer-action-btn:hover {
+    background-color: var(--umx-bg-hover);
+    -unity-background-image-tint-color: var(--umx-text);
+    color: var(--umx-text);
+}
+
+.p2d-layer-action-btn:active {
+    background-color: var(--umx-bg-surface);
+}
+
+.p2d-layer-action-btn:disabled {
+    -unity-background-image-tint-color: var(--umx-text-faint);
+    color: var(--umx-text-faint);
+}
+
+/* === 드래그 & 드롭 인디케이터 === */
+.p2d-drag-indicator {
+    position: absolute;
+    height: 2px;
+    left: 4px;
+    right: 4px;
+    background-color: var(--umx-selection);
+}
+
+.p2d-drag-ghost {
+    position: absolute;
+    background-color: rgba(58, 95, 153, 0.25);
+    border-width: 1px;
+    border-color: var(--umx-selection);
+}
+
+/* === 효과 행 (레이어 행 아래에 자식 형태로 표시) === */
+.p2d-effect-row {
+    flex-direction: row;
+    align-items: center;
+    height: 18px;
+    padding: 0 3px;
+    background-color: var(--umx-bg-elevated);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+}
+
+.p2d-effect-row:hover {
+    background-color: var(--umx-bg-raised);
+}
+
+.p2d-effect-row--selected {
+    background-color: var(--umx-selection);
+}
+
+.p2d-effect-row--selected:hover {
+    background-color: var(--umx-selection-hover);
+}
+
+.p2d-effect-visible-toggle {
+    width: 13px;
+    height: 13px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.p2d-effect-name {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 10px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.p2d-effect-remove-btn {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 2px;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    padding: 0;
+    margin: 0;
+}
+
+.p2d-effect-remove-btn:hover {
+    background-color: var(--umx-bg-hover);
+    color: var(--umx-text);
+}
+
+/* === 효과 값 조정 오버레이 (Picoberry 패턴) === */
+/* 패널 내부에 absolute 로 표시. 액션바(28px) 위쪽까지만 차지하여 액션바 클릭은 그대로 동작. */
+.p2d-effect-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 28px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 0 4px 4px 4px;
+}
+
+.p2d-effect-overlay.hidden {
+    display: none;
+}
+
+.p2d-effect-overlay-backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.28);
+    transition-property: opacity;
+    transition-duration: 180ms;
+    transition-timing-function: ease-out;
+}
+
+.p2d-effect-overlay-panel {
+    flex-shrink: 0;
+    flex-direction: column;
+    background-color: var(--umx-bg-content);
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--umx-border);
+    padding: 5px 6px;
+    transition-property: scale, opacity;
+    transition-duration: 180ms;
+    transition-timing-function: ease-out;
+}
+
+.p2d-effect-overlay-header {
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    margin-bottom: 3px;
+}
+
+.p2d-effect-overlay-title {
+    flex-grow: 1;
+    font-size: 10px;
+    color: var(--umx-text);
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
+
+.p2d-effect-overlay-close {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 2px;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    padding: 0;
+    margin: 0;
+}
+
+.p2d-effect-overlay-close:hover {
+    background-color: var(--umx-bg-hover);
+    color: var(--umx-text);
+}
+
+.p2d-effect-overlay-slider-group {
+    flex-direction: column;
+}
+
+/* 슬라이더는 라벨 + 트랙 + 입력 필드 행. 좁은 레이어 패널 폭에서 컴팩트하게 표시. */
+.p2d-effect-overlay-slider {
+    height: 16px;
+    margin: 0 0 2px 0;
+    font-size: 10px;
+}
+
+.p2d-effect-overlay-slider > .unity-base-field__label {
+    min-width: 56px;
+    font-size: 10px;
+    color: var(--umx-text-secondary);
+}
+
+.p2d-effect-overlay-slider .unity-base-slider__input {
+    height: 16px;
+}
+
+.p2d-effect-overlay-slider .unity-base-slider__text-field {
+    width: 30px;
+    font-size: 10px;
+}
+
+/* Stroke 효과의 enum/color/gradient row — 슬라이더와 동일한 컴팩트 라벨 폭. */
+.p2d-effect-overlay-enum,
+.p2d-effect-overlay-color,
+.p2d-effect-overlay-gradient {
+    height: 18px;
+    margin: 0 0 2px 0;
+    font-size: 10px;
+}
+
+.p2d-effect-overlay-enum > .unity-base-field__label,
+.p2d-effect-overlay-color > .unity-base-field__label,
+.p2d-effect-overlay-gradient > .unity-base-field__label {
+    min-width: 56px;
+    font-size: 10px;
+    color: var(--umx-text-secondary);
+}
+
+.p2d-effect-overlay-enum > .unity-base-field__input {
+    font-size: 10px;
+    height: 16px;
+}

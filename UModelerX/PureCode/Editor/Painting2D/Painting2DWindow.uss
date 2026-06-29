@@ -1,0 +1,1213 @@
+/* 메인 컨테이너: 세로 방향, 전체 높이 채움 */
+.main-container {
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--umx-bg-surface);
+}
+
+/* 메뉴 바: 상단 고정, 가로 방향 배치 */
+.menu-bar {
+    flex-shrink: 0;
+    flex-direction: row;
+    height: 22px;
+    background-color: var(--umx-bg-content);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+    padding-left: 2px;
+    padding-right: 8px;
+    align-items: stretch;
+}
+
+/* 현재 에셋 라벨 좌측 여백: 메뉴와 라벨 사이 공간 확보 */
+.current-asset-spacer {
+    flex-grow: 1;
+    min-width: 8px;
+}
+
+/* 현재 에셋 라벨: 우측 정렬, 회색 텍스트 */
+.current-asset-label {
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-right;
+    align-self: center;
+}
+
+/* 메뉴 버튼: 투명 배경, 테두리 없음 */
+.menu-button {
+    height: 22px;
+    padding: 0 10px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 0;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-center;
+    margin: 0;
+}
+/* 메뉴 버튼 호버: 파란 배경 강조 */
+.menu-button:hover {
+    background-color: var(--umx-selection);
+    color: var(--umx-text);
+}
+/* 메뉴 버튼 활성 상태: 파란 배경 유지 */
+.menu-button.active {
+    background-color: var(--umx-selection);
+    color: var(--umx-text);
+}
+
+/* 메뉴 드롭다운 오버레이: 전체 화면 덮는 투명 레이어 */
+.menu-dropdown {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+
+/* 메뉴 드롭다운 컨테이너: 절대 위치, 어두운 배경 */
+.menu-dropdown-container {
+    position: absolute;
+    background-color: var(--umx-bg-content);
+    border-color: var(--umx-border-strong);
+    border-width: 1px;
+    padding: 3px 0;
+    min-width: 130px;
+}
+
+/* 메뉴 항목 버튼: 좌측 정렬, 전체 너비 차지 */
+.menu-item-button {
+    height: 22px;
+    padding: 0 16px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 0;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+    margin: 0;
+    width: 100%;
+}
+/* 메뉴 항목 호버: 파란 배경 강조 */
+.menu-item-button:hover {
+    background-color: var(--umx-selection);
+    color: var(--umx-text);
+}
+/* 메뉴 항목 비활성: 어두운 회색 텍스트 */
+.menu-item-button:disabled {
+    color: var(--umx-text-faint);
+}
+
+/* 상단 툴바: 콘텐츠 높이에 맞춘 최소 높이(Brush 복합 버튼 28px 기준) */
+.top-toolbar {
+    flex-shrink: 0;
+    flex-direction: row;
+    min-height: 32px;
+    background-color: var(--umx-bg-content);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border);
+    align-items: center;
+    align-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: flex-start;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* 툴바 좌측 그룹: 가로 방향, 남은 공간 채움 */
+.toolbar-group-left {
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    flex-grow: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+/* toolbar-group-left: 세로 마진 최소화(한 줄 높이 통일) */
+.toolbar-group-left > * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* 툴바 우측 그룹: 가로 방향, 우측 정렬 */
+.toolbar-group-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    align-self: center;
+    margin-left: 8px;
+}
+
+.toolbar-tool-actions {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+    margin-left: 8px;
+}
+
+/* 구분선: 세로 1px 라인(복합 컨트롤 28px 행에 맞춤) */
+.separator {
+    width: 1px;
+    height: 22px;
+    background-color: var(--umx-bg-hover);
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/* 헤더 라벨: 볼드, 회색 텍스트 */
+.header-label {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: var(--umx-text-tertiary);
+    margin-right: 8px;
+}
+
+/* 작은 아이콘 버튼: 28x28 크기, 둥근 모서리 */
+.small-icon-button {
+    width: 28px;
+    height: 28px;
+    background-color: var(--umx-bg-hover);
+    border-width: 0;
+    border-radius: 3px;
+    -unity-text-align: middle-center;
+    font-size: 14px;
+    color: var(--umx-text-secondary);
+}
+/* 작은 아이콘 버튼 호버: 밝은 배경 */
+.small-icon-button:hover {
+    background-color: var(--umx-bg-hover);
+}
+/* 작은 아이콘 버튼 클릭: 어두운 배경 */
+.small-icon-button:active {
+    background-color: var(--umx-bg-surface);
+}
+/* 작은 아이콘 버튼 활성 상태: 한 단계 더 밝은 배경 + 흰색 테두리로 강조 */
+.small-icon-button.enabled {
+    background-color: #7a7a7a;
+    color: var(--umx-text);
+    border-width: 1px;
+    border-color: var(--umx-text-secondary);
+}
+/* 작은 아이콘 버튼 활성 호버: 약간 더 밝은 배경 */
+.small-icon-button.enabled:hover {
+    background-color: #858585;
+}
+/* 작은 아이콘 버튼 활성 클릭: 중간 회색 배경 */
+.small-icon-button.enabled:active {
+    background-color: #6e6e6e;
+}
+
+/* 도구 설정 페이지: 기본 숨김, 활성화 시 표시 */
+.tool-settings-page {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    min-width: 0;
+    align-content: center;
+}
+
+/* tool-settings-page: 세로 마진 최소화(한 줄 높이 통일) */
+.tool-settings-page > * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* 도구 설정 페이지 활성: flex 표시 */
+.tool-settings-page.enabled {
+    display: flex;
+}
+
+/* 복합 버튼: 미리보기+텍스트 조합 버튼(Opacity 박스 28px와 동일 기준) */
+.composite-button {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--umx-bg-content);
+    border-width: 0;
+    padding: 0;
+    height: 28px;
+    width: 120px;
+}
+
+/* 복합 텍스트 크기 라벨: 우측 정렬, 고정 너비 */
+.comp-text-size {
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-right;
+    width : 24px;
+}
+/* 복합 텍스트 라벨: 중앙 정렬, 고정 너비 */
+.comp-text-label {
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    width : 48px;
+}
+/* 복합 미리보기 영역: 둥근 모서리, 투명 배경 */
+.comp-preview {
+    width: 80px;
+    height: 28px;
+    background-color: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 12px;
+}
+
+/* 복합 화살표: 작은 폰트, 회색 텍스트 */
+.comp-arrow {
+    font-size: 8px;
+    color: var(--umx-text-faint);
+    -unity-text-align: middle-center;
+}
+
+/* 복합 박스: 가로 방향, 고정 높이, 오버플로 숨김 */
+.composite-box {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-content);
+    height: 28px;
+    overflow: hidden;
+}
+
+/* Rect Selection bounds 행: X/Y/W/H 가로 배치 */
+.rect-selection-bounds-row {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-content);
+    min-height: 28px;
+    overflow: visible;
+}
+
+.rect-selection-bounds-label {
+    min-width: 14px;
+    max-width: 18px;
+    margin-left: 4px;
+    -unity-text-align: middle-left;
+}
+
+.rect-selection-bounds-field {
+    width: 44px;
+    margin-right: 4px;
+}
+
+/* 매직 완드 설정 행: 가로 방향, 오버플로 허용 */
+.magic-wand-settings-row {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-bg-content);
+    min-height: 28px;
+    overflow: visible;
+}
+
+/* 매직 완드 인접(Contiguous) 행: 크기 축소 방지 */
+.magic-wand-contiguous-row {
+    flex-shrink: 0;
+}
+
+/* 매직 완드 인접 토글: 크기 축소 방지 */
+.magic-wand-contiguous-toggle {
+    flex-shrink: 0;
+}
+
+/* 복합 정보 라벨: 작은 폰트, 우측 정렬, 최소 너비 */
+.composite-info-label {
+    font-size: 10px;
+    color: var(--umx-text-tertiary);
+    margin-left: 6px;
+    margin-right: 4px;
+    -unity-text-align: middle-right;
+    min-width: 15px;
+}
+
+/* 복합 라벨: 좌측 정렬, 회색 텍스트 */
+.composite-label {
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    margin-left: 6px;
+    margin-right: 2px;
+    -unity-text-align: middle-left;
+}
+
+/* 버킷 모드 라벨: 고정 너비, 좌측 정렬 */
+.bucket-mode-label {
+    width: 120px;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    margin-left: 16px;
+    margin-right: 2px;
+    -unity-text-align: middle-left;
+}
+
+/* 버킷 모드 화살표: 작은 폰트, 중앙 정렬 */
+.bucket-mode-arrow {
+    width: 30px;
+    font-size: 8px;
+    color: var(--umx-text-faint);
+    -unity-text-align: middle-center;
+}
+
+/* 브러시 미리보기 아이콘: 작은 흰색 사각형 */
+.brush-preview-icon {
+    width: 18px;
+    height: 18px;
+    background-color: var(--umx-text);
+    border-radius: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* 속성 그룹: 가로 방향, 어두운 배경, 둥근 모서리 */
+.prop-group {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 8px;
+    background-color: var(--umx-bg-elevated);
+    border-radius: 3px;
+    padding: 1px;
+}
+
+/* 브러시 타입 버튼: 24x24, 투명 배경, 테두리 없음 */
+.brush-type-button{
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--umx-text-secondary);
+    padding: 2px 2px 2px 2px;
+    margin: 0;
+    font-size: 16px;
+    -unity-text-align: middle-center;
+}
+/* 브러시 타입 버튼 호버: 어두운 회색 배경 */
+.brush-type-button:hover { background-color: var(--umx-bg-raised); }
+
+/* 빈 버튼: 24x24, 투명 배경, 작은 폰트 */
+.empty-button {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--umx-text-secondary);
+    padding: 2px 2px 2px 2px;
+    margin: 0;
+    font-size: 8px;
+    -unity-text-align: middle-center;
+}
+/* 빈 버튼 호버: 어두운 회색 배경 */
+.empty-button:hover { background-color: var(--umx-bg-raised); }
+
+
+/* 속성 입력 필드: 고정 크기, 작은 폰트 */
+.prop-field {
+    width: 35px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+}
+
+/* 속성 입력 필드 내부: 패딩 및 모서리 조정 */
+.prop-field > .unity-integer-field__input {
+    padding: 0 2px;
+    border-radius: 0 2px 2px 0;
+    margin: 0;
+}
+
+/* 드롭다운 화살표 버튼: 좌측 구분선 포함 */
+.dropdown-arrow-btn {
+    width: 18px;
+    height: 100%;
+    background-color: transparent;
+    border-width: 0;
+    border-left-width: 1px;
+    border-left-color: var(--umx-border);
+    color: var(--umx-text-muted);
+    font-size: 8px;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 드롭다운 화살표 호버: 밝은 배경, 흰색 텍스트 */
+.dropdown-arrow-btn:hover {
+    background-color: var(--umx-bg-hover);
+    color: var(--umx-text);
+}
+
+/* 색상 필드: 고정 크기(한 줄 28px에 맞춤) */
+.color-field {
+    width: 80px;
+    height: 24px;
+    border-width: 0;
+    border-color: var(--umx-border-subtle);
+    margin-right: 8px;
+}
+
+/* 그래디언트 미리보기: 고정 크기, 테두리 포함 */
+.gradient-preview {
+    width: 100px;
+    height: 25px;
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+    background-image: none;
+    margin-right: 8px;
+}
+
+/* 브러시 모양 팝업 컨테이너: 절대 위치, 고정 크기 (top은 코드에서 top-toolbar 아래로 설정) */
+.brush-shape-popup-container {
+    position: absolute;
+    left: 100px;
+    width: 220px;
+    height: 90px;
+    background-color: var(--umx-bg-content);
+    padding: 6px;
+}
+
+/* 브러시 모양 팝업 오버레이: 전체 화면 투명 레이어 */
+.brush-shape-popup{
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+
+/* 브러시 설정 속성 행: 가로 방향 정렬 */
+.brush-setting-property {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 브러시 속성 라벨: 최소/최대 너비 제한 */
+.brush-property-label {
+    min-width: 60px;
+    max-width: 90px;
+}
+
+/* 브러시 속성 슬라이더: 고정 너비 100px */
+.brush-property-slider {
+    width: 100px;
+}
+
+/* 브러시 속성 입력 필드: 고정 너비 30px */
+.brush-property-field {
+    width: 30px;
+}
+
+/* 속성 드롭다운: 둥근 모서리, 고정 크기 */
+.property-dropdown{
+    flex-direction: row;
+    width: 150px;
+    height: 25px;
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: var(--umx-border);
+    align-content: center;
+    justify-content: space-around;
+
+    padding: 0;
+    margin: 0;
+}
+
+/* 속성 드롭다운 호버: 밝은 배경 */
+.property-dropdown:hover{
+    background-color: var(--umx-bg-raised);
+    border-color: var(--umx-border-subtle);
+}
+
+/* 속성 드롭다운 클릭: 어두운 배경 */
+.property-dropdown:active{
+    background-color: var(--umx-bg-surface);
+    border-color: var(--umx-border);
+}
+
+/* 버킷 모드 팝업 오버레이: 전체 화면 투명 레이어 */
+.bucket-mode-popup{
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+
+/* 버킷 모드 팝업 컨테이너: 위치는 Painting2DWindow.PositionPopupBelowButton에서 설정 (트리거 버튼 바로 아래) */
+.bucket-mode-popup-container{
+    position: absolute;
+    width : 150px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    background-color: var(--umx-bg-elevated);
+    border-width: 1px;
+    border-color: var(--umx-border);
+    border-radius: 4px;
+}
+
+/* 버킷 모드 팝업 목록 항목: 고정 크기, 테두리/모서리 없음 */
+.bucket-mode-popup-list-property{
+    width: 150px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    border-width : 0;
+    border-radius : 0;
+}
+
+/* 버킷 모드 팝업 목록 항목 선택: 어두운 배경 강조 */
+.bucket-mode-popup-list-property.selected{
+    width: 150px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    border-width : 0;
+    border-radius : 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* 브러시 불투명도 팝업 오버레이: 전체 화면 투명 레이어 */
+.brush-opacity-popup {
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+
+/* 브러시 불투명도 팝업 컨테이너: 절대 위치, 어두운 배경 (top은 코드에서 top-toolbar 아래로 설정) */
+.brush-opacity-popup-container{
+    position: absolute;
+    left: 300px;
+    width: 120px;
+    height: 30px;
+    background-color: var(--umx-bg-elevated);
+    padding: 4px 4px 4px 4px;
+}
+
+/* 본문 컨테이너: 가로 방향, 남은 공간 채움 */
+.body-container {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+/* 뷰포트: 중앙 정렬, 어두운 배경 */
+.viewport {
+    flex-grow: 1;
+    background-color: var(--umx-bg-base);
+    justify-content: center;
+    align-items: center;
+}
+
+/* 레이어 패널 컨테이너 */
+.layer-panel-container {
+    flex-shrink: 0;
+    width: 200px;
+    min-width: 160px;
+    max-width: 300px;
+    background-color: var(--umx-bg-elevated);
+    border-left-width: 1px;
+    border-left-color: var(--umx-bg-base);
+    flex-direction: column;
+}
+
+/* 우측 툴바: 세로 방향, 고정 너비 50px */
+.right-toolbar {
+    flex-shrink: 0;
+    width: 50px;
+    background-color: var(--umx-bg-elevated);
+    border-left-width: 1px;
+    border-left-color: var(--umx-bg-base);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* 도구 버튼: 40x40, 투명 배경, 둥근 모서리 */
+.tool-button {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 4px;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+}
+
+/* 도구 버튼 호버: 밝은 회색 배경 */
+.tool-button:hover {
+    background-color: #5e5e5e;
+}
+/* 도구 버튼 클릭: 어두운 배경 */
+.tool-button:active {
+    background-color: var(--umx-bg-raised);
+}
+
+/* 도구 버튼 활성 상태: 어두운 배경, 흰색 텍스트 */
+.tool-button.enabled {
+    background-color: var(--umx-bg-surface);
+    color: var(--umx-text);
+}
+
+/* 렌더 이미지: 전체 너비, 남은 공간 채움 */
+.render-image{
+    flex-grow: 1;
+    width: 100%;
+}
+
+/* 숨김: 요소 비표시 */
+.hidden{
+    display: none;
+}
+
+/* 핸드 도구 아이콘 */
+.hand-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/HandTool');
+    background-size: 22px 22px;
+}
+/* 이동 도구 아이콘 */
+.move-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/MoveTool');
+    background-size: 22px 22px;
+}
+/* 브러시 도구 아이콘 */
+.brush-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/BrushTool');
+    background-size: 22px 22px;
+}
+/* 지우개 도구 아이콘 */
+.eraser-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/EraserTool');
+    background-size: 22px 22px;
+}
+/* 버킷(채우기) 도구 아이콘 */
+.bucket-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/BucketTool');
+    background-size: 22px 22px;
+}
+/* 스포이트 도구 아이콘 */
+.eye-dropper-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/EyeDropperTool');
+    background-size: 22px 22px;
+}
+/* 그래디언트 도구 아이콘 */
+.gradient-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/GradientTool');
+    background-size: 22px 22px;
+}
+/* 선택 도구 아이콘 */
+.selection-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/SelectionTool');
+    background-size: 22px 22px;
+}
+/* 사각형 선택 도구 아이콘 */
+.rect-selection-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/RectSelectionTool');
+    background-size: 22px 22px;
+}
+/* 올가미 도구 아이콘 */
+.lasso-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/LassoTool');
+    background-size: 22px 22px;
+}
+/* 매직 완드 도구 아이콘 */
+.magic-wand-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/MagicWandTool');
+    background-size: 22px 22px;
+}
+/* 자유 변형 도구 아이콘 */
+.free-transform-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/FreeTransformTool');
+    background-size: 22px 22px;
+}
+/* 그리드 표시 아이콘 */
+.grid-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/Grid');
+    background-size: 22px 22px;
+}
+/* 와이어프레임 표시 아이콘 */
+.wire-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/Wireframe');
+    background-size: 22px 22px;
+}
+/* 텍스처 반복 표시 아이콘 */
+.repeat-texture-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/Repeat');
+    background-size: 22px 22px;
+}
+/* Snap 아이콘: 모드별 아이콘. snap-button 클릭 시 클래스가 교체되어 표시됨. */
+.snap-none{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/SnapNone');
+    background-size: 22px 22px;
+}
+.snap-grid{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/SnapGrid');
+    background-size: 22px 22px;
+}
+.snap-uv-vertex{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/SnapUVVertex');
+    background-size: 22px 22px;
+}
+/* 수평 뒤집기 아이콘 */
+.flip-horizontal-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/flip-horizontal');
+    background-size: 22px 22px;
+}
+/* 수직 뒤집기 아이콘 */
+.flip-vertical-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/flip-vertical');
+    background-size: 22px 22px;
+}
+/* 저장 아이콘 */
+.save-icon {
+    background-image: resource('AI/save');
+    background-size: 22px 22px;
+}
+/* 다른 이름으로 저장 아이콘 */
+.save-as-new-icon {
+    background-image: resource('AI/save-as-new');
+    background-size: 22px 22px;
+}
+/* 종횡비 아이콘 */
+.aspect-ratio-icon {
+    background-image: resource('AI/aspect-ratio');
+    background-size: 22px 22px;
+}
+/* 잠금 아이콘 요소: 고정 크기, 축소 방지 */
+.lock-icon-element {
+    background-image: resource('AI/lock');
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+/* 툴바 구분선: 세로 1px 라인 */
+.toolbar-separator {
+    width: 1px;
+    height: 25px;
+    background-color: var(--umx-bg-hover);
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/* 해상도 팝업 오버레이: 전체 화면 투명 레이어 */
+.resolution-popup {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+/* 해상도 팝업 컨테이너: 절대 위치, 어두운 배경, 고정 너비 */
+.resolution-popup-container {
+    position: absolute;
+    background-color: var(--umx-bg-content);
+    border-color: var(--umx-border);
+    border-width: 1px;
+    padding: 8px;
+    width: 160px;
+}
+/* 해상도 행: 가로 방향 정렬, 하단 여백 */
+.resolution-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+/* 해상도 라벨: 고정 너비, 회색 텍스트 */
+.resolution-label {
+    width: 16px;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+}
+/* 해상도 입력 필드: 남은 공간 채움 */
+.resolution-field {
+    flex-grow: 1;
+}
+/* 해상도 잠금 행: 가로 방향 정렬, 하단 여백 */
+.resolution-lock-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+/* 해상도 적용 버튼: 상단 여백 */
+.resolution-apply-button {
+    margin-top: 4px;
+}
+/* 캔버스 팝업 오버레이 */
+.canvas-popup {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+/* 캔버스 팝업 컨테이너 */
+.canvas-popup-container {
+    position: absolute;
+    background-color: var(--umx-bg-content);
+    border-color: var(--umx-border);
+    border-width: 1px;
+    padding: 8px;
+    width: 180px;
+}
+/* 앵커 3x3 그리드: 세로 정렬 */
+.canvas-anchor-grid {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+/* 앵커 행: 가로 정렬 */
+.canvas-anchor-row {
+    flex-direction: row;
+    margin-bottom: 2px;
+}
+/* 앵커 버튼: 정사각, 단색 */
+.canvas-anchor-button {
+    width: 22px;
+    height: 22px;
+    margin-right: 2px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    background-color: var(--umx-bg-hover);
+    border-color: var(--umx-border);
+    border-width: 1px;
+    background-size: 14px 14px;
+}
+/* 앵커 선택 상태 */
+.canvas-anchor-button.active {
+    background-color: var(--umx-selection);
+    border-color: var(--umx-selection);
+}
+/* 앵커 방향 아이콘 (선택된 anchor에서 인접 셀로 향하는 화살표) */
+.canvas-anchor-button.icon-nw { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-up-left'); }
+.canvas-anchor-button.icon-n  { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-up'); }
+.canvas-anchor-button.icon-ne { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-up-right'); }
+.canvas-anchor-button.icon-w  { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-left'); }
+.canvas-anchor-button.icon-c  { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/circle'); }
+.canvas-anchor-button.icon-e  { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-right'); }
+.canvas-anchor-button.icon-sw { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-down-left'); }
+.canvas-anchor-button.icon-s  { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-down'); }
+.canvas-anchor-button.icon-se { background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/arrow-down-right'); }
+/* 삼각형 도구 아이콘 */
+.triangle-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/Triangle');
+    background-size: 22px 22px;
+}
+/* 사각형 도구 아이콘 */
+.quad-icon{
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/Quad');
+    background-size: 22px 22px;
+}
+
+/* ====== 동적 툴바 시스템 스타일 ====== */
+
+/* 테마 버튼 래퍼: 캐럿 + 메인버튼을 row로 묶음 */
+.tool-theme-button {
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+/* 캐럿 화살표: 테마에 툴이 2개 이상일 때만 표시 */
+.tool-arrow-indicator {
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/caret-left');
+    width: 8px;
+    height: 16px;
+    position: absolute;
+    left: 2px;
+    bottom: 12px;
+    background-size: 16px 16px;
+}
+
+/* tool-theme-button 내의 tool-button은 margin-bottom을 0으로 덮어씀
+   (래퍼의 margin-bottom으로 통합 관리) */
+.tool-theme-button .tool-button {
+    margin-bottom: 0;
+}
+
+/* 비활성화된 툴 버튼: 레이어 타입에 의해 선택 불가 */
+.tool-button--disabled {
+    opacity: 0.3;
+}
+
+/* 플라이아웃 드롭다운 컨테이너 */
+.tool-flyout-dropdown {
+    position: absolute;
+    background-color: var(--umx-bg-content);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 3px;
+    min-width: 150px;
+    padding: 3px 0;
+}
+
+/* 드롭다운 항목 행 (Button 기반이므로 기본 스타일 리셋) */
+.tool-flyout-item {
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    padding: 0 8px;
+    margin: 0;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 0;
+}
+/* 드롭다운 항목 호버: 파란 배경 강조 */
+.tool-flyout-item:hover {
+    background-color: var(--umx-selection-hover);
+}
+/* 드롭다운 항목 활성: 어두운 배경 */
+.tool-flyout-item.active {
+    background-color: var(--umx-bg-surface);
+}
+
+/* 드롭다운 항목 아이콘 */
+.tool-flyout-item-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* 드롭다운 항목 이름 레이블 */
+.tool-flyout-item-label {
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-left;
+}
+
+/* ====== 도형 툴 / 텍스트 툴 아이콘 ====== */
+/* 사각형 도형 아이콘 */
+.shape-rect-icon {
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/RectangleTool');
+    background-size: 22px 22px;
+}
+/* 타원 도형 아이콘 */
+.shape-ellipse-icon {
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/EllipseTool');
+    background-size: 22px 22px;
+}
+/* 직선 도형 아이콘 */
+.shape-line-icon {
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/LineTool');
+    background-size: 22px 22px;
+}
+/* 텍스트 도구 아이콘 */
+.text-icon {
+    background-image: resource('Tripolygon/UModelerX/Editor/Painting2D/TextTool');
+    background-size: 22px 22px;
+}
+
+/* ====== 도형/텍스트 툴 설정 패널 레이아웃 ====== */
+/* 도형 설정 행: 가로 방향, 줄바꿈 허용 */
+.shape-settings-row {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+/* 도형 설정 행 (줄바꿈 없음): 한 줄 고정 */
+.shape-settings-row-nowrap {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+.shape-setting-item {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+/* 도형 크기 인라인 그룹: 축소 방지, 줄바꿈 없음 */
+.shape-size-inline {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+/* 도형 크기 'x' 구분 라벨: 중앙 정렬, 고정 너비 */
+.shape-size-x-label {
+    width: 12px;
+    min-width: 12px;
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-center;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+/* 도형 속성 필드 (좁은): 고정 너비 44px */
+.shape-prop-field-tight {
+    width: 44px;
+    min-width: 38px;
+}
+/* 도형 열거형 필드 (콤팩트): 고정 너비 68px */
+.shape-enum-field-compact {
+    min-width: 68px;
+    width: 68px;
+}
+/* 줄바꿈 없는 행 내 속성 라벨: 최소 너비, 좌측 여백 */
+.shape-settings-row-nowrap .shape-prop-label {
+    min-width: 22px;
+    margin-left: 4px;
+}
+/* 도형 속성 라벨: 우측 정렬, 회색 텍스트 */
+.shape-prop-label {
+    font-size: 11px;
+    color: var(--umx-text-tertiary);
+    -unity-text-align: middle-right;
+    min-width: 22px;
+    margin-right: 3px;
+    margin-left: 6px;
+}
+/* 도형 속성 필드: 고정 크기 30x22 */
+.shape-prop-field {
+    width: 30px;
+    height: 22px;
+    margin-right: 4px;
+}
+/* 도형 크기 필드: 고정 크기 40x22 */
+.shape-size-field {
+    width: 40px;
+    height: 22px;
+    margin-right: 4px;
+}
+/* 도형 색상 견본: 고정 크기 66x22 */
+.shape-color-swatch {
+    width: 66px;
+    height: 22px;
+    margin-right: 4px;
+}
+/* 도형 토글: 우측 여백 */
+.shape-toggle {
+    margin-right: 4px;
+}
+/* 도형 설정 구분선: 세로 1px 라인 */
+.shape-settings-separator {
+    width: 1px;
+    height: 22px;
+    background-color: var(--umx-bg-hover);
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/* 도형 폰트 필드: 고정 크기 120x22 */
+.shape-font-field {
+    width: 120px;
+    height: 22px;
+    margin-right: 4px;
+}
+/* 도형 토글 (콤팩트): 고정 너비 22px */
+.shape-toggle-compact {
+    min-width: 22px;
+    width: 22px;
+    margin-right: 2px;
+}
+.text-style-button {
+    height: 22px;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: var(--umx-bg-hover);
+    color: var(--umx-text-secondary);
+    -unity-text-align: middle-center;
+}
+.text-style-button:hover {
+    background-color: var(--umx-bg-hover);
+}
+.text-style-button:active {
+    background-color: var(--umx-bg-surface);
+}
+.text-style-button.text-style-button--active,
+.text-style-button.text-style-button--active:hover,
+.text-style-button.text-style-button--active:active {
+    background-color: #7a7a7a;
+    color: var(--umx-text);
+    border-width: 1px;
+    border-color: var(--umx-text-secondary);
+}
+.text-style-button.text-style-button--active:hover {
+    background-color: #858585;
+}
+.text-style-button.text-style-button--active:active {
+    background-color: #6e6e6e;
+}
+/* 도형 정렬 필드: 고정 크기 88x22 */
+.shape-align-field {
+    min-width: 88px;
+    width: 88px;
+    height: 22px;
+    margin-right: 4px;
+}
+
+/* === View 메뉴 — Grid 팝업 === */
+.grid-popup {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+}
+.grid-popup-container {
+    position: absolute;
+    background-color: var(--umx-bg-content);
+    border-color: var(--umx-border);
+    border-width: 1px;
+    padding: 8px;
+    width: 180px;
+}
+.grid-popup-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.grid-popup-label {
+    width: 70px;
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+}
+.grid-popup-field {
+    flex-grow: 1;
+}
+.grid-popup-toggle {
+    flex-grow: 0;
+}
+.grid-popup-mode-row {
+    flex-direction: row;
+    margin-bottom: 4px;
+}
+.grid-popup-mode-button {
+    flex-grow: 1;
+    height: 20px;
+    margin-left: 0;
+    margin-right: 2px;
+    padding: 0;
+    border-width: 1px;
+    border-color: var(--umx-border);
+    background-color: var(--umx-bg-hover);
+}
+.grid-popup-mode-button.active {
+    background-color: var(--umx-selection);
+    border-color: var(--umx-selection);
+}
+

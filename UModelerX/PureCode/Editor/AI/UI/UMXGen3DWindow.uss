@@ -1,0 +1,1566 @@
+/* ---------- Base ---------- */
+/* 루트 컨테이너: 가로 방향, 전체 크기 */
+.root {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(56, 56, 56);
+  flex-direction: row;
+  align-items: stretch;
+
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+/* 기본 테마 변수: 흰색 계열 */
+.normal{
+  --color-theme: rgb(255, 255, 255);
+  --color-hover: rgb(235, 235, 235);
+}
+
+/* Meshy 테마 변수: 연두색 계열 */
+.meshy {
+  --color-theme: rgb(186, 247, 45);
+  --color-hover: rgb(170, 239, 9);
+}
+
+/* Tripo 테마 변수: 노란색 계열 */
+.tripo {
+  --color-theme: rgb(255, 217, 36);
+  --color-hover: rgb(247, 204, 0);
+}
+
+/* 속성 스택: 둥근 테두리, 어두운 배경 */
+.property-stack {
+  height: 80%;
+  flex-grow:1;
+  padding: 10px;
+  background-color: rgb(38, 38, 38);
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: rgb(30, 30, 30);
+}
+
+/* 폰트 설정 (비활성) */
+.font {
+  /*-unity-font-definition: resource("Fonts/Nexa-Heavy");*/
+}
+/* 볼드체 유틸리티 */
+.bold
+{
+  -unity-font-style: bold;
+}
+
+/* ---------- Left Pane ---------- */
+/* 좌측 패널: 최소 너비, 남은 공간 채움 */
+.left-pane {
+  min-width: 430px;
+  flex-grow: 1;
+  background-color: #383838;
+  margin: 0;
+  padding: 0;
+}
+/* 좌측 상단 패널: 최소 높이, 남은 공간 채움 */
+.left-upper-pane{
+  min-height: 380px;
+  flex-grow: 1;
+  background-color: #383838;
+  margin: 0;
+  padding: 0;
+}
+
+/* 상단 토글 바 */
+.left-topbar {
+  height: 60px;
+  margin: 0 15px 0 30px;
+  padding: 0;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 키 버튼 */
+/* API 키 버튼: 둥근 모서리, 회색 배경 */
+.api-key-button {
+  width: 40px;
+  height: 35px;
+  align-self: flex-end;
+  background-color: rgb(66, 66, 66);
+  color: rgb(188, 188, 188);
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(40, 40, 40);
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 0;
+}
+/* API 키 버튼 호버 상태 */
+.api-key-button:hover{
+  background-color: rgb(80, 80, 80);
+  color: rgb(200, 200, 200);
+}
+/* API 키 버튼 클릭 상태 */
+.api-key-button:active{
+  background-color: rgb(46, 46, 46);
+  color: rgb(200, 200, 200);
+}
+/* API 키 버튼 활성 상태: 하단 모서리 제거 */
+.api-key-button.enabled{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-width: 0;
+  background-color: rgb(28, 28, 28);
+}
+/* API 키 버튼 활성+호버 상태 */
+.api-key-button.enabled:hover{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-width: 0;
+  background-color: rgb(38, 38, 38);
+}
+/* API 키 버튼 활성+클릭 상태 */
+.api-key-button.enabled:active{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-width: 0;
+  background-color: rgb(23, 23, 23);
+}
+
+/* AI 서비스 버튼 */
+/* AI 서비스 선택 버튼: 큰 폰트, 둥근 모서리 */
+.api-button {
+  width: 100px;
+  height: 35px;
+  align-self: flex-end;
+  background-color: rgb(66, 66, 66);
+  color: rgb(188, 188, 188);
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(40, 40, 40);
+  font-size: 18px;
+  margin: 4px 4px 8px 4px;
+  padding: 0;
+}
+/* AI 서비스 버튼 클릭 상태 */
+.api-button:active{
+  background-color: rgb(46, 46, 46);
+  color: rgb(200, 200, 200);
+}
+/* AI 서비스 버튼 비활성 상태 */
+.api-button.disabled{
+  background-color: rgb(86, 86, 86);
+  color: rgb(28, 28, 28);
+}
+/* Meshy 서비스 버튼: 연두색 텍스트 */
+.api-button.meshy{
+  color: rgb(186, 247, 45);
+  background-color: rgb(66, 66, 66);
+}
+/* Meshy 서비스 버튼 호버 상태 */
+.api-button.meshy:hover{
+  color: rgb(186, 247, 45);
+  background-color: rgb(86, 86, 86);
+}
+/* Meshy 서비스 버튼 클릭 상태 */
+.api-button.meshy:active{
+  color: rgb(186, 247, 45);
+  background-color: rgb(46, 46, 46);
+}
+/* Meshy 서비스 버튼 선택 상태 */
+.api-button.meshy.selected{
+  color: rgb(186, 247, 45);
+  background-color: rgb(38, 38, 38);
+}
+/* Tripo 서비스 버튼: 노란색 텍스트 */
+.api-button.tripo{
+  color: rgb(255, 217, 36);
+  background-color: rgb(66, 66, 66);
+}
+/* Tripo 서비스 버튼 호버 상태 */
+.api-button.tripo:hover{
+  color: rgb(255, 217, 36);
+  background-color: rgb(86, 86, 86);
+}
+/* Tripo 서비스 버튼 클릭 상태 */
+.api-button.tripo:active{
+  color: rgb(255, 217, 36);
+  background-color: rgb(46, 46, 46);
+}
+/* Tripo 서비스 버튼 선택 상태 */
+.api-button.tripo.selected{
+  color: rgb(255, 217, 36);
+  background-color: rgb(38, 38, 38);
+}
+
+/* 트라이포 비활성화 툴팁 */
+/* 툴팁 컨테이너: 작은 폰트, 둥근 모서리 */
+.tooltip{
+  width: 120px;
+  height: 35px;
+  background-color: rgb(66, 66, 66);
+  color: rgb(188, 188, 188);
+  border-radius: 7px;
+  font-size: 10px;
+  margin: 0 0 8px 0;
+  padding: 6px 6px 4px 6px;
+  align-self: flex-end;
+}
+
+/* 툴팁 텍스트: 줄바꿈 허용, 중앙 정렬 */
+.tooltip-text{
+  white-space: normal;
+  -unity-text-align: middle-center;
+  margin: 0;
+  padding: 0;
+}
+
+/* 비활성화 라벨: 어두운 회색 */
+.disabled-label{
+  color: rgb(96, 96, 96);
+  margin: 0 0 0 6px;
+  padding: 0;
+}
+
+/* 매뉴얼 텍스트: 중간 회색 */
+.manual-text{
+  color: rgb(146, 146, 146);
+}
+
+/* 아이콘 스킨 */
+.icon-key    { background-image: resource('AI/Key');    background-size: 22px 22px; }
+.icon-login  { background-image: resource('AI/Login');  background-size: 22px 22px; }
+.icon-logout  { background-image: resource('AI/Logout');  background-size: 22px 22px; }
+.icon-home   { background-image: resource('AI/Home');   background-size: 18px 18px; }
+/* 매뉴얼 버튼: 투명 배경, 아이콘만 표시 */
+.manual-button{
+  width: 20px;
+  height: 20px;
+  background-image: resource('AI/Manual_White');
+  background-size: 20px 20px;
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0;
+  -unity-background-image-tint-color: rgb(180, 180, 180);
+}
+/* 매뉴얼 버튼 호버 상태 */
+.manual-button:hover{
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0;
+  -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+/* 크레딧 뱃지 */
+/* 크레딧 뱃지 컨테이너: 우측 정렬 */
+.credit-badge {
+  width: 70px;
+  height: 30px;
+  margin-left: auto;
+  background-color: rgba(50,50,50,0);
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  align-self : center;
+  flex-grow: 0;
+}
+/* 크레딧 아이콘 */
+.credit-icon  {
+  background-image: resource('AI/Credit');
+  margin-left: 3px;
+  width: 18px;
+  height: 18px;
+}
+/* 크레딧 값: 중앙 정렬, 회색 텍스트 */
+.credit-value {
+  min-width: 20px;
+  max-width: 40px;
+  color: #b0b0b0;
+  font-size: 12px;
+  -unity-text-align: upper-center;
+}
+
+/* 좌측 페이지 스택 */
+/* 좌측 페이지 스택: 어두운 배경, 최소 높이 */
+.left-page-stack {
+  margin: 0 15px 0 30px;
+  padding: 0;
+  flex-grow: 1;
+  min-height: 240px;
+  border-top-left-radius: 0px;
+  background-color: #2d2d2d;
+}
+/* API 키 오버레이: 절대 위치, 둥근 모서리 */
+.api-key-overlay{
+  min-height: 150px;
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 52px;
+  justify-content: space-around;
+  padding: 20px 20px 0 20px;
+  margin: 0;
+  border-radius: 7px;
+  border-top-left-radius: 0px;
+  background-color: rgb(28, 28, 28);
+}
+/* 프리뷰 래퍼: 상대 위치, 전체 높이 */
+.preview-wrap {
+  position : relative;
+  height: 100%;
+
+}
+/* 페이지 컨테이너: 전체 높이, 내부 패딩 */
+.page {
+  height: 100%;
+  display: flex;
+  background-color : rgb(40, 40, 40);
+  padding: 6px;
+  }
+/* 페이지 숨김 상태 */
+.page.hidden  {
+  display: none;
+}
+
+/* API 키 입력 행: 가로 배치 */
+.api-row {
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* API 라벨: 큰 폰트, 고정 너비 */
+.api-label {
+    font-size: 20px;
+    width: 80px;
+    color: rgb(116, 116, 116);
+}
+/* API 라벨 Meshy 테마: 연두색 */
+.api-label.meshy {
+    color: rgb(186, 247, 45);
+}
+/* API 라벨 Tripo 테마: 노란색 */
+.api-label.tripo {
+    color: rgb(255, 217, 36);
+}
+/* API 키 입력 필드: 가변 너비 */
+.api-input {
+  height: 25px;
+  min-height: 25px;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+/* API 키 입력 텍스트: 말줄임 처리 */
+.api-input input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* 로그인 버튼: 아이콘 크기, 둥근 모서리 */
+.login-button {
+  width: 32px; min-width: 32px; height: 24px; min-height: 24px;
+  background-color: rgb(66, 66, 66);
+  background-size: 18px 18px;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(45, 45, 45);
+  padding: 3px 0;
+}
+/* 로그인 버튼 호버 상태 */
+.login-button:hover{
+  background-color: rgb(86, 86, 86);
+}
+/* 로그인 버튼 클릭 상태 */
+.login-button:active{
+  background-color: rgb(56, 56, 56);
+}
+/* 로그아웃 버튼: 로그인 버튼과 동일한 스타일 */
+.logout-button {
+  width: 32px; min-width: 32px; height: 24px; min-height: 24px;
+  background-color: rgb(66, 66, 66);
+  background-size: 18px 18px;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(45, 45, 45);
+  padding: 3px 0;
+}
+/* 로그아웃 버튼 호버 상태 */
+.logout-button:hover{
+  background-color: rgb(86, 86, 86);
+}
+/* 로그아웃 버튼 클릭 상태 */
+.logout-button:active{
+  background-color: rgb(56, 56, 56);
+}
+
+/* 렌더 텍스처 프리뷰: 전체 높이 */
+.rt-preview {
+  height: 100%;
+}
+/* 프리뷰 옵션 패널: 좌상단 절대 위치 오버레이 */
+.preview-option{
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  border-radius: 7px;
+  background-color: rgba(30,30,30,0.45);
+  border-width: 1px;
+  justify-content: flex-start;
+}
+/* 프리뷰 옵션 행: 가로 배치 */
+.preview-option-row{
+  width: 100%;
+  flex-direction: row;
+  margin: 0 0 8px 0;
+  align-items: center;
+}
+/* 프리뷰 셰이더 버튼: 투명 배경, 아이콘만 */
+.preview-shader-button{
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0 4px 0 0;
+
+  border-width: 0;
+  background-size: 18px 18px;
+  background-color: rgba(0, 0, 0, 0);
+  -unity-background-image-tint-color: rgb(180, 180, 180);
+}
+/* 솔리드 셰이더 아이콘 */
+.preview-shader-button.solid{
+  background-image: resource('AI/SolidColor_Off');
+}
+/* 솔리드 셰이더 호버 상태 */
+.preview-shader-button.solid:hover{
+  -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+/* 솔리드 셰이더 활성 상태: 테마색 */
+.preview-shader-button.solid.enabled{
+  -unity-background-image-tint-color: var(--color-theme);
+}
+/* 솔리드 셰이더 활성+호버 상태 */
+.preview-shader-button.solid.enabled:hover{
+  -unity-background-image-tint-color: var(--color-hover);
+}
+/* 베이스 컬러 셰이더 아이콘 */
+.preview-shader-button.base{
+  background-image: resource('AI/BaseColor_Off');
+}
+/* 베이스 컬러 셰이더 호버 상태 */
+.preview-shader-button.base:hover{
+  -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+/* 베이스 컬러 셰이더 활성 상태: 테마색 */
+.preview-shader-button.base.enabled{
+  -unity-background-image-tint-color: var(--color-theme);
+}
+/* 베이스 컬러 셰이더 활성+호버 상태 */
+.preview-shader-button.base.enabled:hover{
+  -unity-background-image-tint-color: var(--color-hover);
+}
+/* PBR 셰이더 아이콘 */
+.preview-shader-button.pbr{
+  background-image: resource('AI/PBR_Off');
+}
+/* PBR 셰이더 호버 상태 */
+.preview-shader-button.pbr:hover{
+  -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+/* PBR 셰이더 활성 상태: 테마색 */
+.preview-shader-button.pbr.enabled{
+  -unity-background-image-tint-color: var(--color-theme);
+}
+/* PBR 셰이더 활성+호버 상태 */
+.preview-shader-button.pbr.enabled:hover{
+  -unity-background-image-tint-color: var(--color-hover);
+}
+/* 와이어프레임 셰이더 아이콘 */
+.preview-shader-button.wireframe{
+  background-image: resource('AI/Wireframe_Off');
+}
+/* 와이어프레임 셰이더 호버 상태 */
+.preview-shader-button.wireframe:hover{
+  -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+/* 와이어프레임 셰이더 활성 상태: 테마색 */
+.preview-shader-button.wireframe.enabled{
+  -unity-background-image-tint-color: var(--color-theme);
+}
+/* 와이어프레임 셰이더 활성+호버 상태 */
+.preview-shader-button.wireframe.enabled:hover{
+  -unity-background-image-tint-color: var(--color-hover);
+}
+/* 프리뷰 셰이더 옵션 구분선: 세로 1px */
+.preview-shader-option-split{
+  width: 1px;
+  height: 100%;
+  flex-shrink: 0;
+  margin: 0 4px 0 0;
+  background-color: rgb(66, 66, 66);
+}
+/* 프리뷰 옵션 조명 아이콘: 투명 배경, 고정 크기 */
+.preview-option-light-icon{
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0 2px 0 0;
+
+  border-width: 0;
+  background-size: 16px 16px;
+  background-color: rgba(0, 0, 0, 0);
+}
+/* 조명 강도 아이콘 */
+.preview-option-light-icon.intensity{
+  background-image: resource('AI/Light_Intensity');
+}
+/* 조명 회전 아이콘 */
+.preview-option-light-icon.rotate{
+  background-image: resource('AI/Light_Rotate');
+}
+/* 프리뷰 옵션 슬라이더 값 라벨 */
+.preview-option-slider-value-label{
+  padding: 0;
+  margin: 0;
+  font-size: 8px;
+  -unity-text-align: middle-center;
+}
+/* 프리뷰 옵션 슬라이더: 고정 너비 */
+.preview-option-slider{
+  padding: 0;
+  margin: 0 2px 0 4px;
+  width: 45px;
+}
+/* 프리뷰 옵션 슬라이더 입력부 중앙 정렬 */
+.preview-option-slider > .unity-base-field__input{
+  align-self: center;
+}
+/* 프리뷰 옵션 슬라이더 드래그 컨테이너 중앙 정렬 */
+.preview-option-slider > .unity-base-field__input > .unity-base-slider__drag-container{
+  align-self: center;
+}
+/* 프리뷰 옵션 슬라이더 트래커 위치 */
+.preview-option-slider > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__tracker{
+  top: 4px;
+}
+/* 프리뷰 옵션 슬라이더 드래거 테두리 숨김 */
+.preview-option-slider > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__dragger-border{
+  display: none;
+}
+/* 프리뷰 옵션 슬라이더 드래거 위치 */
+.preview-option-slider > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__dragger{
+  top: -2px;
+}
+
+/* 프리뷰 요소 정보 패널: 좌측 절대 위치 오버레이 */
+.preview-element {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: 85px;
+  left: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 7px;
+  background-color: rgba(30,30,30,0.45);
+  border-width: 1px;
+  justify-content: space-evenly;
+}
+/* 요소 카운터: 작은 볼드 텍스트 */
+.element-counter {
+  font-size: 11px;
+  color: rgb(235,235,235);
+  -unity-font-style: bold;
+  margin:0;
+  padding:0;
+}
+
+/* 진행 바 + 타깃 */
+/* 진행 행: 가로 배치, 고정 높이 */
+.progress-row {
+  flex-direction: row;
+  align-items: center;
+  margin: 0 15px 0 30px;
+  height: 40px; min-height: 40px; max-height: 40px;
+}
+/* 생성 진행 바: 둥근 모서리, 남은 공간 채움 */
+.gen-progress {
+  width: 50%;
+  flex-grow: 1;
+  border-width: 0;
+  border-radius: 7px;
+  overflow: hidden;
+  -unity-background-image-tint-color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+/* 진행 바 배경: 어두운 배경, 둥근 모서리 */
+.gen-progress > .unity-progress-bar__container > .unity-progress-bar__background{
+  border-radius: 7px;
+  background-color: rgb(26, 26, 26);
+}
+/* 진행 바 채우기: 기본 투명 */
+.gen-progress > .unity-progress-bar__container > .unity-progress-bar__background > .unity-progress-bar__progress{
+  border-radius: 7px;
+  background-color: rgba(0, 0, 0, 0);
+}
+/* 진행 바 채우기 활성: 테마색 */
+.gen-progress.enabled > .unity-progress-bar__container > .unity-progress-bar__background > .unity-progress-bar__progress{
+  border-radius: 7px;
+  background-color: var(--color-theme);
+}
+/* 진행 라벨: 중앙 절대 위치, 회색 */
+.progress-label{
+  margin:0;
+  padding:0;
+  position: absolute;
+  left: 45%;
+  height: 100%;
+  -unity-text-align: middle-center;
+  color: rgb(145, 145, 145);
+}
+/* 게임 오브젝트 피커: 고정 크기 */
+.go-picker {
+  width: 28%;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  margin-left: 1%;
+}
+
+/* 씬 추가 버튼: 둥근 모서리, 회색 배경 */
+.btn-add-to-scene {
+  width: 20%;
+  height: 25px;
+  background-color: rgb(80, 80, 80);
+  color: rgb(140, 140, 140);
+  border-width: 1px;
+  border-color: rgb(45, 45, 45);
+  border-radius: 7px;
+  padding: 0;
+  margin: 0;
+  margin-left: 1%;
+  font-size: 12px;
+}
+/* 씬 추가 버튼 호버 상태 */
+.btn-add-to-scene:hover{
+  background-color: rgb(90, 90, 90);
+  color: rgb(160, 160, 160);
+}
+/* 씬 추가 버튼 활성 상태: 테마색 텍스트 */
+.btn-add-to-scene:enabled{
+  color: var(--color-theme);
+}
+/* 씬 추가 버튼 클릭 상태 */
+.btn-add-to-scene:active{
+  background-color: rgb(70, 70, 70);
+}
+
+/* 히스토리 */
+/* 히스토리 헤더: 세로 배치, 최소 높이 */
+.history-header {
+  min-height: 200px;
+  flex-grow: 1;
+  margin: 0 15px 20px 30px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+/* 히스토리 버튼 탭 행: 가로 배치 */
+.history-button-tab{
+  flex-direction: row;
+  height: 30px;
+}
+/* 도움말 탭: 오른쪽 정렬 */
+.help-tab{
+  flex-grow: 1;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+/* 도움말 아이콘: 투명 배경, 아이콘만 */
+.help-icon {
+  width: 22px; height: 22px;
+  background-image: resource('AI/Help');
+  background-size: 22px 22px;
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+}
+/* 도움말 오버레이 팝업: 반투명 배경, 둥근 모서리 */
+.help-overlay{
+  position: absolute;
+  padding: 0 8px 0 10px;
+  max-width: 260px;
+  top: 0; right: 48px;
+  border-radius: 7px;
+  background-color: rgba(66, 66, 66, 0.95);
+  font-size: 12px;
+  white-space: normal;
+}
+/* 문장 래퍼: 가로 배치, 줄바꿈 허용 */
+.sentence {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+/* 문장 간격 */
+.sentence-gap{
+    height: 10px;
+}
+/* 도움말 텍스트/링크 공통: 줄바꿈, 자동 크기 */
+.help-text, .help-link {
+  white-space: normal;
+  flex: 0 0 auto;
+  min-width: 0;
+  font-size: 12px;
+}
+/* 도움말 링크: 파란색 */
+.help-link {
+  color: rgb(102, 170, 255);
+}
+/* 도움말 링크 호버 상태 */
+.help-link:hover { color: rgb(154, 197, 255); }
+/* 도움말 링크 클릭 상태 */
+.help-link:active { color: rgb(207, 226, 255); }
+
+/* 탭 버튼: 볼드체, 상단 둥근 모서리 */
+.tab-btn {
+  width: 80px;
+  font-size: 15px;
+  -unity-font-style: bold;
+  color: rgb(154, 154, 154);
+  background-color: rgb(38, 38, 38);
+  border-width: 1px;
+  border-color: rgb(38, 38, 38);
+  border-radius:3px 3px 0 0;
+  margin: 0;
+  margin-right: 3px;
+  padding-bottom: 3px;
+  padding: 0;
+}
+/* 히스토리 스크롤 뷰: 남은 공간, 하단 둥근 모서리 */
+.history-scroll {
+  flex-grow: 1;
+  height: 200px;
+  padding: 0px;
+  background-color: rgb(38, 38, 38);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+/* 히스토리 스크롤 위쪽 화살표 숨김 */
+.history-scroll
+> .unity-scroll-view__content-and-vertical-scroll-container
+> .unity-scroll-view__vertical-scroller
+> .unity-scroller__low-button{
+    display: none;
+}
+/* 히스토리 스크롤 아래쪽 화살표 숨김 */
+.history-scroll
+> .unity-scroll-view__content-and-vertical-scroll-container
+> .unity-scroll-view__vertical-scroller
+> .unity-scroller__high-button{
+    display:none;
+}
+/* 히스토리 스크롤 슬라이더 여백 제거 */
+.history-scroll
+> .unity-scroll-view__content-and-vertical-scroll-container
+> .unity-scroll-view__vertical-scroller
+> .unity-scroller__slider{
+    margin: 0;
+}
+/* 히스토리 그리드: 가로 배치, 줄바꿈, 왼쪽 정렬 */
+.history-grid {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+}
+/* 히스토리 아이템: 상대 위치, 둥근 테두리, 오버플로 숨김 */
+.history-item {
+  position: relative;
+  width: 17%;
+  height: 75px;
+  margin-bottom: 8px;
+  background-color: rgb(25,25,25);
+  border-radius: 7px;
+  border-width: 2px;
+  border-color: rgb(105, 105, 105);
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin: 10px 0 0 10px;
+}
+/* 히스토리 아이템 호버 상태: 밝은 테두리 */
+.history-item:hover {
+  background-color: rgb(45,45,45);
+  border-color: rgb(215, 215, 215);
+}
+/* 히스토리 썸네일: 전체 크기 */
+.history-thumb {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(35,35,35);
+}
+/* 히스토리 오버레이: 전체 영역, 반투명 배경, 중앙 정렬 */
+.history-overlay{
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  display: flex;
+  background-color: rgba(0,0,0,0.55);
+  -unity-text-align: middle-center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 7px;
+  -unity-font-style: bold;
+}
+/* 히스토리 오버레이 호버 상태: 약간 밝게 */
+.history-overlay:hover{
+  background-color: rgba(0,0,0,0.4);
+}
+/* 히스토리 오버레이 라벨: 흰색 텍스트, 줄바꿈 허용 */
+.history-overlay-label{
+  color: white;
+  font-size: 12px;
+  -unity-text-align: middle-center;
+  margin-bottom: 6px;
+  -unity-font-style: bold;
+  white-space: normal;
+  max-width: 90%;
+}
+/* 히스토리 삭제 버튼: 우상단 절대 위치 */
+.history-delete-button{
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 15px;
+  height: 15px;
+  margin:0;
+  padding:0;
+  display: flex;
+  border-width: 0;
+  background-image: resource('AI/Asset_Delete');
+  background-color: rgba(0, 0, 0, 0);
+  -unity-background-image-tint-color: rgb(105, 105, 105);
+}
+/* 히스토리 삭제 버튼 호버 상태 */
+.history-delete-button:hover{
+  -unity-background-image-tint-color: rgb(240, 240, 240);
+}
+/* 히스토리 옵션 영역: 가로 배치, 상단 패딩 */
+.history-option{
+  flex-direction: row;
+  padding-top: 4px;
+  background-color: rgb(38, 38, 38);
+  border-bottom-width: 0px;
+  border-top-right-radius: 4px;
+}
+/* 필터 라벨: 회색, 볼드체, 중앙 정렬 */
+.filter-label{
+  color: rgb(114, 114, 114);
+  margin: 0;
+  padding: 0;
+  -unity-text-align: middle-center;
+  -unity-font-style: bold;
+  padding-left : 10px;
+}
+/* 필터 토글 스위치: 커스텀 스타일 */
+.filter-toggle{
+  width: 22px;
+  height: 11px;
+  position: relative;
+  align-self: center;
+  margin: 0;
+  margin-left: 5px;
+}
+/* 필터 토글 기본 입력 숨김 */
+.filter-toggle > .unity-toggle__input { display: none; }
+/* 필터 토글 텍스트 숨김 */
+.filter-toggle > .unity-toggle__input > .unity-toggle__text { display: none; }
+/* 필터 토글 트랙: 어두운 배경, 둥근 모서리 */
+.filter-track{
+  position: absolute;
+  left: 0; top: 0; right :0; bottom: 0;
+  padding: 1px;
+  border-radius: 5px;
+  background-color: rgb(5, 5, 5);
+}
+/* 필터 토글 썸: 원형 드래거 */
+.filter-thumb{
+    position: absolute;
+    top: 1px; left: 2px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background-color: rgb(157, 157, 157);
+}
+/* 필터 토글 체크 상태: 테마색 배경 */
+.filter-toggle:checked > .filter-track{
+    background-color: var(--color-theme);
+}
+/* 필터 토글 체크 상태: 썸 위치 이동 */
+.filter-toggle:checked > .filter-track > .filter-thumb{
+    left: 12px;
+}
+
+/* 새로고침 그룹: 오른쪽 정렬 */
+.refresh-group{
+  flex-grow: 1;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-right: 10px;
+}
+/* 새로고침 버튼: 투명 배경, 아이콘만 */
+.refresh-button{
+  width: 18px;
+  height: 18px;
+  background-image: resource('AI/Refresh_On');
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0;
+  -unity-background-image-tint-color: rgb(128, 128, 128);
+}
+/* 새로고침 버튼 호버 상태 */
+.refresh-button:hover{
+  -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+/* 새로고침 버튼 클릭 상태 */
+.refresh-button:active{
+  -unity-background-image-tint-color: rgb(235, 235, 235);
+}
+
+/* ---------- Separator ---------- */
+/* 구분선: 투명 배경, 오버플로 표시 */
+.separator{
+  position: relative;
+  overflow: visible;
+  background-color: transparent;
+  flex: 0 0 auto;
+}
+/* 가로 구분선: 높이 10px */
+.separator.horizontal{
+  height: 10px;
+}
+/* 세로 구분선: 너비 10px */
+.separator.vertical {
+  width: 10px;
+}
+/* 구분선 핸들러: 실제 보이는 1px 라인 */
+.separator-handler{
+  position: absolute;
+  flex-grow: 1;
+  background-color: rgb(23, 23, 23);
+}
+/* 가로 구분선 핸들러: 중앙 수평 라인 */
+.separator-handler.horizontal{
+  height: 1px;
+  left: 0; right: 0;
+  top: 5px; right: -5px;
+}
+/* 세로 구분선 핸들러: 중앙 수직 라인 */
+.separator-handler.vertical{
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+}
+/* 구분선 핸들러 호버 상태: 밝게 */
+.separator-handler:hover{
+  background-color: rgb(40, 40, 40);
+}
+
+/* ---------- Right Pane ---------- */
+/* 우측 패널: 최소 너비, 남은 공간 채움 */
+.right-pane {
+  flex-grow: 1;
+  min-width: 300px;
+  margin: 5px 10px 10px 0;
+  padding: 5px 10px 10px 5px;
+}
+
+/* 기능 패널 바깥 래퍼 (바탕/외곽) */
+.func-panel {
+  height: auto;
+  margin: 0;
+}
+
+/* 기능 카테고리 행: 라벨(좌)+버튼그룹(우) */
+.func-category {
+  flex-shrink: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 5px 0;
+  padding: 3px 3px 3px 0;
+  background-color: rgb(38, 38, 38);
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: rgb(30, 30, 30);
+}
+
+/* 카테고리 라벨: 중앙 정렬, 볼드체 */
+.category-label {
+  width: 30%;
+  -unity-text-align: middle-center; /* 텍스트 중앙 */
+  color: rgb(154, 154, 154);
+  -unity-font-style: bold;
+  font-size: 14px;
+}
+
+/* 기능 버튼 그룹: 2열 가로 배치, 줄바꿈 */
+.func-group {
+  width: 70%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  align-content: stretch;
+  padding: 0 5px 5px 5px;
+  margin: 0;
+  background-color: rgb(50, 50, 50);
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: rgb(30, 30, 30);
+}
+/* 버튼: 2열(2×3) 유지 */
+/* 기능 버튼: 48% 너비로 2열 배치 */
+.func-btn {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 48%;
+  height: 30px;
+
+  color: rgb(146, 146, 146);
+  background-color: rgb(66, 66, 66);
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(40, 40, 40);
+  font-size: 14px;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+/* 기능 버튼 호버 상태 */
+.func-btn:hover { background-color: #555555; }
+/* 기능 버튼 클릭 상태 */
+.func-btn:active {
+  background-color: rgb(40, 40, 40);
+}
+/* 기능 버튼 선택 상태: 테마색 텍스트 */
+.func-btn.selected{
+  color: var(--color-theme);
+  background-color: rgb(38, 38, 38);
+}
+
+/* 속성 공통: 볼드체, 밝은 회색 */
+.property{
+  color:rgb(200, 200, 200);
+  -unity-font-style: bold;
+  margin: 0;
+  padding: 0;
+}
+/* 속성 행: 가로 배치, 최소/고정 높이 */
+.property.row{
+  flex-direction: row;
+  height: 40px;
+  min-height: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 13px;
+}
+/* 속성 확장: 가변 높이 */
+.property.grow{
+  flex-grow: 1;
+  min-height: 100px;
+  max-height: 200px;
+}
+/* 큰 라벨: 20px 폰트 */
+.big-label {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+/* 드롭다운: 중앙 정렬 */
+.dropdown {
+  align-items: center;
+}
+/* 속성 라벨: 고정 너비, 회색 */
+.property.label {
+  width: 90px;
+  padding-right: 30px;
+  color: rgb(155, 155, 155);
+}
+/* 속성 라벨 비활성 상태: 어두운 회색 */
+.property.label:disabled {
+  color: rgb(105, 105, 105);
+}
+/* 드롭다운 필드: 고정 크기 */
+.dropdown-field{
+  width: 120px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 27px;
+}
+/* 드롭다운 필드 내부: 어두운 배경, 둥근 모서리 */
+.dropdown-field > .unity-base-popup-field__input
+{
+  background-color: rgb(27, 27, 27);
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: rgb(75, 75, 75);
+}
+/* 드롭다운 필드 텍스트: 중앙 정렬 */
+.dropdown-field > .unity-base-field__input > .unity-text-element {
+  -unity-text-align: middle-center;
+}
+
+/* 토글 그룹: 중앙 정렬 */
+.toggle-group{
+  align-items: center;
+}
+/* 토글 그룹 배경: 가로 배치, 어두운 배경 */
+.toggle-group-background{
+  height: 27px;
+  flex-direction: row;
+  background-color: rgb(26, 26, 26);
+  border-radius: 7px;
+}
+/* 토글 버튼: 고정 크기, 어두운 배경, 볼드체 */
+.toggle-button{
+  width: 60px;
+  height: 27px;
+  color: rgb(82, 82, 82);
+  background-color: rgb(26, 26, 26);
+  -unity-font-style: bold;
+  margin: 0;
+  padding: 0;
+  border-color: rgb(26, 26, 26);
+  border-radius: 7px;
+}
+/* 토글 버튼 호버 상태 */
+.toggle-button:hover{
+  background-color: rgb(46, 46, 46);
+}
+/* 토글 버튼 비활성 상태 */
+.toggle-button:disabled{
+  color: rgb(56, 56, 56);
+}
+/* 토글 버튼 비활성+호버 상태: 배경 변화 없음 */
+.toggle-button:disabled:hover{
+  background-color: rgb(26, 26, 26);
+}
+/* 토글 버튼 클릭 상태 */
+.toggle-button:active{
+  background-color: rgb(16, 16, 16);
+}
+/* 토글 버튼 중간: 여백 없음 */
+.toggle-button.middle{
+  margin: 0;
+  padding: 0;
+}
+/* 토글 버튼 켜짐 상태: 테마색 텍스트, 밝은 배경 */
+.toggle-button.on{
+  color: var(--color-theme);
+  background-color: rgb(75, 75, 75);
+}
+/* 토글 버튼 켜짐+비활성 상태 */
+.toggle-button.on:disabled{
+  color: rgb(82, 82, 82);
+  background-color: rgb(26, 26, 26);
+}
+/* 토글 버튼 켜짐+호버 상태 */
+.toggle-button.on:hover{
+  background-color: rgb(95, 95, 95);
+}
+/* 토글 버튼 켜짐+비활성+호버 상태 */
+.toggle-button.on:disabled:hover{
+  background-color: rgb(26, 26, 26);
+}
+
+/* 텍스트 필드 래퍼: 상대 위치(카운터 배치용) */
+.textfield-wrap {
+  position: relative;
+}
+/* 프롬프트 텍스트 필드: 가변 높이, 줄바꿈 */
+.prompt-text-field{
+  flex-grow: 1;
+  min-height: 60px;
+  max-height: 200px;
+  margin: 0;
+}
+/* 프롬프트 텍스트 필드 내부: 줄바꿈, 하단 패딩(카운터 공간) */
+.prompt-text-field > .unity-text-field__input {
+  height: 100%;
+  white-space: normal;
+  padding-bottom: 18px;
+  background-color: rgb(26, 26, 26);
+}
+/* 프롬프트 플레이스홀더 텍스트 색상 */
+.prompt-text-field > .unity-base-text-field__input--placeholder{
+  color: rgb(108, 108, 108);
+}
+/* 텍스트 필드 글자 수 카운터: 우하단 절대 위치 */
+.textfield-counter {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  font-size: 10px;
+  opacity: 0.8;
+  color: rgb(200,200,200);
+  -unity-font-style: normal;
+}
+
+/* 이미지 속성: 배경 이미지 선택 영역 */
+.property.image{
+  flex-grow: 1;
+  min-height: 60px;
+  max-height: 200px;
+  background-image: resource('AI/Image_Select');
+  background-color: rgb(40, 40, 40);
+  background-size: 50% 90%;
+  background-repeat: no-repeat;
+}
+
+/* 멀티 이미지 그룹: 가로 배치, 줄바꿈, 중앙 정렬 */
+.multi-image-group{
+  flex-grow: 1;
+  min-height: 70px;
+  max-height: 360px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* 멀티 이미지 그룹 1×4 레이아웃: 줄바꿈 없음, 균등 배분 */
+.multi-image-group.grid-1x4{
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items:stretch;
+}
+
+/* 멀티 이미지 속성: 2×2 그리드 아이템 */
+.property.multi-image{
+  width : 45%;
+  height: 50%;
+  padding-bottom: 6px;
+  background-image: resource('AI/Image_Select');
+  background-color: rgb(40, 40, 40);
+  background-size: 100px 60px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  color: rgb(80, 80, 80);
+  -unity-text-align: lower-center;
+}
+
+/* 멀티 이미지 속성 작은 크기: 1×4 그리드 아이템 */
+.property.multi-image.small{
+  width : 23%;
+  height: 100%;
+  font-size: 12px;
+  background-size: 50px 30px;
+}
+
+/* 슬라이더 필드: 고정 너비, 둥근 테두리 */
+.property.slider-field{
+  width: 120px;
+  align-items: center;
+  border-width: 1px;
+  border-color: rgb(26, 26, 26);
+  border-radius: 7px;
+}
+/* 슬라이더 필드 입력부 높이 */
+.property.slider-field > .unity-base-field__input{
+  height: 27px;
+}
+/* 슬라이더 필드 드래그 컨테이너 */
+.property.slider-field > .unity-base-field__input > .unity-base-slider__drag-container{
+  height: 27px;
+  padding: 0;
+}
+/* 슬라이더 필드 트래커: 전체 높이, 둥근 배경 */
+.property.slider-field > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__tracker{
+  height: 100%;
+  top: 0;
+  margin: 0;
+  border-width: 0;
+  border-radius: 7px;
+  background-color: rgb(26,26,26);
+}
+/* 슬라이더 필드 채우기 바: 좌측부터 채움 */
+.property.slider-field > .unity-base-field__input > .unity-base-slider__drag-container > .slider-fill{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  background-color: rgb(75, 75, 75);
+}
+/* 슬라이더 필드 드래거 테두리 숨김 */
+.property.slider-field > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__dragger-border{
+  background-color: rgba(0,0,0,0);
+}
+/* 슬라이더 필드 드래거: 커스텀 이미지, 테마색 */
+.property.slider-field > .unity-base-field__input > .unity-base-slider__drag-container > .unity-base-slider__dragger{
+  width: 16px;
+  height: 27px;
+  background-color: rgba(0,0,0,0);
+  background-image: resource('AI/MeshySliderDragger');
+  -unity-background-image-tint-color: var(--color-theme);
+  border-width: 0;
+  top: 0;
+  margin: 0;
+  position: absolute;
+}
+
+/* 슬라이더 퍼센트 표시: 좌측 하단 절대 위치 */
+.property.slider-percent{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 10%;
+  height: 27px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background-color: rgb(73,73,73);
+}
+
+/* 속성 입력 필드: 고정 너비 */
+.property-input{
+  width: 60px;
+  margin: 0;
+}
+/* 속성 입력 필드 텍스트 중앙 정렬 */
+.property-input > .unity-base-field__input{
+  -unity-text-align: middle-center;
+}
+/* 정수 입력 필드: 고정 크기 */
+.int-input{
+  width: 57px;
+  height: 27px;
+  padding: 0 0 0 3px;
+  margin: 0;
+}
+/* 정수 입력 필드 내부: 어두운 배경, 둥근 모서리, 중앙 정렬 */
+.int-input > .unity-base-field__input{
+  -unity-text-align: middle-center;
+  background-color: rgb(26, 26, 26);
+  border-radius: 7px;
+  border-width: 0;
+}
+/* 멀티라인 라벨: 최소 높이, 어두운 배경, 좌상단 정렬 */
+.multi-label{
+  min-height: 100px;
+  flex-shrink: 0;
+  background-color: rgb(40, 40, 40);
+  margin : 0px;
+  padding : 10px;
+
+  -unity-text-align: upper-left;
+}
+/* 멀티라인 라벨 호버 상태: 배경 변화 없음 */
+.multi-label:hover{
+  background-color: rgb(40, 40, 40);
+}
+/* 오토 리깅 행: 가로 중앙 배치 */
+.auto-rig-row{
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+}
+/* 애니메이션 행: 세로 배치, 남은 공간 채움 */
+.animation-row{
+  flex-direction: column;
+  flex-grow: 1;
+}
+/* 애니메이션 검색 필드: 전체 너비 */
+.animation-search-field{
+  width: 100%;
+  height: 20px;
+}
+/* 애니메이션 검색 아이콘: 좌측 절대 위치 */
+.animation-search-field > .search-icon{
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 40px;
+  height: 40px;
+  opacity: .7;
+}
+/* 애니메이션 검색 입력 텍스트: 아이콘 공간 확보 */
+.animation-search-field.unity-text-input {
+  padding-left: 28px;
+}
+/* 애니메이션 목록 컨테이너 */
+.animation-list{
+
+}
+
+/* 애니메이션 프리뷰 행: 고정 높이, 가로 배치 */
+.animation-preview-row{
+  height: 196px;
+  min-height: 196px;
+  padding: 6px 4px;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+/* 애니메이션 프리뷰 카드: 균등 분배, 세로 배치 */
+.animation-preview-card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 7px;
+}
+/* 애니메이션 프리뷰: 고정 크기, 둥근 모서리 */
+.animation-preview{
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  position: relative;
+  overflow:hidden;
+  border-radius:6px;
+  background-color: rgb(35, 35, 35);
+}
+/* 애니메이션 프리뷰 이미지: 전체 크기 */
+.animation-preview-img{
+  width:100%;
+  height:100%;
+}
+/* 애니메이션 프리뷰 제목: 말줄임 처리 */
+.animation-preview-title{
+  height: 20px;
+  margin-top: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ddd;
+  font-size: 12px;
+}
+
+/* generate 영역 */
+/* 생성 그룹: 가로 중앙 배치 */
+.generate-group{
+  align-items: center;
+  flex-direction:row;
+}
+/* 생성 행: 세로 배치, 하단 정렬 */
+.generate-row{
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+/* 생성 버튼: 큰 폰트, 테마색 텍스트, 둥근 모서리 */
+.generate {
+  width: 180px;
+  height: 40px;
+  background-color: rgb(46, 46, 46);
+  color: var(--color-theme);
+  border-width: 2px;
+  border-radius: 7px;
+  border-color: rgb(40, 40, 40);
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+/* 생성 버튼 활성 상태: 밝은 배경 */
+.generate:enabled{
+  background-color:rgb(66, 66, 66);
+}
+/* 생성 버튼 활성+호버 상태 */
+.generate:enabled:hover{
+  background-color:rgb(90, 90, 90);
+}
+/* 생성 버튼 활성+클릭 상태 */
+.generate:enabled:active{
+  background-color:rgb(50, 50, 50);
+}
+/* 생성 버튼 비활성 상태 */
+.generate:disabled{
+  background-color: rgb(100, 100, 100);
+}
+/* 생성 툴팁: 투명 상태, 애니메이션 대기 */
+.generate-tooltip{
+  width: 180px;
+  height: 50px;
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 7px;
+  border-width: 1px;
+  border-color: rgba(126, 126, 126, 0);
+  margin: 0 0 0 35px;
+  padding: 5px 5px 5px 5px;
+  white-space: normal;
+  -unity-text-align: middle-center;
+  translate: 0px 0px;
+}
+/* 생성 툴팁 활성: 텍스트 표시, 위로 이동 */
+.generate-tooltip.enabled{
+  color: rgb(180, 180, 180);
+  background-color: rgba(26, 26, 26, 0.3);
+  border-color: rgba(126, 126, 126, 1);
+  translate: 0px -15px;
+}
+
+/* 로딩 배경 아이콘: 회색 틴트 */
+.loading-background{
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  background-image: resource('AI/LoadingBackground');
+  -unity-background-image-tint-color: rgb(128, 128, 128);
+}
+/* 로딩 진행 아이콘 */
+.loading-progress{
+  width: 15px;
+  height: 15px;
+  background-image: resource('AI/Loading');
+}
+
+/* 크레딧 아이콘 (큰 크기) */
+.credit-icon-lg {
+  width: 20px; height: 20px;
+  background-image: resource('AI/Credit');
+  background-size: 18px 18px;
+}
+/* 크레딧 비용 텍스트: 중앙 정렬 */
+.credit-cost {
+  color: rgb(126, 126, 126);
+  font-size: 15px;
+  -unity-text-align: middle-center;
+}
+/* 비용 탭: 오른쪽 정렬, 가로 배치 */
+.cost-tab{
+  align-items: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+/* 크레딧 비용: 고정 너비, 작은 폰트 */
+.credit-cost{
+  width: 20px;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+/* 속성 영역: 남은 공간 채움, 어두운 배경 */
+.props{
+  flex-grow: 1;
+  background-color: rgb(38, 38, 38);
+}
+/* 요소 숨김 유틸리티 */
+.hidden  {
+  display: none;
+}

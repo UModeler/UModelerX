@@ -1,0 +1,236 @@
+/* RiggingEditorContentView: 초기화 패널 / 메인 패널 레이아웃 및 경고 박스 스타일 */
+
+/* 모디파이어 리스트뷰와 동일한 패널 스타일 */
+.umx-panel {
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+    overflow: hidden;
+}
+
+/* 패널 헤더 */
+.umx-panel__header {
+    background-color: var(--umx-bg-surface);
+    padding-top: 8px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-width: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 패널 본문 영역 */
+.umx-panel__content {
+    margin: 4px;
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 0;
+    background-color: var(--umx-bg-content);
+}
+
+/* 프로퍼티 좌우 정렬: 라벨 40% */
+.umx-panel__content > .unity-base-field > .unity-base-field__label {
+    width: 40%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Unity 인스펙터 기본 스타일의 margin-right: -2px 음수 마진 무력화 (우측 잘림 방지) */
+.umx-panel__content > .unity-base-field {
+    margin-right: 0;
+}
+
+/* 리깅 에디터 콘텐츠 뷰 루트 컨테이너 */
+.rigging-editor-content-view {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* 초기화 패널 / 메인 패널 공통 레이아웃 */
+.rigging-init-panel,
+.rigging-main-panel {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* Init 패널: 툴그룹과 동일한 테두리/패딩 */
+.rigging-init-panel.umx-panel .rigging-init-header {
+    margin-bottom: 0;
+}
+
+/* Init: 헤더 */
+.rigging-init-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Init 헤더 제목 (볼드) */
+.rigging-init-header__title {
+    margin-right: 6px;
+    -unity-font-style: bold;
+}
+
+/* Init/Main: 경고 박스 */
+.rigging-warn-box {
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--umx-warn-box-bg);
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+/* 경고 박스: 상단 마진 제거 변형 */
+.rigging-warn-box--no-top-margin {
+    margin-top: 0;
+}
+
+/* 경고 박스: SkinnedMeshRenderer 존재 시 변형 */
+.rigging-warn-box--skinned {
+    margin-top: 4px;
+}
+
+/* 경고 아이콘 (주황색) */
+.rigging-warn-icon {
+    color: var(--umx-warn-box-icon);
+    margin-right: 6px;
+}
+
+/* 경고 아이콘: 다크 테마 변형 (진한 주황색) */
+.rigging-warn-icon--dark {
+    color: var(--umx-warn-box-icon-dark);
+}
+
+/* 경고 메시지 텍스트 */
+.rigging-warn-message {
+    flex-grow: 1;
+}
+
+/* "자세히 보기" 링크 스타일 (파란색) */
+.rigging-learn-more {
+    color: var(--umx-link);
+}
+
+/* Main: Rigging Mode / Bone Tree 섹션 (패널 헤더는 .umx-panel__header) */
+.rigging-mode-box.umx-panel .rigging-mode-header,
+.rigging-bone-tree-box.umx-panel .rigging-bone-tree-header {
+    margin-bottom: 0;
+}
+
+/* 리깅 모드 박스 / 본 트리 박스 공통 하단 마진 */
+.rigging-mode-box,
+.rigging-bone-tree-box {
+    margin-bottom: 8px;
+}
+
+/* 모드 헤더 / 본 트리 헤더 공통 레이아웃 */
+.rigging-mode-header,
+.rigging-bone-tree-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+/* 섹션 제목 (볼드) */
+.rigging-section-title {
+    -unity-font-style: bold;
+}
+
+/* 모드 헤더 에디터 아이콘 */
+.umx-mode-header__icon {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+/* 리깅 활성화 on/off 이미지 토글 행 */
+.rigging-enable-toggle {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+    padding: 4px 4px 0px 4px;
+}
+
+/* ON 상태 */
+.rigging-enable-toggle--on {
+    background-color: var(--umx-accent-bg);
+    border-color: var(--umx-accent);
+    color: var(--umx-accent-text);
+}
+
+/* OFF 상태 */
+.rigging-enable-toggle--off {
+    background-color: var(--umx-bg-content);
+    border-color: var(--umx-border-subtle);
+    color: var(--umx-text-muted);
+}
+
+/* Main: Bone Tree 섹션 박스 */
+.rigging-bone-tree-box {
+    margin-bottom: 8px;
+}
+
+/* Main: Bone Tree 헤더 행 */
+.rigging-bone-tree-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+/* 전체 펼치기/접기 버튼 */
+.rigging-expand-btn {
+    margin-bottom: 4px;
+}
+
+/* 본 검색 필드 */
+.rigging-search-field {
+    margin-bottom: 4px;
+}
+
+/* 본 리스트 스크롤 영역 (고정 높이) */
+.rigging-bone-list-scroll {
+    height: 230px;
+}
+
+/* 본 리스트 빈 상태 플레이스홀더 */
+.rigging-bone-list-placeholder {
+    margin-top: 8px;
+}
+
+/* 선택 본 트랜스폼 패널 */
+.rigging-transform-box {
+    margin-bottom: 8px;
+}
+
+/* 선택 본 트랜스폼 패널: 헤더 하단 마진 제거 */
+.rigging-transform-box.umx-panel .umx-panel__header {
+    margin-bottom: 0;
+}
+
+/* 트랜스폼 패널 내 Vector3 필드 간격 */
+.rigging-transform-box Vector3Field {
+    margin: 4px;
+}
+
+/* 리깅 툴 그룹이 삽입되는 슬롯 */
+.rigging-tool-group-slot {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* Remap Bones 버튼 */
+.rigging-remap-button {
+    margin-top: 4px;
+}

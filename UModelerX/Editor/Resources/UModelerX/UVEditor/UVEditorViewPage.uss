@@ -1,0 +1,386 @@
+/* UV 에디터 루트 컨테이너: 세로 방향, 전체 영역 채움 */
+.uv-root {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 부모 영역을 가득 채우는 유틸리티 클래스 (구 VisualElement.StretchToParentSize() 대체)
+ * Unity 2022.3 에서 StretchToParentSize() 가 제거되어 USS 방식으로 전환 */
+.u-stretch-to-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* 비활성 오버레이: 에디터가 비활성일 때 반투명 검정 배경으로 덮음 */
+.uv-disabled-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* 비활성 오버레이 라벨: 중앙 정렬 안내 텍스트 */
+.uv-disabled-overlay__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -unity-text-align: middle-center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* UV 분할 패널: 유연한 크기 조절 */
+.uv-split {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* UV 문서 영역: 세로 방향 레이아웃, 안쪽 여백 포함 */
+.uv-doc {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* UV 툴바: 가로 방향, 양쪽 끝 정렬 */
+.uv-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* UV 툴바 좌측/우측 영역: 가로 방향 정렬 */
+.uv-toolbar__left,
+.uv-toolbar__right {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* UV 툴바 버튼: 좌우 여백, 패딩, 기본 폰트 스타일 */
+.uv-toolbar__button {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    -unity-font-style: normal;
+}
+
+/* UV 툴바의 아이콘 버튼 기본 상태: 투명 배경 + 테두리 제거 (아이콘만 보이도록).
+ * .uv-toolbar__button 클래스를 명시한 아이콘 버튼에만 적용.
+ * UV Channel 드롭다운/Create/Remove/활성 채널 번호 등 텍스트 버튼은 기본 테두리 유지.
+ */
+.uv-toolbar__button {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 3px;
+}
+
+/* UV 툴바 아이콘 버튼 호버 */
+.uv-toolbar__button:hover {
+    background-color: var(--umx-bg-hover);
+}
+
+/* UV 툴바 활성 버튼(선택/On 상태) */
+.uv-toolbar__button.uv-toolbar__button--active {
+    background-color: var(--umx-bg-raised);
+    border-width: 1px;
+    border-color: var(--umx-border-subtle);
+    border-radius: 2px;
+}
+
+/* UV 툴바 구분선: 세로 여백 포함 */
+.uv-toolbar__sep {
+    width: 7px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* UV 툴바 라벨: 좌측 여백으로 버튼과 간격 확보 */
+.uv-toolbar__label {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+/* UV 툴바 드롭다운: 고정 너비 */
+.uv-toolbar__dropdown {
+    width: 150px;
+}
+
+/* UV Channel button */
+.uv-channel-button {
+    justify-content: flex-start;
+}
+
+/* UV 채널 버튼 활성 상태: 연한 파란색 텍스트 */
+.uv-channel-button.uv-channel-button--enabled {
+    color: lightblue;
+}
+
+/* UV 채널 버튼 비활성 상태: 주황색 텍스트 */
+.uv-channel-button.uv-channel-button--disabled {
+    color: #a86a2a;
+}
+
+/* UV 설정 영역: 가로 방향, 양쪽 여백 포함 */
+.uv-settings {
+    flex-direction: row;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+}
+
+/* UV 설정 열: 세로 방향, 우측 여백 포함, 균등 분배 */
+.uv-settings__col {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-right: 12px;
+}
+
+/* UV 설정 행: 가로 방향 정렬, 상단 여백 */
+.uv-settings__row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2px;
+}
+
+/* UV 설정 제목: 볼드 폰트, 하단 여백 */
+.uv-settings__title {
+    font-size: 11px;
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+}
+
+/* UV 설정 필드: 최소 너비 보장, 남은 공간 채움 */
+.uv-settings__field {
+    flex-grow: 1;
+    min-width: 140px;
+}
+
+/* UV 구분선: 1px 높이의 어두운 가로줄 */
+.uv-separator {
+    height: 1px;
+    background-color: rgba(40, 40, 40, 1.0);
+    margin-bottom: 4px;
+}
+
+/* UV 도구 스크롤 영역: 안쪽 여백 */
+.uv-tools-scroll {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* UV Channel menu items */
+.uv-channel-item {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* UV 채널 항목 라벨: 작은 폰트 */
+.uv-channel-item__label {
+    font-size: 11px;
+}
+
+/* UV 채널 항목 라벨 활성 상태: 연한 파란색 */
+.uv-channel-item__label--enabled {
+    color: lightblue;
+}
+
+/* UV 채널 항목 라벨 비활성 상태: 주황색 */
+.uv-channel-item__label--disabled {
+    color: #a86a2a;
+}
+
+/* UV 스냅 타입 버튼: 균등 너비, 라디오 버튼 스타일 */
+.uv-snap-button {
+    flex-grow: 1;
+    flex-basis: 0;
+    -unity-text-align: middle-center;
+}
+
+/* UV 스냅 타입 버튼 활성 상태: 툴바 활성 버튼과 동일한 테마 */
+.uv-snap-button--active {
+    background-color: var(--umx-accent-bg);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: var(--umx-accent);
+    border-radius: 2px;
+    color: var(--umx-text);
+}
+
+/* Tool item view mode:
+   인스펙터와 동일한 umx-toolviewmode-* CSS 클래스 사용.
+   UMXToolGroup_Style.uss / UMXToolItem_Style.uss 에 정의된 공유 규칙을 그대로 활용. */
+
+/* 선택 UV 정보 오버레이 */
+/* 좌상단 지도 축척바 */
+.uv-zoom-info {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgba(24, 24, 24, 0.85);
+    border-width: 1px;
+    border-color: rgba(86, 86, 86, 0.9);
+    border-radius: 3px;
+}
+
+/* 양 끝 세로 캡 */
+.uv-zoom-info__cap {
+    width: 1px;
+    height: 8px;
+    background-color: rgb(220, 220, 220);
+}
+
+/* 가운데 가로 바 — width 는 코드에서 동적으로 설정 */
+.uv-zoom-info__bar {
+    height: 2px;
+    background-color: rgb(220, 220, 220);
+}
+
+.uv-zoom-info__label {
+    margin-left: 6px;
+    font-size: 10px;
+    color: rgba(220, 220, 220, 1.0);
+    -unity-text-align: middle-left;
+}
+
+.uv-selection-info {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    min-width: 188px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: rgba(24, 24, 24, 0.88);
+    border-width: 1px;
+    border-color: rgba(86, 86, 86, 0.9);
+    border-radius: 4px;
+}
+
+.uv-selection-info__title {
+    -unity-font-style: bold;
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: rgba(230, 230, 230, 1.0);
+}
+
+.uv-selection-info__row {
+    flex-direction: row;
+    align-items: center;
+    min-height: 16px;
+}
+
+.uv-selection-info__label {
+    width: 78px;
+    font-size: 10px;
+    color: rgba(172, 172, 172, 1.0);
+}
+
+.uv-selection-info__value {
+    flex-grow: 1;
+    font-size: 10px;
+    -unity-text-align: middle-right;
+    color: rgba(236, 236, 236, 1.0);
+}
+
+/* 기즈모 드래그 직후 수치 입력 팝업 */
+.uv-transform-input {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    width: 320px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    background-color: rgba(30, 30, 30, 0.94);
+    border-width: 1px;
+    border-color: rgba(104, 104, 104, 0.95);
+    border-radius: 4px;
+}
+
+.uv-transform-input__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.uv-transform-input__title {
+    -unity-font-style: bold;
+    font-size: 11px;
+    color: rgba(238, 238, 238, 1.0);
+}
+
+.uv-transform-input__close {
+    width: 20px;
+    height: 18px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-text-align: middle-center;
+}
+
+.uv-transform-input__row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.uv-transform-input__field {
+    flex-grow: 1;
+    min-width: 0;
+    margin-right: 4px;
+}
+
+.uv-transform-input__field .unity-base-field__label {
+    min-width: 34px;
+    max-width: 34px;
+    font-size: 10px;
+    color: rgba(180, 180, 180, 1.0);
+}
+
+/* X/Y 입력 필드의 라벨은 한 글자만 들어가므로 좁게 */
+.uv-transform-input__field--xy .unity-base-field__label {
+    min-width: 18px;
+    max-width: 18px;
+}
+
+.uv-transform-input__field .unity-base-field__input {
+    min-height: 18px;
+}

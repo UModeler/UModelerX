@@ -1,0 +1,12 @@
+{
+  "name": "com.tripolygon.umodeler-x",
+  "displayName": "UModeler X",
+  "version": "1.2.1+f2",
+  "description": "Your 3D Assistant in Unity.\nVisualize ideas faster, streamline workflows, and simplify 3D creation.\nCertified as a Unity Verified Solution, create with confidence..",
+  "unity": "2022.3",
+  "author": {
+    "name": "UModeler",
+    "email": "contact.support@umodeler.com",
+    "url": "https://www.umodeler.com"
+  }
+}

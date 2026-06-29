@@ -1,0 +1,157 @@
+﻿#pragma kernel CSMain
+
+bool invertScale = false;
+struct VertexData
+{
+    float3 vertex;
+};
+
+struct ExtraData
+{
+    uint faceid;
+};
+
+struct TriangleData
+{
+    int triangle1;
+    int triangle2;
+    int triangle3;
+};
+
+bool IntersectTriangle(float4x4 projTM, float3 pos1, float3 pos2, float3 pos3, int backfaceSelect)
+{
+    float4 v1 = mul(projTM, float4(pos1, 1));
+    float4 v2 = mul(projTM, float4(pos2, 1));
+    float4 v3 = mul(projTM, float4(pos3, 1));
+
+    float2 p1 = v1.xy / v1.w;
+    float2 p2 = v2.xy / v2.w;
+    float2 p3 = v3.xy / v3.w;
+
+    float2 minp = min(p1, min(p2, p3));
+    float2 maxp = max(p1, max(p2, p3));
+
+    if (minp.x <= 1 && minp.y <= 1 && maxp.x >= 0 && maxp.y >= 0)
+    {
+        float2 v1 = p2 - p1;
+        float2 v2 = p3 - p1;
+        bool front = v1.x * v2.y - v1.y * v2.x >= 0 ? true : false;
+
+        if (backfaceSelect == 0 && front == invertScale)
+        {
+            return false;
+        }
+        else
+        {
+            float sign = front ? 1 : -1;
+
+            float2 n = p2 - p1;
+            n = float2(n.y, -n.x) * sign;
+
+            float2 p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+            if (dot(n, p) > dot(n, p1))
+            {
+                return false;
+            }
+            else
+            {
+                n = p3 - p2;
+                n = float2(n.y, -n.x) * sign;
+                p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+                if (dot(n, p) > dot(n, p2))
+                {
+                    return false;
+                }
+                else
+                {
+                    n = p1 - p3;
+                    n = float2(n.y, -n.x) * sign;
+                    p = float2(n.x < 0 ? 1 : 0, n.y < 0 ? 1 : 0);
+                    if (dot(n, p) > dot(n, p3))
+                        return false;
+                    else
+                        return true;
+                }
+            }
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool IntersectTriangleWithClip(float d1, float d2, float d3, float4x4 projTM, float3 pos1, float3 pos2, float3 pos3, int backfaceSelect)
+{	// d1 * d2 < 0
+    float3 p12 = lerp(pos1, pos2, d1 / (d1 - d2));
+
+    if (d2 * d3 < 0)
+    {
+        float3 p23 = lerp(pos2, pos3, d2 / (d2 - d3));
+        if (d1 > 0)
+        {
+            return IntersectTriangle(projTM, pos1, p12, p23, backfaceSelect) || IntersectTriangle(projTM, pos1, p23, pos3, backfaceSelect);
+        }
+        else
+        {
+            return IntersectTriangle(projTM, p12, pos2, p23, backfaceSelect);
+        }
+    }
+    else // if (d3 * d1 < 0)
+    {
+        float3 p31 = lerp(pos3, pos1, d3 / (d3 - d1));
+        if (d1 > 0)
+        {
+            return IntersectTriangle(projTM, pos1, p12, p31, backfaceSelect);
+        }
+        else
+        {
+            return IntersectTriangle(projTM, p12, pos2, pos3, backfaceSelect) || IntersectTriangle(projTM, p12, pos3, p31, backfaceSelect);
+        }
+    }
+}
+
+bool IntersectTriangleWithClipTest(float4 plane, float4x4 projTM, float3 pos1, float3 pos2, float3 pos3, int backfaceSelect)
+{
+    float d1 = dot(plane, float4(pos1, 1));
+    float d2 = dot(plane, float4(pos2, 1));
+    float d3 = dot(plane, float4(pos3, 1));
+
+    if (d1 * d2 < 0)
+    {
+        return IntersectTriangleWithClip(d1, d2, d3, projTM, pos1, pos2, pos3, backfaceSelect);
+    }
+    else if (d2 * d3 < 0)
+    {
+        return IntersectTriangleWithClip(d2, d3, d1, projTM, pos2, pos3, pos1, backfaceSelect);
+    }
+    else if (d3 * d1 < 0)
+    {
+        return IntersectTriangleWithClip(d3, d1, d2, projTM, pos3, pos1, pos2, backfaceSelect);
+    }
+    else
+    {
+        return d1 >= 0 ? IntersectTriangle(projTM, pos1, pos2, pos3, backfaceSelect) : false;
+    }
+}
+
+RWStructuredBuffer<VertexData> vertexBuffer;
+RWStructuredBuffer<TriangleData> trianglesBuffer;
+RWStructuredBuffer<ExtraData> extraBuffer;
+
+AppendStructuredBuffer<uint> resultBuffer;
+float4x4 projTM;
+float4 plane;
+int offset = 0;
+int backfaceSelect = 0;
+
+[numthreads(1, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    int index = offset + id.x;
+
+    if (IntersectTriangleWithClipTest(plane, projTM, vertexBuffer[trianglesBuffer[index].triangle1].vertex, vertexBuffer[trianglesBuffer[index].triangle2].vertex, vertexBuffer[trianglesBuffer[index].triangle3].vertex, backfaceSelect))
+    {
+        resultBuffer.Append(extraBuffer[trianglesBuffer[index].triangle1].faceid);
+    }
+}

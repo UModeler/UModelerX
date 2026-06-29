@@ -1,0 +1,193 @@
+/* ─────────────────────────────────────────────────────────
+ * Hotspot Editor 전용 스타일
+ * 로드 경로: Resources.Load<StyleSheet>("UModelerX/HotspotEditor/HotspotEditorViewPage")
+ * ──────────────────────────────────────────────────────── */
+
+/* 루트 컨테이너 */
+.hotspot-root {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 부모 영역을 가득 채우는 유틸리티 클래스 (구 VisualElement.StretchToParentSize() 대체)
+ * Unity 2022.3 에서 StretchToParentSize() 가 제거되어 USS 방식으로 전환 */
+.u-stretch-to-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* 분할 패널 */
+.hotspot-split {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* 문서 영역 (헤더 + 설정 + 뷰포트) */
+.hotspot-document {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* 우측 툴 스크롤뷰 */
+.hotspot-tools-scroll {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/* 툴 호스트 */
+.hotspot-tools {
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* 뷰포트 */
+.hotspot-viewport {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* 헤더 바 (umx-hotspot-header 에 더해 핫스팟 전용 레이아웃 확장) */
+.hotspot-header {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+/* 헤더: Hotspot ObjectField (늘어남) */
+.hotspot-header__object-field {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+/* 헤더: 우측 고정 영역 (DefaultMag + 설정 버튼) */
+.hotspot-header__right {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* 헤더: DefaultMagnification 필드 */
+.hotspot-header__mag-field {
+    width: 160px;
+    margin-left: 6px;
+}
+
+/* 헤더: 설정 On/Off 네모 이미지 버튼 — 기본 버튼 chrome 제거 */
+.hotspot-header__settings-btn {
+    width: 22px;
+    height: 22px;
+    margin-left: 6px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 헤더: 설정 버튼 활성(On) — 기본 툴 스타일(.umx-tool-item--selected)과 동일한 accent 적용 */
+.hotspot-header__settings-btn--active {
+    background-color: var(--umx-accent-bg);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: var(--umx-accent);
+    border-radius: 2px;
+    -unity-background-image-tint-color: var(--umx-accent-light);
+}
+
+/* 설정 패널 (umx-hotspot-settings 에 더해 핫스팟 전용 레이아웃 확장) */
+.hotspot-settings {
+    flex-direction: row;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom-width: 1px;
+    flex-shrink: 0;
+}
+
+/* 설정 패널: 왼쪽 열 (50%) */
+.hotspot-settings__col--left {
+    flex-basis: 50%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding-right: 6px;
+    overflow: hidden;
+}
+
+/* 설정 패널: 오른쪽 열 (50%) */
+.hotspot-settings__col--right {
+    flex-basis: 50%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding-left: 6px;
+    overflow: hidden;
+}
+
+/* 설정 행 (라벨 + 필드) */
+.hotspot-settings__row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+/* 설정 행의 라벨 (45% 폭) */
+.hotspot-settings__label {
+    flex-basis: 45%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    font-size: 11px;
+    overflow: hidden;
+    -unity-text-align: middle-left;
+}
+
+/* 설정 행의 필드 (나머지 폭 차지) */
+.hotspot-settings__field {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 40px;
+}
+
+/* Snap Type 버튼 그룹 컨테이너 */
+.hotspot-settings__snap-group {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+/* Snap Type 개별 버튼 */
+.hotspot-settings__snap-btn {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Grid Snap Popup */
+.hotspot-settings__popup {
+    flex-grow: 1;
+}
+
+/* 툴 프로퍼티 라벨 축소 (좁은 패널 대응) */
+.hotspot-prop-label {
+    width: 80px;
+    min-width: 50px;
+    max-width: 120px;
+}

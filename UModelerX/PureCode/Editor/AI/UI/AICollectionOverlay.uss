@@ -1,0 +1,477 @@
+/* ---------- Collection overlay panel ---------- */
+.collection-root {
+    flex-grow: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 8px 8px 8px;
+}
+
+/* Top bar: breadcrumb path on the left, close button on the right */
+.collection-topbar {
+    flex-direction: row;
+    align-items: center;
+    min-height: 24px;
+    margin-bottom: 2px;
+}
+
+.collection-topbar-spacer {
+    flex-grow: 1;
+}
+
+/* Current folder heading shown below the breadcrumb */
+.collection-title {
+    color: rgb(230, 230, 230);
+    font-size: 17px;
+    -unity-font-style: bold;
+    margin: 2px 6px 10px;
+}
+
+.collection-icon-btn {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+    margin: 0 2px;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.collection-icon-btn:hover {
+    background-color: rgb(65, 65, 65);
+}
+
+.collection-icon-btn.hidden {
+    display: none;
+}
+
+.collection-icon {
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(170, 170, 170);
+}
+
+.collection-icon-btn:hover .collection-icon {
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+}
+
+/* Breadcrumb path (sits inside the topbar) */
+.collection-breadcrumb {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-shrink: 1;
+}
+
+.collection-breadcrumb.hidden {
+    display: none;
+}
+
+.collection-breadcrumb-item {
+    color: rgb(170, 170, 220);
+    font-size: 11px;
+    padding: 2px 4px;
+    margin: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.collection-breadcrumb-item:hover {
+    color: rgb(220, 220, 255);
+}
+
+.collection-breadcrumb-item.current {
+    color: rgb(220, 220, 220);
+    -unity-font-style: bold;
+}
+
+.collection-breadcrumb-sep {
+    color: rgb(120, 120, 120);
+    font-size: 11px;
+    margin: 0 2px;
+}
+
+/* Selection bar */
+.collection-selection-bar {
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 6px;
+    margin-bottom: 4px;
+    background-color: rgb(48, 48, 48);
+    border-radius: 4px;
+}
+
+.collection-selection-bar.hidden {
+    display: none;
+}
+
+.collection-selection-count {
+    color: rgb(220, 220, 220);
+    font-size: 11px;
+    -unity-font-style: bold;
+}
+
+.collection-selection-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+    margin: 0 2px;
+    background-color: rgb(60, 60, 60);
+    border-width: 0;
+    border-radius: 4px;
+    color: rgb(220, 220, 220);
+}
+
+.collection-selection-btn:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+/* Body scroll area */
+.collection-body {
+    flex-grow: 1;
+}
+
+.collection-body-content {
+    flex-direction: column;
+    padding: 4px;
+}
+
+/* Section header */
+.collection-section-header {
+    color: rgb(180, 180, 180);
+    font-size: 11px;
+    -unity-font-style: bold;
+    padding: 6px 4px 4px;
+    margin-top: 2px;
+}
+
+/* Grid of collection cards */
+.collection-card-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.collection-card {
+    width: 120px;
+    height: 140px;
+    margin: 4px;
+    border-radius: 6px;
+    background-color: rgb(48, 48, 48);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.collection-card:hover {
+    background-color: rgb(58, 58, 58);
+}
+
+.collection-card-thumb {
+    width: 100%;
+    height: 96px;
+    background-color: rgb(36, 36, 36);
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-card-thumb-icon {
+    width: 36px;
+    height: 36px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(140, 140, 140);
+}
+
+/* 2x2 grid of asset thumbnails for the collection cover */
+.collection-card-thumb-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 96px;
+    align-content: flex-start;
+}
+
+.collection-card-thumb-cell {
+    width: 50%;
+    height: 50%;
+    background-color: rgb(28, 28, 28);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+/* Span a single cell across the full thumb when there's only one image */
+.collection-card-thumb-cell.full {
+    width: 100%;
+    height: 100%;
+}
+
+/* Two-image layout: each takes full height, half width */
+.collection-card-thumb-cell.half {
+    width: 50%;
+    height: 100%;
+}
+
+.collection-card-body {
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 6px;
+    height: 44px;
+}
+
+.collection-card-info {
+    flex-grow: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.collection-card-name {
+    color: rgb(220, 220, 220);
+    font-size: 11px;
+    -unity-font-style: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.collection-card-name-input {
+    color: rgb(220, 220, 220);
+    font-size: 11px;
+    background-color: rgb(32, 32, 32);
+    border-color: rgb(80, 80, 120);
+    border-width: 1px;
+    padding: 1px 3px;
+    margin: 0;
+}
+
+.collection-card-meta {
+    color: rgb(140, 140, 140);
+    font-size: 10px;
+}
+
+/* Action buttons (rename/delete) at the top-right corner — only visible on card hover */
+.collection-card-actions {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    flex-direction: row;
+    align-items: center;
+    display: none;
+}
+
+.collection-card:hover .collection-card-actions {
+    display: flex;
+}
+
+.collection-card-action-btn {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    margin: 0 1px;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.collection-card-action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.collection-card-action-icon {
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(210, 210, 210);
+}
+
+/* New collection card — dashed style to clearly read as "add" not as a real collection */
+.collection-card-new {
+    width: 120px;
+    height: 140px;
+    margin: 4px;
+    border-radius: 6px;
+    background-color: rgba(60, 60, 60, 0.25);
+    border-color: rgb(100, 100, 110);
+    border-width: 1px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.collection-card-new:hover {
+    background-color: rgba(80, 100, 140, 0.35);
+    border-color: rgb(120, 140, 220);
+}
+
+.collection-card-new-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(200, 200, 220);
+}
+
+.collection-card-new-title {
+    color: rgb(210, 210, 220);
+    font-size: 11px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 2px;
+    white-space: normal;
+}
+
+.collection-card-new-subtitle {
+    color: rgb(150, 150, 160);
+    font-size: 9px;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+/* Child collection mini card (in detail view) */
+.collection-child-card {
+    width: 160px;
+    height: 90px;
+    margin: 4px;
+    border-radius: 6px;
+    background-color: rgb(48, 48, 48);
+    flex-direction: row;
+    padding: 4px;
+}
+
+.collection-child-card:hover {
+    background-color: rgb(58, 58, 58);
+}
+
+.collection-child-thumb {
+    width: 76px;
+    height: 100%;
+    background-color: rgb(36, 36, 36);
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-child-info {
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 4px 6px;
+}
+
+.collection-child-name {
+    color: rgb(220, 220, 220);
+    font-size: 11px;
+    -unity-font-style: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.collection-child-meta {
+    color: rgb(140, 140, 140);
+    font-size: 10px;
+}
+
+/* Asset grid (in collection detail) */
+.collection-asset-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.collection-asset-card {
+    width: 96px;
+    height: 110px;
+    margin: 4px;
+    border-radius: 6px;
+    background-color: rgb(48, 48, 48);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.collection-asset-card:hover {
+    background-color: rgb(58, 58, 58);
+}
+
+.collection-asset-card.selected {
+    border-color: rgb(120, 140, 220);
+    border-width: 2px;
+}
+
+.collection-asset-thumb {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(36, 36, 36);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.collection-asset-name {
+    color: rgb(220, 220, 220);
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 2px 4px;
+}
+
+/* Hidden by default; revealed on card hover, and always shown when the asset is checked. */
+.collection-asset-check {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 0;
+    border-width: 0;
+    display: none;
+}
+
+.collection-asset-card:hover .collection-asset-check {
+    display: flex;
+}
+
+.collection-asset-check:hover {
+    background-color: rgba(120, 140, 220, 0.6);
+}
+
+.collection-asset-check.checked {
+    background-color: rgb(120, 140, 220);
+    display: flex;
+}
+
+.collection-asset-check-icon {
+    width: 100%;
+    height: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgb(220, 220, 220);
+}
+
+/* Load more */
+.collection-load-more {
+    align-self: center;
+    padding: 6px 14px;
+    margin: 8px;
+    background-color: rgb(60, 60, 60);
+    border-width: 0;
+    border-radius: 4px;
+    color: rgb(220, 220, 220);
+    font-size: 11px;
+}
+
+.collection-load-more:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+/* Empty state */
+.collection-empty-state {
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.collection-empty-state.hidden {
+    display: none;
+}
+
+.collection-empty-label {
+    color: rgb(140, 140, 140);
+    font-size: 12px;
+}

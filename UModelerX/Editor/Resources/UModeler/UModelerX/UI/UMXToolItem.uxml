@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement name="umx-tool-item" class="umx-tool-item">
+    <ui:Image name="umx-tool-item__icon" class="umx-tool-item__icon" />
+    <ui:Label name="umx-tool-item__label" class="umx-tool-item__label" text="Tool" />
+  </ui:VisualElement>
+</ui:UXML>

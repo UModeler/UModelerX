@@ -1,0 +1,51 @@
+{
+    "name": "Tripolygon.UModelerX.PureCode.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Unity.RenderPipelines.HighDefinition.Runtime",
+        "Tripolygon.UModelerX.Runtime",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.ProBuilder.Editor",
+        "Unity.ProBuilder",
+        "Tripolygon.UModelerX.Editor",
+        "Unity.InputSystem",
+        "Tripolygon.UModelerX.Runtime.PureCode"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "7.1.0",
+            "define": "HDRP_ENABLED"
+        },
+        {
+            "name": "com.unity.probuilder",
+            "expression": "(,6.0.0)",
+            "define": "PROBUILDER_ENABLED"
+        },
+        {
+            "name": "com.unity.probuilder",
+            "expression": "6.0.0",
+            "define": "PROBUILDER_6_0_0"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "INPUTSYSTEM"
+        },
+        {
+            "name": "com.unity.cloud.gltfast",
+            "expression": "",
+            "define": "GLTFAST_PRESENT"
+        }
+    ],
+    "noEngineReferences": false
+}

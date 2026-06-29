@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="collection-root" class="collection-root">
+        <!-- Top bar: breadcrumb (current folder path) on the left, close button on the right -->
+        <ui:VisualElement name="collection-topbar" class="collection-topbar">
+            <ui:VisualElement name="collection-breadcrumb" class="collection-breadcrumb" />
+            <ui:VisualElement class="collection-topbar-spacer" />
+            <ui:Button name="collection-close-btn" class="collection-icon-btn" tooltip="Close">
+                <ui:VisualElement name="collection-close-icon" class="collection-icon" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <!-- Current folder title (below breadcrumb): bigger heading -->
+        <ui:Label name="collection-title" text="Collections" class="collection-title" />
+
+        <!-- Selection bar (visible only when one or more assets selected inside a collection) -->
+        <ui:VisualElement name="collection-selection-bar" class="collection-selection-bar hidden">
+            <ui:Label name="collection-selection-count" text="0 selected" class="collection-selection-count" />
+            <ui:VisualElement class="collection-topbar-spacer" />
+            <ui:Button name="collection-selection-move-btn" text="Move" class="collection-selection-btn" tooltip="Move selected to another collection" />
+            <ui:Button name="collection-selection-remove-btn" text="Remove" class="collection-selection-btn" tooltip="Remove selected from this collection" />
+            <ui:Button name="collection-selection-clear-btn" text="Clear" class="collection-selection-btn" tooltip="Clear selection" />
+        </ui:VisualElement>
+
+        <!-- Body scroll: dynamically populated by the controller -->
+        <ui:ScrollView name="collection-body" mode="Vertical" class="collection-body">
+            <ui:VisualElement name="collection-body-content" class="collection-body-content" />
+        </ui:ScrollView>
+
+        <!-- Empty state -->
+        <ui:VisualElement name="collection-empty-state" class="collection-empty-state hidden">
+            <ui:Label name="collection-empty-label" text="No collections yet" class="collection-empty-label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,52 @@
+/* GizmoTranslatorUI: 씬 뷰 우측 하단 Position 편집 패널 */
+
+.gizmo-translator-root {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 270px;
+    padding: 4px 6px;
+    background-color: rgba(42, 42, 42, 0.52);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 3px;
+    flex-direction: column;
+}
+
+/* 헤더 행 (Position 라벨 + 모드 드롭다운) */
+.gizmo-translator-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.gizmo-translator-header__title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    color: var(--umx-text-secondary);
+    flex-grow: 1;
+}
+
+.gizmo-translator-header__mode {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+/* XYZ 필드 행 */
+.gizmo-translator-fields {
+    flex-direction: row;
+    align-items: center;
+}
+
+.gizmo-translator-fields > FloatField {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+    min-width: 0;
+}
+
+.gizmo-translator-fields > FloatField > Label {
+    min-width: 12px;
+    max-width: 12px;
+}

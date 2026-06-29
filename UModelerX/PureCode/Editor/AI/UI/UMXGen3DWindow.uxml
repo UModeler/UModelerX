@@ -1,0 +1,560 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement name="root" class="root">
+            <ui:VisualElement name="left-pane" class="left-pane">
+                <ui:VisualElement name="left-upper-pane" class="left-upper-pane">
+                    <ui:VisualElement name="left-topbar" class="left-topbar">
+                        <ui:Button name="api-key-button" focusable="false" class="api-key-button icon-key" />
+                        <ui:Button name="tripo-button" text="Tripo" focusable="false" class="api-button font bold" />
+                        <ui:Button name="meshy-button" text="Meshy" focusable="false" class="api-button font bold" />
+                        <ui:VisualElement name="credit-badge" class="credit-badge">
+                            <ui:Image name="credit-icon" class="credit-icon" />
+                            <ui:Label name="credit-value" text="1024" class="credit-value" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="left-page-stack" class="left-page-stack card">
+                        <ui:VisualElement class="preview-wrap">
+                            <ui:Image name="img-preview" class="rt-preview" />
+                            <ui:VisualElement name="preview-option" class="preview-option">
+                                <ui:VisualElement name="preview-shader-option" class="preview-option-row">
+                                    <ui:Button name="preview-shader-option-solid" class="preview-shader-button solid"/>
+                                    <ui:Button name="preview-shader-option-base" class="preview-shader-button base"/>
+                                    <ui:Button name="preview-shader-option-pbr" class="preview-shader-button pbr"/>
+                                    <ui:VisualElement name="privew-shader-option-split" class="preview-shader-option-split" />
+                                    <ui:Button name="preview-shader-option-wireframe" class="preview-shader-button wireframe"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="preview-light-intensity" class="preview-option-row">
+                                    <ui:VisualElement name="preview-light-intensity-icon" class="preview-option-light-icon intensity" />
+                                    <ui:Label name="preview-light-intensity-min" text="0" class="preview-option-slider-value-label" />
+                                    <ui:SliderInt name ="preview-light-intensity-slider" class="preview-option-slider"/>
+                                    <ui:Label name="preview-light-intensity-max" text="100" class="preview-option-slider-value-label" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="preview-light-rotate" class="preview-option-row">
+                                    <ui:VisualElement name="preview-light-rotate-icon" class="preview-option-light-icon rotate" />
+                                    <ui:Label name="preview-light-rotate-min" text="0" class="preview-option-slider-value-label" />
+                                    <ui:SliderInt name ="preview-light-rotate-slider" class="preview-option-slider"/>
+                                    <ui:Label name="preview-light-rotate-max" text="360" class="preview-option-slider-value-label" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="mesh-info" picking-mode="Ignore" class="preview-element">
+                                <ui:Label name="mesh-verts" text="Vertex : 0" class="element-counter" />
+                                <ui:Label name="mesh-faces" text="Face    : 0" class="element-counter" />
+                            </ui:VisualElement>
+                            <ui:Label name="gltf-warning" class="hidden"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="api-key-overlay" class="api-key-overlay hidden">
+                        <ui:VisualElement name="Tripo-api-row" class="api-row">
+                            <ui:Label name="tripo-api-label" text="Tripo" class="api-label font bold" />
+                            <ui:TextField name="tripo-key" placeholder-text="Enter the Tripo API key...." class="api-input" />
+                            <ui:Button name="tripo-login" class="login-button btn--icon icon-login" />
+                            <ui:Button name="tripo-logout" class="logout-button btn--icon icon-logout hidden" />
+                            <ui:Button name="tripo-home" class="login-button btn--icon alt icon-home" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="mesh-api-row" class="api-row">
+                            <ui:Label name="meshy-api-label" text="Meshy" class="api-label font bold" />
+                            <ui:TextField name="meshy-key" placeholder-text="Enter the Meshy API key...." class="api-input" />
+                            <ui:Button name="meshy-login" class="login-button btn--icon icon-login" />
+                            <ui:Button name="meshy-logout" class="logout-button btn--icon icon-logout hidden" />
+                            <ui:Button name="meshy-home" class="login-button btn--icon alt icon-home" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="manual-row" class="api-row">
+                            <ui:Label name="gen3d-manual-text" text="See the manual to get started with Gen 3D AI." class="manual-text bold"/>
+                            <ui:Button name="overlay-manual-button" class="manual-button" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="progress-row">
+                        <uie:ProgressBar name="gen-progress" low-value="0" high-value="1" value="0" class="gen-progress">
+                            <ui:Label name="gen-progress-percent-label" text="50%.." class="progress-label hidden"/>
+                        </uie:ProgressBar>
+                        <uie:ObjectField name="of-target" object-type="UnityEngine.GameObject" allow-scene-objects="false" class="go-picker" />
+                        <ui:Button name="add-to-scene-button" text="Add to Scene" class="btn-add-to-scene font bold" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="hori-separator" class="separator horizontal">
+                        <ui:VisualElement name="separator-handler-horizontal" class="separator-handler horizontal" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="history-header" class="history-header">
+                    <ui:VisualElement name="history-button-tab" class="history-button-tab">
+                        <ui:Button text="History" name="history-button" class="tab-btn font" />
+                        <ui:VisualElement name="help-tab" class="help-tab">
+                            <ui:Button name="history-manual-button" class="manual-button" />
+                            <ui:Button name="help-icon" class="help-icon" />
+                         </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="history-option-tab" class="history-option">
+                      <ui:VisualElement name="history-refresh-group" class="refresh-group">
+                        <ui:Button name="history-refresh-button" class="refresh-button" />
+                      </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:ScrollView name="history-scroll" mode="Vertical" class="history-scroll">
+                        <ui:VisualElement name="history-grid" class="history-grid" />
+                    </ui:ScrollView>
+                    <ui:VisualElement name="help-overlay" class="help-overlay hidden">
+                        <ui:VisualElement name="sent1" class="sentence">
+                            <ui:Label name="sent1-text" class="help-text"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="sentence-gap" class="sentence-gap" />
+                        <ui:VisualElement name="sent2" class="sentence">
+                            <ui:Label name="sent2-text" class="help-text"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="vert-separator" class="separator vertical">
+                <ui:VisualElement name="separator-handler-vertical" class="separator-handler vertical" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="right-pane" class="right-pane">
+                <ui:VisualElement name="right-panel" class="func-panel hidden">
+                    <ui:VisualElement name="meshy-func" class="ai-func">
+                        <ui:VisualElement name="meshy-category-generate" class="func-category">
+                            <ui:Label text="Generate" class="category-label" />
+                            <ui:VisualElement name="generate-group" class="func-group">
+                                <ui:Button name="meshy-textTo3D" text="Text to 3D" class="func-btn font bold" />
+                                <ui:Button name="meshy-imageTo3D" text="Image to 3D" class="func-btn font bold" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="meshy-category-improve" class="func-category">
+                            <ui:Label text="Improve" class="category-label" />
+                            <ui:VisualElement name="improve-group" class="func-group">
+                                <ui:Button name="meshy-remesh" text="Remesh" class="func-btn font bold" />
+                                <ui:Button name="meshy-texture" text="Texture" class="func-btn font bold" />
+                                <ui:Button name="meshy-riggingAnimation" text="Rig&amp;Anim" class="func-btn font bold hidden" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    
+                    <ui:VisualElement name="tripo-func" class="ai-func hidden">
+                        <ui:VisualElement name="tripo-category-generate" class="func-category">
+                            <ui:Label text="Generate" class="category-label" />
+                            <ui:VisualElement name="tripo-generate" class="func-group">
+                                <ui:Button name="tripo-textTo3D" text="Text to 3D" class="func-btn font bold" />
+                                <ui:Button name="tripo-imageTo3D" text="Image to 3D" class="func-btn font bold" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tripo-category-improve" class="func-category">
+                            <ui:Label text="Improve" class="category-label" />
+                            <ui:VisualElement name="tripo-generate" class="func-group">
+                                <ui:Button name="tripo-remesh" text="Remesh" class="func-btn font bold" />
+                                <ui:Button name="tripo-texture" text="Texture" class="func-btn font bold" />
+                                <ui:Button name="tripo-riggingAnimation" text="Rig&amp;Anim" class="func-btn font bold hidden" />
+                                <ui:Button name="tripo-segmentation" text="Segmentation" class="func-btn font bold hidden" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement name="property-stack" class="property-stack hidden">
+                    <ui:VisualElement name="meshy-props-textTo3D" class="props hidden">
+                        <ui:VisualElement class="property grow">
+                            <ui:Label text="Prompt" class="property big-label" />
+                            <ui:TextField name="meshy-textTo3D-prompt" placeholder-text="Describe what you'd like to see in 3D-for example, a fantasy sword or a cartoon-style car." multiline="true" class="prompt-text-field" />
+                            <ui:Label name="meshy-textTo3D-prompt-counter" text="0/800" class="textfield-counter" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="meshy-textTo3D-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="Art Style" class="property label" />
+                            <ui:VisualElement name="meshy-textTo3D-artStyle" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="A/T Pose" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-textTo3D-atPose-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="meshy-textTo3D-atPose-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Topology" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-textTo3D-topology-quad-button" text="Quad" class="toggle-button left on" />
+                                <ui:Button name="meshy-textTo3D-topology-triangle-button" text="Triangle" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="meshy-textTo3D-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="meshy-textTo3D-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Symmetry" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-textTo3D-symmetry-off-button" text="Off" class="toggle-button left" />
+                                <ui:Button name="meshy-textTo3D-symmetry-auto-button" text="Auto" class="toggle-button middle on" />
+                                <ui:Button name="meshy-textTo3D-symmetry-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-textTo3D-seed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="meshy-textTo3D-seed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="meshy-textTo3D-seed-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="meshy-props-imageTo3D" class="props hidden">
+                        <ui:VisualElement name="meshy-imageTo3D-image-row" class="property grow">
+                            <ui:Label text="Image" class="property big-label" />
+                            <ui:Button name="meshy-imageTo3D-image-button" class="property image" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="meshy-imageTo3D-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="A/T Pose" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-imageTo3D-atPose-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="meshy-imageTo3D-atPose-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Topology" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-imageTo3D-topology-quad-button" text="Quad" class="toggle-button left on" />
+                                <ui:Button name="meshy-imageTo3D-topology-triangle-button" text="Triangle" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Texturing" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-imageTo3D-texturing-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="meshy-imageTo3D-texturing-on-button" text="On" class="toggle-button middle" />
+                                <ui:Button name="meshy-imageTo3D-texturing-pbr-button" text="PBR" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="meshy-imageTo3D-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="meshy-imageTo3D-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Symmetry" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-imageTo3D-symmetry-off-button" text="Off" class="toggle-button left" />
+                                <ui:Button name="meshy-imageTo3D-symmetry-auto-button" text="Auto" class="toggle-button middle on" />
+                                <ui:Button name="meshy-imageTo3D-symmetry-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-imageTo3D-seed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="meshy-imageTo3D-seed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="meshy-imageTo3D-seed-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="meshy-props-remesh" class="props hidden">
+                        <ui:VisualElement name="resize-height" class="property row">
+                            <ui:Label text="Height" class="property label" />
+                            <uie:IntegerField name="meshy-remesh-resizeHeight-input" class="property-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Pivot" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-remesh-pivot-bottom-button" text="Bottom" class="toggle-button left on" />
+                                <ui:Button name="meshy-remesh-pivot-center-button" text="Center" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="meshy-remesh-topology" class="property row toggle-group">
+                            <ui:Label text="Topology" class="property label"/>
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-remesh-topology-quad-button" text="Quad" class="toggle-button left on" />
+                                <ui:Button name="meshy-remesh-topology-tri-button" text="Triangle" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Poly Count" class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="meshy-remesh-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="meshy-remesh-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="meshy-props-texture" class="props hidden">
+                        <ui:VisualElement name="meshy-texture-prompt-row" class="property grow hidden">
+                            <ui:Label text="Prompt" class="property big-label" />
+                            <ui:TextField name="meshy-texture-prompt" placeholder-text="Describe how you want your mesh to be textured. e.g. metallic surface, stylized wood, painted look." multiline="true" class="prompt-text-field" />
+                            <ui:Label name="meshy-texture-prompt-counter" text="0/800" class="textfield-counter" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="meshy-texture-image-row" class="property grow hidden">
+                            <ui:Label text="Image" class="property big-label" />
+                            <ui:Button name="meshy-texture-image" class="property image" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="meshy-texture-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Input" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-texture-input-text-button" text="Text" class="toggle-button left on" />
+                                <ui:Button name="meshy-texture-input-image-button" text="Image" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="meshy-texture-pbrMaps" class="property row toggle-group">
+                            <ui:Label text="PBR Maps" class="property label"/>
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="meshy-texture-pbrMaps-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="meshy-texture-pbrMaps-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="meshy-props-rigging-animation" class="props hidden">
+                        <ui:Label text="Rigging" class="property big-label" />
+                        <ui:VisualElement name="auto-rig-tab" class="auto-rig-row">
+                          <ui:VisualElement name="auto-rig-group" class="generate-group">
+                              <ui:Image class="credit-icon-lg" />
+                              <ui:Label text="15" name="auto-rig-cost" class="credit-cost bold" />
+                            <ui:Button name="btn-auto-rig" text="Auto Rig" class="generate bold enable" />
+                          </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="meshy-animation-row" class="animation-row">
+                            <ui:Label text="Animation" class="property big-label" />
+                            <ui:TextField name="meshy-animation-search-field" class="animation-search-field">
+                                <ui:VisualElement name="search-icon" class="search-icon"/>
+                            </ui:TextField>
+                            <ui:VisualElement class="animation-header">
+                                <ui:ListView name="meshy-animation-list" class="animation-list" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="tripo-props-textTo3D" class="props hidden">
+                        <ui:VisualElement class="property grow">
+                            <ui:Label text="Prompt" class="property big-label" />
+                            <ui:TextField name="tripo-textTo3D-prompt" placeholder-text="Describe what you'd like to see in 3D-for example, a fantasy sword or a cartoon-style car." multiline="true" class="prompt-text-field" />
+                            <ui:Label name="tripo-textTo3D-prompt-counter" text="0/800" class="textfield-counter" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="tripo-textTo3D-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-textTo3D-topology-label" text="Topology" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-topology-triangle-button" text="Triangle" class="toggle-button right on" />
+                                <ui:Button name="tripo-textTo3D-topology-quad-button" text="Quad" class="toggle-button left" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-textTo3D-smartLow-label" text="Smart Low" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-smartLow-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="tripo-textTo3D-smartLow-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Texturing" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-texturing-off-button" text="Off" class="toggle-button left" />
+                                <ui:Button name="tripo-textTo3D-texturing-on-button" text="On" class="toggle-button middle on" />
+                                <ui:Button name="tripo-textTo3D-texturing-pbr-button" text="PBR" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-textTo3D-hdTexture-label" text="HD Texture" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-hdTexture-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="tripo-textTo3D-hdTexture-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="tripo-textTo3D-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="tripo-textTo3D-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Model Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-modelSeed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="tripo-textTo3D-modelSeed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="tripo-textTo3D-modelSeed-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-textTo3D-textureSeed-label" text="Texture Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-textTo3D-textureSeed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="tripo-textTo3D-textureSeed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="tripo-textTo3D-textureSeed-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="tripo-props-imageTo3D" class="props hidden">
+                        <ui:VisualElement name="tripo-imageTo3D-image-row" class="property grow">
+                            <ui:Label text="Image" class="property big-label" />
+                            <ui:Button name="tripo-imageTo3D-image-button" class="property image" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tripo-imageTo3D-multiImage-group" class="property multi-image-group hidden">
+                            <ui:Button name="tripo-imageTo3D-multiImage-front-button" text="Front" class="property multi-image" />
+                            <ui:Button name="tripo-imageTo3D-multiImage-left-button" text="Left" class="property multi-image" />
+                            <ui:Button name="tripo-imageTo3D-multiImage-back-button" text="Back" class="property multi-image" />
+                            <ui:Button name="tripo-imageTo3D-multiImage-right-button" text="Right" class="property multi-image" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="tripo-imageTo3D-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Image" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-image-single-button" text="Single" class="toggle-button left on" />
+                                <ui:Button name="tripo-imageTo3D-image-multi-button" text="Multi" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-imageTo3D-topology-label" text="Topology" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-topology-triangle-button" text="Triangle" class="toggle-button right on" />
+                                <ui:Button name="tripo-imageTo3D-topology-quad-button" text="Quad" class="toggle-button left" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-imageTo3D-smartLow-label" text="Smart Low" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-smartLow-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="tripo-imageTo3D-smartLow-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Texturing" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-texturing-off-button" text="Off" class="toggle-button left" />
+                                <ui:Button name="tripo-imageTo3D-texturing-on-button" text="On" class="toggle-button middle on" />
+                                <ui:Button name="tripo-imageTo3D-texturing-pbr-button" text="PBR" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-imageTo3D-hdTexture-label" text="HD Texture" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-hdTexture-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="tripo-imageTo3D-hdTexture-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="tripo-imageTo3D-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="tripo-imageTo3D-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Model Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-modelSeed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="tripo-imageTo3D-modelSeed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="tripo-imageTo3D-modelSeed-input" class="int-input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-imageTo3D-textureSeed-label" text="Texture Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-imageTo3D-textureSeed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="tripo-imageTo3D-textureSeed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="tripo-imageTo3D-textureSeed-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="tripo-props-remesh" class="props hidden">
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Format" class="property label" />
+                            <ui:VisualElement name="tripo-remesh-format" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Topology" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-remesh-topology-triangle-button" text="Triangle" class="toggle-button right on" />
+                                <ui:Button name="tripo-remesh-topology-quad-button" text="Quad" class="toggle-button left" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Pivot" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-remesh-pivot-bottom-button" text="Bottom" class="toggle-button left on" />
+                                <ui:Button name="tripo-remesh-pivot-center-button" text="Center" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Poly Count" class="property label" />
+                            <ui:SliderInt name="tripo-remesh-polyCount-slider" class="property slider-field" />
+                            <uie:IntegerField name="tripo-remesh-polyCount-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="tripo-props-texture" class="props hidden">
+                        <ui:VisualElement name="tripo-texture-prompt-row" class="property grow hidden">
+                            <ui:Label text="Prompt" class="property big-label" />
+                            <ui:TextField name="tripo-texture-prompt" placeholder-text="Describe how you want your mesh to be textured. e.g. metallic surface, stylized wood, painted look." multiline="true" class="prompt-text-field" />
+                            <ui:Label name="tripo-texture-prompt-counter" text="0/800" class="textfield-counter" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tripo-texture-image-row" class="property grow hidden">
+                            <ui:Label text="Image" class="property big-label" />
+                            <ui:Button name="tripo-texture-image-button" class="property image" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row">
+                            <ui:Label text="AI Model" class="property label" />
+                            <ui:VisualElement name="tripo-texture-aiModel" class="dropdown-field" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Input" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-texture-input-text-button" text="Text" class="toggle-button left on" />
+                                <ui:Button name="tripo-texture-input-image-button" text="Image" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tripo-texture-texturing" class="property row toggle-group">
+                            <ui:Label text="Texturing" class="property label"/>
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-texture-texturing-on-button" text="On" class="toggle-button left on" />
+                                <ui:Button name="tripo-texture-texturing-pbr-button" text="PBR" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="tripo-texture-hdTexture" class="property row toggle-group">
+                            <ui:Label name="tripo-texture-hdTexture-label" text="HD Texture" class="property label"/>
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-texture-hdTexture-off-button" text="Off" class="toggle-button left on" />
+                                <ui:Button name="tripo-texture-hdTexture-on-button" text="On" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label text="Alignment" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-texture-alignment-image-button" text="Image" class="toggle-button left on" />
+                                <ui:Button name="tripo-texture-alignment-geometry-button" text="Geometry" class="toggle-button right" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="property row toggle-group">
+                            <ui:Label name="tripo-texture-textureSeed-label" text="Texture Seed" class="property label" />
+                            <ui:VisualElement class="toggle-group-background">
+                                <ui:Button name="tripo-texture-textureSeed-random-button" text="Random" class="toggle-button left on" />
+                                <ui:Button name="tripo-texture-textureSeed-fixed-button" text="Fixed" class="toggle-button right" />
+                            </ui:VisualElement>
+                            <uie:IntegerField name="tripo-texture-textureSeed-input" class="int-input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement name="generate-tab" class="generate-row">
+                      <ui:Label name="generate-tooltip" text="Please enter the prompt before generating." class="generate-tooltip" />
+                      <ui:VisualElement name="generate-group" class="generate-group">
+                        <ui:VisualElement name="cost-tab" class="cost-tab">
+                          <ui:Image class="credit-icon-lg" />
+                          <ui:Label text="15" name="credit-cost" class="credit-cost bold" />
+                        </ui:VisualElement>
+                        <ui:Button name="btn-generate" text="Generate" class="generate bold enable">
+                          <ui:VisualElement name="loading" class="loading-background hidden">
+                            <ui:VisualElement name="loading-progress" class="loading-progress" />
+                          </ui:VisualElement>
+                        </ui:Button>
+                      </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

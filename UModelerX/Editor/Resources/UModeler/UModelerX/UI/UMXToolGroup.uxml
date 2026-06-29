@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+  <ui:VisualElement name="umx-tool-group__row" class="umx-tool-group__row">
+    <ui:VisualElement name="umx-tool-group__header" class="umx-tool-group__header">
+      <ui:Image name="umx-tool-group__icon" class="umx-tool-group__icon" />
+      <ui:Label name="umx-tool-group__title" class="umx-tool-group__title" text="Tools" />
+      <ui:Label name="umx-tool-group__fold-arrow" class="umx-tool-group__fold-arrow" text="▼" />
+    </ui:VisualElement>
+    <ui:VisualElement name="umx-tool-group__content" class="umx-tool-group__content" />
+  </ui:VisualElement>
+</ui:UXML>

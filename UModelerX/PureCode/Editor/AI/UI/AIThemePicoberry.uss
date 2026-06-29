@@ -1,0 +1,27 @@
+/* ---------- AI Theme Override (PicoBerry website colors) ---------- */
+/* Applied on top of AIThemeVariables.uss when theme is PicoBerry. */
+
+/* PicoBerry 테마 CSS 변수 오버라이드: 핑크/레드 계열 강조색 */
+:root {
+    --ai-bg: rgb(24, 24, 27);
+    --ai-active-btn-bg: rgb(48, 25, 33);
+    --ai-active-btn-border: rgb(89, 25, 43);
+    --ai-btn-border: rgb(80, 80, 80);
+    --ai-active-btn-label: rgb(255, 99, 126);
+    --ai-inactive-btn-label: rgb(140, 140, 140);
+    --ai-inactive-btn-bg: rgb(24, 24, 27);
+    --ai-toggle-active: rgb(255, 32, 86);
+    --ai-toggle-inactive: rgb(24, 24, 27);
+    --ai-generate-btn-bg: rgb(237, 0, 69);
+    --ai-generate-btn-label: rgb(255, 255, 255);
+    --ai-generate-btn-hover: rgb(255, 37, 91);
+    --ai-preview-option-active: rgb(255, 0, 92);
+    --ai-loading-tint: rgb(255, 0, 92);
+    --ai-generating-percent: rgb(255, 0, 92);
+    --ai-selected-asset-border: rgb(166, 2, 65);
+    --ai-filter-toggle-border: rgb(80, 80, 80);
+    --ai-model-accent: rgb(236, 94, 127);
+    --ai-model-card-selected-bg: rgba(220, 55, 75, 0.08);
+    --ai-close-btn-hover-bg: rgb(80, 30, 40);
+    --ai-close-btn-hover-color: rgb(255, 99, 126);
+}

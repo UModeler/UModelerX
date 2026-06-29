@@ -1,0 +1,17 @@
+/* UMXExportWindow 스타일시트 */
+
+.umx-export-header {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: var(--umx-bg-surface);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--umx-border-strong);
+}
+
+.umx-export-header__title {
+    -unity-font-style: bold;
+    color: var(--umx-link);
+}
