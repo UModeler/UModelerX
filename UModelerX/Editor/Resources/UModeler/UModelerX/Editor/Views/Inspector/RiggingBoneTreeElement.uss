@@ -173,3 +173,110 @@
 .rigging-bone-item__children {
     flex-direction: column;
 }
+
+/* === 푸터 (도움말 + Add/Delete/Remove) === */
+/* 좌우 패딩으로 양끝 버튼이 프레임에 붙지 않게 한다. */
+.rigging-bone-tree__footer {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/* 좌측(?)과 우측(+ − −)을 밀어내는 스페이서 */
+.rigging-bone-tree__footer-spacer {
+    flex-grow: 1;
+}
+
+/* 공통 푸터 버튼: 투명 배경, 둥근 모서리, 굵은 글리프, 은은한 테두리 */
+.rigging-bone-tree__footer-btn {
+    width: 22px;
+    height: 20px;
+    margin-left: 4px;
+    margin-right: 1px;
+    padding: 0;
+    font-size: 14px;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: rgba(255, 255, 255, 0.18);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* 도움말 (?) — 파랑. 좌측 정렬이므로 좌측 마진 제거 */
+.rigging-bone-tree__footer-btn--help {
+    margin-left: 0;
+    color: #5a9fd4;
+    border-color: rgba(90, 159, 212, 0.5);
+}
+
+.rigging-bone-tree__footer-btn--help:hover {
+    background-color: rgba(90, 159, 212, 0.25);
+}
+
+/* Add (+) — 초록 */
+.rigging-bone-tree__footer-btn--add {
+    color: #6cc06c;
+    border-color: rgba(108, 192, 108, 0.5);
+}
+
+.rigging-bone-tree__footer-btn--add:hover {
+    background-color: rgba(108, 192, 108, 0.25);
+}
+
+/* Delete (−) — 빨강 (자식 로컬 좌표 유지) */
+.rigging-bone-tree__footer-btn--delete {
+    color: #e0574c;
+    border-color: rgba(224, 87, 76, 0.5);
+}
+
+.rigging-bone-tree__footer-btn--delete:hover {
+    background-color: rgba(224, 87, 76, 0.25);
+}
+
+/* Remove (−) — 주황 (자식 월드 좌표 유지) */
+.rigging-bone-tree__footer-btn--remove {
+    color: #e08a3c;
+    border-color: rgba(224, 138, 60, 0.5);
+}
+
+.rigging-bone-tree__footer-btn--remove:hover {
+    background-color: rgba(224, 138, 60, 0.25);
+}
+
+/* === 도움말 팝업 (RiggingBoneTreeHelpPopup) === */
+.rigging-help-popup {
+    flex-grow: 0;
+    padding: 10px 12px;
+    background-color: var(--umx-bg-surface);
+    border-width: 1px;
+    border-color: var(--umx-border-strong);
+    border-radius: 3px;
+}
+
+.rigging-help-popup__title {
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: var(--umx-text);
+    margin-bottom: 6px;
+    white-space: normal;
+}
+
+.rigging-help-popup__section-title {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: var(--umx-text);
+    margin-top: 6px;
+    margin-bottom: 2px;
+    white-space: normal;
+}
+
+.rigging-help-popup__line {
+    font-size: 11px;
+    color: var(--umx-text-secondary);
+    margin-bottom: 2px;
+    margin-left: 8px;
+    white-space: normal;
+}

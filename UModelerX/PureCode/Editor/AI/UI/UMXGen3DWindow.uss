@@ -565,7 +565,7 @@
   border-radius: 7px;
   background-color: rgba(30,30,30,0.45);
   border-width: 1px;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 /* 요소 카운터: 작은 볼드 텍스트 */
 .element-counter {
@@ -1236,7 +1236,7 @@
 .multi-image-group.grid-1x4{
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items:stretch;
 }
 
